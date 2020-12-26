@@ -1,0 +1,104 @@
+/* TODO
+Mobile nav
+Flexible padding? (so logo and links go closer to edge on smaller windows)
+*/
+
+.navigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6.5%; //10rem;;
+}
+
+.navigation--transparent {
+  ul {
+    li {
+      a {
+        color: $color-white;
+      }
+    }
+  }
+
+  .nav__logo svg {
+    path {
+      fill: $color-white;
+    }
+  }
+}
+
+.navigation--solid {
+  background-color: $color-white;
+
+  ul {
+    li {
+      a {
+        color: $color-anthrazit;
+      }
+    }
+  }
+}
+
+.nav__logo * {
+  color: $color-white;
+}
+
+.nav__logo svg {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.nav__list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+
+  .menu-link {
+    &:not(:last-child) {
+      margin-right: 6.6rem;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .mobile-menu-button {
+    width: 3rem;
+    button {
+      background-color: transparent;
+      border: none;
+    }
+    @media (min-width: 601px) {
+      display: none;
+    }
+  }
+
+  @keyframes slideFromTop {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  li.menu-link {
+    display: none;
+    @media (min-width: 601px) {
+      display: initial;
+    }
+  }
+}
+
+.mobile-menu-window {
+  height: 100%;
+  position: fixed;
+  background-color: $color-black;
+  animation-name: slideFromTop;
+  animation-duration: 0.5s;
+}
