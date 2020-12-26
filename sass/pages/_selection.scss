@@ -44,16 +44,14 @@ $vertical-space: 4rem;
 
   &__elem {
     margin-top: $vertical-space;
-    width: 15.5rem;
+    width: 40vw;
     @media (min-width: 601px) {
-      width: 30rem;
+      width: 20vw;
     }
 
     .coffee-text {
       div:not(:last-child) {
         margin-bottom: 0.8rem;
-      }
-      &__origin {
       }
 
       &__price-range {
@@ -74,16 +72,11 @@ $vertical-space: 4rem;
 
     .coffee-img {
       margin-bottom: 2rem;
-      height: 20.8rem;
       background-color: $color-light-grey;
       padding: 5%;
 
-      @media (min-width: 601px) {
-        height: 40rem;
-      }
-
       img {
-        height: 100%;
+        width: 100%;
       }
     }
   }
