@@ -1,0 +1,37 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px 50px;
+  border-radius: 5px;
+
+  &:hover {
+    box-shadow: 2px 2px 3px rgba($color-black, 0.25);
+  }
+}
+
+.button--dark {
+  background-color: $color-anthrazit;
+  border: solid 2px $color-anthrazit;
+  color: $color-white;
+
+  &:hover {
+    background-color: $color-anthrazit-light;
+    border-width: 1px;
+  }
+
+  &:active {
+    background-color: $color-kraftpapier;
+    border-width: 1px;
+  }
+}
+
+.button--light-border {
+  background-color: $color-anthrazit-light;
+  border: solid 3px $color-white;
+
+  &:active {
+    background-color: $color-white;
+    color: $color-black;
+  }
+}
