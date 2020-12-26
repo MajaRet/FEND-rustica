@@ -1,0 +1,44 @@
+.about {
+  * {
+    color: $color-black;
+  }
+  &__row {
+    background-color: hotpink;
+    margin: 10rem;
+    display: flex;
+
+    &--pic-left {
+      flex-direction: row-reverse;
+    }
+
+    &--pic-right {
+    }
+  }
+
+  &__cell {
+    background-color: greenyellow;
+    width: 50%;
+    margin: 0 1rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__subrow {
+    background-color: blue;
+    display: flex;
+  }
+
+  &__subcell {
+    width: 50%;
+    background-color: coral;
+    &:not(:first-child) {
+      margin-left: 0.8rem;
+    }
+
+    &:not(:last-child) {
+      margin-right: 0.8rem;
+    }
+  }
+}
