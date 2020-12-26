@@ -257,7 +257,7 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
 
 .selection {
   background-color: #1a1a1a;
-  padding: 6rem 2.5rem; }
+  padding: 6rem 7%; }
   .selection * {
     color: #ffffff; }
   .selection > *:not(:last-child) {
@@ -265,7 +265,7 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
   @media (min-width: 601px) {
     .selection {
       background-color: #3a3734;
-      padding: 12.5rem 10rem; } }
+      padding: 12.5rem 7%; } }
   .selection__group-of-four {
     display: flex;
     width: 100%;
