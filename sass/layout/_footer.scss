@@ -1,0 +1,12 @@
+.footer {
+  * {
+    color: $color-white;
+  }
+  background-color: $color-black;
+  // TODO that's not really right.
+  padding: 0 5rem;
+
+  @media (min-width: 601px) {
+    padding: 0 12.5rem;
+  }
+}

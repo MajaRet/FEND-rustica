@@ -2,6 +2,7 @@
 
 @import 'base/typography';
 
+@import 'layout/footer';
 @import 'layout/header';
 
 @import 'components/navigation';
@@ -17,6 +18,11 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 html {
