@@ -24,3 +24,13 @@ viewBox="0 0 145 145" fill="none" xmlns="http://www.w3.org/2000/svg">
 
   document.write(svg);
 }
+
+function getBurgerMenuSVG() {
+  let svg = `<svg width="24" height="16" viewBox="0 0 24 16" fill="none" 
+  xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 2H23.5M0 8H23.5M0 14.5H16.5" stroke="white" stroke-width="3"/>
+  </svg>
+  `;
+
+  document.write(svg);
+}
