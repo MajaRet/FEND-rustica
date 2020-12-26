@@ -1,0 +1,32 @@
+.origins {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(
+      rgba($color-anthrazit, 0.5),
+      rgba($color-anthrazit, 0.5)
+    ),
+    url('/img/FEND-Coffee-bags-2.jpg');
+  background-position: center;
+  background-size: cover;
+  * {
+    text-align: center;
+    color: white;
+    margin-top: 3.5rem;
+  }
+
+  // TODO Decide whether to do this or use line breaks.
+  //p {
+  //  max-width: 50%;
+
+  //  @media (min-width: 601px) {
+  //    max-width: 20%;
+  //  }
+  //}
+
+  a {
+    text-decoration: none;
+  }
+}
