@@ -1,0 +1,95 @@
+// The space between the selection elements.
+$vertical-space: 4rem;
+
+// TODO At screen width 600px, we still seem to have 3 elements in a row.
+
+.selection {
+  * {
+    color: $color-white;
+  }
+
+  > *:not(:last-child) {
+    margin-bottom: 8rem;
+  }
+  // TODO Should it really change color on mobile?
+  background-color: $color-anthrazit;
+  padding: 6rem 2.5rem;
+
+  @media (min-width: 601px) {
+    background-color: $color-anthrazit-light;
+    padding: 12.5rem 10rem;
+  }
+
+  &__group-of-four {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    // Offset the top margin of the individual elements.
+    margin-top: -$vertical-space;
+  }
+
+  // TODO: Google if you can apply space-between to grandchildren
+  // TODO Probably obsolete
+  //$coffee-elem-width: 30rem;
+  //$gap-width: calc(100% - 4 * #{$coffee-elem-width}) / 3;
+
+  // TODO Probably obsolete
+
+  //&__group-of-two {
+  //  display: flex;
+  //  justify-content: space-between;
+  //  width: calc(2 * #{$coffee-elem-width} + #{$gap-width});
+  //}
+
+  &__elem {
+    margin-top: $vertical-space;
+    width: 15.5rem;
+    @media (min-width: 601px) {
+      width: 30rem;
+    }
+
+    .coffee-text {
+      div:not(:last-child) {
+        margin-bottom: 0.8rem;
+      }
+      &__origin {
+      }
+
+      &__price-range {
+        color: $color-medium-grey;
+      }
+
+      &__icons {
+        svg {
+          margin-right: 1rem;
+
+          path {
+            // TODO: Remove? It's already white.
+            stroke: $color-white;
+          }
+        }
+      }
+    }
+
+    .coffee-img {
+      margin-bottom: 2rem;
+      height: 20.8rem;
+      background-color: $color-light-grey;
+      padding: 5%;
+
+      @media (min-width: 601px) {
+        height: 40rem;
+      }
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+  &__button {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
