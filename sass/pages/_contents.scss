@@ -1,0 +1,37 @@
+.contents {
+  h2 {
+    color: $color-black;
+    text-align: center;
+  }
+
+  /*
+ &__container {
+    display: flex;
+    align-items: center;
+    img {
+      width: 50%;
+    }
+    .contents-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .descriptors {
+        display: flex;
+        .texts {
+          width: 50%;
+          p {
+            color: $color-black;
+          }
+        }
+
+        .icons {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          width: 50%;
+        }
+      }
+    }
+  }
+  */
+}
