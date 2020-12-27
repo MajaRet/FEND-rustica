@@ -12,23 +12,23 @@
 
 .button--dark {
   background-color: $color-anthrazit;
-  border: solid 2px $color-anthrazit;
+  border: 2px solid $color-anthrazit;
   color: $color-white;
 
   &:hover {
     background-color: $color-anthrazit-light;
-    border-width: 1px;
+    border-width: 2px; // TODO should be 1px, but that pushes everything around
   }
 
   &:active {
     background-color: $color-kraftpapier;
-    border-width: 1px;
+    border-width: 2px; // TODO should be 1px, but that pushes everything around
   }
 }
 
 .button--light-border {
   background-color: $color-anthrazit-light;
-  border: solid 3px $color-white;
+  border: 3px solid $color-white;
 
   &:active {
     background-color: $color-white;
