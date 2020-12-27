@@ -58,15 +58,8 @@ $vertical-space: 4rem;
         color: $color-medium-grey;
       }
 
-      &__icons {
-        svg {
-          margin-right: 1rem;
-
-          path {
-            // TODO: Remove? It's already white.
-            stroke: $color-white;
-          }
-        }
+      &__icon {
+        margin-right: 1rem;
       }
     }
 

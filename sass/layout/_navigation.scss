@@ -11,7 +11,12 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 6.5%; //10rem;;
+  padding: 1rem 6.5%; //10rem;
+
+  .logo-svg {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
 }
 
 .navigation--transparent {
@@ -23,10 +28,9 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
     }
   }
 
-  .nav__logo svg {
-    path {
-      fill: $color-white;
-    }
+  .logo-svg {
+    // Turn the logo white
+    filter: invert(1);
   }
 }
 
@@ -40,15 +44,6 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
       }
     }
   }
-}
-
-.nav__logo * {
-  color: $color-white;
-}
-
-.nav__logo svg {
-  height: 3.5rem;
-  width: 3.5rem;
 }
 
 .nav__list {

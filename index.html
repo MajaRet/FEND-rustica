@@ -19,26 +19,24 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
-    <script src="svg.js"></script>
-    <script src="templates.js"></script>
   </head>
 
   <body>
     <header class="header">
       <nav class="navigation navigation--transparent">
         <div class="nav__logo">
-          <script>
-            getLogoSVG();
-          </script>
+          <img src="/img/Logo.svg" alt="Logo" class="logo-svg" />
         </div>
         <div class="nav__container">
           <ul class="nav__list">
             <!-- TODO font size and weight are wrong (should be 18px, 500), make class -->
             <li class="mobile-menu-button">
               <button>
-                <script>
-                  getBurgerMenuSVG();
-                </script>
+                <img
+                  src="/img/Burger Menu.svg"
+                  alt="Menü"
+                  class="burger-menu-svg"
+                />
               </button>
             </li>
             <li class="menu-link"><a href="#">das Café</a></li>
@@ -96,9 +94,25 @@
             </div>
             <!-- TODO Put the div in the template, too? -->
             <div class="coffee-text">
-              <script>
-                generateSelectionData('Costa Rica', '6,90', '26,90');
-              </script>
+              <div class="coffee-text__origins">Costa Rica</div>
+              <div class="coffee-text__price-range">6,90€ - 26,90€</div>
+              <div class="coffee-text__icons">
+                <img
+                  src="/img/Icon Kaffee Bohnen.svg"
+                  alt="Icon Kaffeebohnen"
+                  class="coffee-text__icon"
+                />
+                <img
+                  src="/img/Icon French Press.svg"
+                  alt="Icon French Press"
+                  class="coffee-text__icon"
+                />
+                <img
+                  src="/img/Icon Kaffee Schaufel.svg"
+                  alt="Icon Kaffeeschaufel"
+                  class="coffee-text__icon"
+                />
+              </div>
             </div>
           </div>
           <div class="selection__elem">
@@ -109,9 +123,25 @@
               />
             </div>
             <div class="coffee-text">
-              <script>
-                generateSelectionData('Äthiopien', '6,90', '26,90');
-              </script>
+              <div class="coffee-text__origins">Costa Rica</div>
+              <div class="coffee-text__price-range">6,90€ - 26,90€</div>
+              <div class="coffee-text__icons">
+                <img
+                  src="/img/Icon Kaffee Bohnen.svg"
+                  alt="Icon Kaffeebohnen"
+                  class="coffee-text__icon"
+                />
+                <img
+                  src="/img/Icon French Press.svg"
+                  alt="Icon French Press"
+                  class="coffee-text__icon"
+                />
+                <img
+                  src="/img/Icon Kaffee Schaufel.svg"
+                  alt="Icon Kaffeeschaufel"
+                  class="coffee-text__icon"
+                />
+              </div>
             </div>
           </div>
           <div class="selection__elem">
@@ -122,9 +152,25 @@
               />
             </div>
             <div class="coffee-text">
-              <script>
-                generateSelectionData('Costa Rica', '6,90', '26,90');
-              </script>
+              <div class="coffee-text__origins">Costa Rica</div>
+              <div class="coffee-text__price-range">6,90€ - 26,90€</div>
+              <div class="coffee-text__icons">
+                <img
+                  src="/img/Icon Kaffee Bohnen.svg"
+                  alt="Icon Kaffeebohnen"
+                  class="coffee-text__icon"
+                />
+                <img
+                  src="/img/Icon French Press.svg"
+                  alt="Icon French Press"
+                  class="coffee-text__icon"
+                />
+                <img
+                  src="/img/Icon Kaffee Schaufel.svg"
+                  alt="Icon Kaffeeschaufel"
+                  class="coffee-text__icon"
+                />
+              </div>
             </div>
           </div>
           <div class="selection__elem">
@@ -135,9 +181,25 @@
               />
             </div>
             <div class="coffee-text">
-              <script>
-                generateSelectionData('Äthiopien', '6,90', '26,90');
-              </script>
+              <div class="coffee-text__origins">Costa Rica</div>
+              <div class="coffee-text__price-range">6,90€ - 26,90€</div>
+              <div class="coffee-text__icons">
+                <img
+                  src="/img/Icon Kaffee Bohnen.svg"
+                  alt="Icon Kaffeebohnen"
+                  class="coffee-text__icon"
+                />
+                <img
+                  src="/img/Icon French Press.svg"
+                  alt="Icon French Press"
+                  class="coffee-text__icon"
+                />
+                <img
+                  src="/img/Icon Kaffee Schaufel.svg"
+                  alt="Icon Kaffeeschaufel"
+                  class="coffee-text__icon"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -158,20 +220,42 @@
       <section class="contents">
         <h2>Das steckt drin</h2>
         <div class="contents__container">
-          <div class="item coffee-image">
+          <div class="contents__image">
             <img
               src="/img/FEND_Coffee_Costa-Rica 2.png"
               alt="Kaffee aus Costa Rica"
             />
           </div>
-          <div class="item icon-1">Ic1</div>
-          <div class="item icon-2">Ic2</div>
-          <div class="item icon-3">Ic3</div>
-          <div class="item text-1">Bester<br />Geschmack</div>
-          <div class="item text-2">Fair<br />gehandelt</div>
-          <div class="item text-3">Bio<br />Qualität</div>
-          <div class="item contents-button">
-            <button class="button button--dark">zum Shop</button>
+          <div class="contents__text-and-button">
+            <div class="contents__descriptions">
+              <div class="item icon-1">
+                <img
+                  src="/img/Icon Kaffee Tasse.svg"
+                  alt="Icon Kaffeetasse"
+                  class="content-icon"
+                />
+              </div>
+              <div class="item text-1">Bester<br />Geschmack</div>
+              <div class="item icon-2">
+                <img
+                  src="/img/Icon Kaffee Schaufel Schwarz.svg"
+                  alt="Icon Kaffeeschaufel"
+                  class="content-icon"
+                />
+              </div>
+              <div class="item text-2">Fair<br />gehandelt</div>
+              <div class="item icon-3">
+                <img
+                  src="/img/Icon-Kaffee Pflanze.svg"
+                  alt="Icon Kaffeepflanze"
+                  class="content-icon"
+                />
+              </div>
+              <div class="item text-3">Bio<br />Qualität</div>
+            </div>
+            <div class="contents__button">
+              <button class="button button--dark">zum Shop</button>
+            </div>
           </div>
         </div>
       </section>
@@ -187,7 +271,9 @@
 
     <footer class="footer">
       <div class="footer__container">
-        <div class="item">Logo</div>
+        <div class="item">
+          <img src="/img/Logo.svg" alt="Logo" class="logo-svg" />
+        </div>
         <div class="item">
           <h2>Rustica</h2>
         </div>
