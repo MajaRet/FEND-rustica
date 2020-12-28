@@ -50,12 +50,14 @@
         <div class="nav__container">
           <ul class="nav__list">
             <li class="menu-item">
-              <a href="#" class="menu-link">das Café</a>
+              <a href="#about" class="menu-link">das Café</a>
             </li>
             <li class="menu-item">
-              <a href="#" class="menu-link">Über Uns</a>
+              <a href="#origins" class="menu-link">Herkunft</a>
             </li>
-            <li class="menu-item"><a href="#" class="menu-link">Shop</a></li>
+            <li class="menu-item">
+              <a href="#shop" class="menu-link">Shop</a>
+            </li>
           </ul>
           <!-- TODO font size and weight are wrong (should be 18px, 500), make class -->
         </div>
@@ -63,11 +65,10 @@
       <h1 class="site-heading--primary">Rustica</h1>
       <p class="subhead--m site-heading--secondary">Bio und Fair seit 1991</p>
       <button class="button button--dark">Zum Shop</button>
-      <!-- 'subhead m' -->
     </header>
 
     <main class="main">
-      <section class="about u-padding--section">
+      <section class="about u-padding--section" id="about">
         <div class="about__row about__row-pic-right">
           <div class="about__cell about__cell--text">
             <h2 class="about__heading--secondary">Rösterei & Café</h2>
@@ -118,7 +119,7 @@
           </div>
         </div>
       </section>
-      <section class="selection u-padding--section">
+      <section class="selection u-padding--section" id="shop">
         <h2>Entdecke unsere<br />Kaffeesorten</h2>
         <div class="selection__group-of-four">
           <div class="selection__elem">
@@ -242,7 +243,7 @@
           alle Produkte
         </button>
       </section>
-      <section class="origins u-padding--section">
+      <section class="origins u-padding--section" id="origins">
         <h3>Herkunft</h3>
         <p>
           Weit hinten, hinter den Wortbergen,<br />
@@ -252,7 +253,7 @@
         </p>
         <a href="#">mehr</a>
       </section>
-      <section class="contents u-padding--section">
+      <section class="contents u-padding--section" id="contents">
         <h2 class="contents__heading">Das steckt drin</h2>
         <div class="contents__container">
           <div class="contents__image">
@@ -294,7 +295,7 @@
           </div>
         </div>
       </section>
-      <section class="map">
+      <section class="map" id="map">
         <h2 class="map__heading">Komm vorbei</h2>
         <img
           src="/img/Map.jpg"
@@ -304,7 +305,7 @@
       </section>
     </main>
 
-    <footer class="footer u-padding--section">
+    <footer class="footer u-padding--section" id="footer">
       <div class="footer__container">
         <div class="item item--logo">
           <img src="/img/Logo.svg" alt="Logo" class="logo-svg" />
@@ -324,9 +325,9 @@
         </div>
         <div class="item item--navlist">
           <ul>
-            <li><a href="#">Café</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Herkunft</a></li>
+            <li><a href="#about">Café</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#origins">Herkunft</a></li>
           </ul>
         </div>
         <div class="item item--legal">

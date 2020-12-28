@@ -1,6 +1,6 @@
 // Clicking on the mobile menu button will open the navigation on the same page.
 function openMenu() {
-  var menuContainer = document.querySelector('.navigation');
+  var menuContainer = document.getElementById('navigation');
   var menuButton = document.getElementById('mobile-menu-button');
   var closeButton = document.getElementById('mobile-menu-close-button');
 
@@ -12,7 +12,7 @@ function openMenu() {
 }
 
 function closeMenu() {
-  var menuContainer = document.querySelector('.navigation');
+  var menuContainer = document.getElementById('navigation');
   var menuButton = document.getElementById('mobile-menu-button');
   var closeButton = document.getElementById('mobile-menu-close-button');
 
@@ -46,6 +46,12 @@ function main() {
   // When the website is scrolled down at all, the navigation turns solid.
   // At least I think that's what the design says it should do.
   window.onscroll = handleScrolling;
+
+  // Make sure that the mobile menu overlay is closed when a link is clicked in it.
+  var menuLinks = document.querySelectorAll('.menu-link');
+  menuLinks.forEach(function (el) {
+    el.onclick = closeMenu;
+  });
 
   // In case the page is already scrolled when it is (re-)loaded
   handleScrolling();
