@@ -29,33 +29,35 @@
         <div class="nav__logo">
           <img src="/img/Logo.svg" alt="Logo" class="logo-svg" />
         </div>
+        <button
+          aria-label="Menüknopf"
+          class="menu-button mobile-menu-button"
+          id="mobile-menu-button"
+        >
+          <img src="/img/Burger Menu.svg" alt="Menü" class="burger-menu-svg" />
+        </button>
+        <button
+          aria-label="Menü schließen"
+          class="menu-button close-menu-button u-hidden"
+          id="mobile-menu-close-button"
+        >
+          <img
+            src="/img/Burger Menu close.svg"
+            alt="Menü schließen"
+            class="burger-menu-svg--close"
+          />
+        </button>
         <div class="nav__container">
           <ul class="nav__list">
-            <!-- TODO font size and weight are wrong (should be 18px, 500), make class -->
-            <li>
-              <button
-                aria-label="Menüknopf"
-                class="menu-button mobile-menu-button"
-              >
-                <img
-                  src="/img/Burger Menu.svg"
-                  alt="Menü"
-                  class="burger-menu-svg"
-                />
-              </button>
+            <li class="menu-item">
+              <a href="#" class="menu-link">das Café</a>
             </li>
-            <li>
-              <button
-                aria-label="Menü schließen"
-                class="menu-button close-menu-button"
-              >
-                &times;
-              </button>
+            <li class="menu-item">
+              <a href="#" class="menu-link">Über Uns</a>
             </li>
-            <li class="menu-link"><a href="#">das Café</a></li>
-            <li class="menu-link"><a href="#">Über Uns</a></li>
-            <li class="menu-link"><a href="#">Shop</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Shop</a></li>
           </ul>
+          <!-- TODO font size and weight are wrong (should be 18px, 500), make class -->
         </div>
       </nav>
       <h1 class="site-heading--primary">Rustica</h1>

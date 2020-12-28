@@ -4,3 +4,12 @@
     padding: $padding-desktop-vertical $padding-desktop-horizontal;
   }
 }
+
+.u-hidden {
+  display: none;
+}
+
+.u-disable-scroll {
+  overflow-y: hidden;
+  height: 100%;
+}

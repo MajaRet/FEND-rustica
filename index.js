@@ -1,7 +1,26 @@
 // Clicking on the mobile menu button will open the navigation on the same page.
 function openMenu() {
-  let menuContainer = document.querySelector('.navigation');
-  menuContainer.classList.add('mobile-menu-window');
+  var menuContainer = document.querySelector('.navigation');
+  var menuButton = document.getElementById('mobile-menu-button');
+  var closeButton = document.getElementById('mobile-menu-close-button');
+
+  menuContainer.classList.add('mobile-menu-open');
+  closeButton.classList.remove('u-hidden');
+  menuButton.classList.add('u-hidden');
+  // Disable vertical scrolling
+  document.body.classList.add('u-disable-scroll');
+}
+
+function closeMenu() {
+  var menuContainer = document.querySelector('.navigation');
+  var menuButton = document.getElementById('mobile-menu-button');
+  var closeButton = document.getElementById('mobile-menu-close-button');
+
+  menuContainer.classList.remove('mobile-menu-open');
+  closeButton.classList.add('u-hidden');
+  menuButton.classList.remove('u-hidden');
+  // Enable vertical scrolling
+  document.body.classList.remove('u-disable-scroll');
 }
 
 function handleScrolling() {
@@ -15,10 +34,15 @@ function handleScrolling() {
   }
 }
 
+var menuContainer, menuButton, closeButton;
+
 function main() {
+  var menuButton = document.getElementById('mobile-menu-button');
+  var closeButton = document.getElementById('mobile-menu-close-button');
+
   // Set up event listeners
-  var menuButton = document.querySelector('.mobile-menu-button');
   menuButton.onclick = openMenu;
+  closeButton.onclick = closeMenu;
   // When the website is scrolled down at all, the navigation turns solid.
   // At least I think that's what the design says it should do.
   window.onscroll = handleScrolling;

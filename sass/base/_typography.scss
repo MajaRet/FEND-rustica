@@ -1,4 +1,8 @@
-// body text class? Universal selector? p tag?
+// A variable is used because the menu items in the mobile
+// menu should have the same style as an h3 heading despite
+// not being h3s.
+$h3-mobile-font-size: 3.2rem;
+
 * {
   font-family: Roboto, sans-serif;
   font-weight: 400;
@@ -9,8 +13,7 @@
 h1,
 h2,
 h3 {
-  font-weight: 900;
-  line-height: 1.1;
+  @include headingGeneralStyle;
 }
 
 h1 {
@@ -22,7 +25,7 @@ h2 {
 }
 
 h3 {
-  font-size: 3.2rem;
+  font-size: $h3-mobile-font-size;
 }
 
 .subheader--m {
@@ -37,7 +40,7 @@ h3 {
   color: $color-white;
 }
 
-@media (min-width: 601px) {
+@media (min-width: 600px) {
   * {
     font-size: 1.8rem;
   }
