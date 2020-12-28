@@ -5,9 +5,9 @@
   background-color: $color-black;
 
   .logo-svg {
-    filter: invert(1);
     height: 3.5rem;
     width: 3.5rem;
+    filter: brightness(1000);
 
     @media (min-width: 600px) {
       height: 7rem;
@@ -68,9 +68,6 @@
       @media (min-width: 600px) {
         margin-top: 5px;
       }
-    }
-
-    .item--navlist {
     }
 
     .item--legal {

@@ -29,10 +29,8 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
     }
   }
 
-  // TODO: This also inverts the text selection color.
-  // Which is very weird.
   .logo-svg {
-    filter: invert(1);
+    filter: brightness(1000);
   }
 }
 
@@ -45,6 +43,10 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
         color: $color-anthrazit;
       }
     }
+  }
+
+  .nav__logo {
+    filter: brightness(0);
   }
 
   .burger-menu-svg {
@@ -87,34 +89,37 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
     }
   }
 
-  @keyframes slideFromTop {
+  @keyframes slideFromRightSide {
     0% {
-      opacity: 0;
+      transform: translateX(100%);
     }
 
     100% {
-      opacity: 1;
+      transform: translateX(0);
     }
   }
 }
 
 .mobile-menu-open {
-  height: 100%;
-  position: fixed;
-  background-color: $color-black;
-  animation-name: slideFromTop;
-  animation-duration: 0.5s;
-  overflow-y: hidden;
-  align-items: flex-start;
-
   .nav__container {
-    width: 100%;
-    height: 100%;
-    display: initial;
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 50;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    background-color: $color-black;
+
+    animation-name: slideFromRightSide;
+    animation-duration: 300ms;
+    animation-timing-function: ease-out;
   }
 
   .nav__list {
@@ -133,9 +138,6 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
     position: fixed;
     top: 2rem;
     right: $padding-mobile-horizontal;
-  }
-
-  .nav__logo {
-    display: none;
+    z-index: 100;
   }
 }
