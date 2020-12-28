@@ -38,18 +38,20 @@ h3 {
   h3 {
     font-size: 4.2rem; } }
 
+.u-padding--section {
+  padding: 6rem 2.4rem; }
+  @media (min-width: 600px) {
+    .u-padding--section {
+      padding: 12.5rem 10rem; } }
+
 .footer {
-  background-color: #000000;
-  padding: 0rem 5rem; }
+  background-color: #000000; }
   .footer * {
     color: #ffffff; }
-  @media (min-width: 601px) {
-    .footer {
-      padding: 12.5rem 7%; } }
-  .footer .logo-svg {
+  .footer .logo-svg path {
     height: 7rem;
     width: 7rem;
-    filter: invert(1); }
+    fill: crimson; }
   .footer__container {
     display: grid;
     grid-template-rows: repeat(3, auto) repeat(2, 1fr);
@@ -214,7 +216,6 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
 
 .about__row {
   background-color: hotpink;
-  margin: 10rem;
   display: flex; }
   .about__row--pic-left {
     flex-direction: row-reverse; }
@@ -272,9 +273,7 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
   */ }
   .contents h2 {
     color: #000000;
-    text-align: center;
-    margin-top: 12.5rem;
-    margin-bottom: 12rem; }
+    text-align: center; }
   .contents__container {
     margin: 0 auto;
     width: 75%;
@@ -319,20 +318,25 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
   .origins a {
     text-decoration: none; }
 
+.map__heading {
+  margin: 3.5rem 2.4rem; }
+  @media (min-width: 600px) {
+    .map__heading {
+      margin-left: 10rem;
+      margin-right: 10rem; } }
+
 .map img {
   width: 100%; }
 
 .selection {
-  background-color: #1a1a1a;
-  padding: 6rem 7%; }
+  background-color: #1a1a1a; }
   .selection * {
     color: #ffffff; }
   .selection > *:not(:last-child) {
     margin-bottom: 8rem; }
   @media (min-width: 601px) {
     .selection {
-      background-color: #3a3734;
-      padding: 12.5rem 7%; } }
+      background-color: #3a3734; } }
   .selection__group-of-four {
     display: flex;
     width: 100%;
@@ -342,7 +346,7 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
   .selection__elem {
     margin-top: 4rem;
     width: 40vw; }
-    @media (min-width: 601px) {
+    @media (min-width: 600px) {
       .selection__elem {
         width: 20vw; } }
     .selection__elem .coffee-text div:not(:last-child) {

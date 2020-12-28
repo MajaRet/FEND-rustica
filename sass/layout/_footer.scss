@@ -3,17 +3,13 @@
     color: $color-white;
   }
   background-color: $color-black;
-  // TODO that's not really right.
-  padding: 0rem 5rem;
-
-  @media (min-width: 601px) {
-    padding: 12.5rem 7%;
-  }
 
   .logo-svg {
-    height: 7rem;
-    width: 7rem;
-    filter: invert(1);
+    path {
+      height: 7rem;
+      width: 7rem;
+      fill: crimson;
+    }
   }
 
   &__container {

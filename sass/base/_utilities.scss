@@ -1,0 +1,6 @@
+.u-padding--section {
+  padding: $padding-mobile-vertical $padding-mobile-horizontal;
+  @media (min-width: 600px) {
+    padding: $padding-desktop-vertical $padding-desktop-horizontal;
+  }
+}
