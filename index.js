@@ -16,11 +16,15 @@ function handleScrolling() {
 }
 
 function main() {
+  // Set up event listeners
   var menuButton = document.querySelector('.mobile-menu-button');
   menuButton.onclick = openMenu;
   // When the website is scrolled down at all, the navigation turns solid.
   // At least I think that's what the design says it should do.
   window.onscroll = handleScrolling;
+
+  // In case the page is already scrolled when it is (re-)loaded
+  handleScrolling();
 }
 
 window.onload = main;
