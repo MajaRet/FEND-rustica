@@ -27,19 +27,6 @@ $vertical-space: 4rem;
     margin-top: -$vertical-space;
   }
 
-  // TODO: Google if you can apply space-between to grandchildren
-  // TODO Probably obsolete
-  //$coffee-elem-width: 30rem;
-  //$gap-width: calc(100% - 4 * #{$coffee-elem-width}) / 3;
-
-  // TODO Probably obsolete
-
-  //&__group-of-two {
-  //  display: flex;
-  //  justify-content: space-between;
-  //  width: calc(2 * #{$coffee-elem-width} + #{$gap-width});
-  //}
-
   &__elem {
     margin-top: $vertical-space;
     width: 40vw;

@@ -79,7 +79,9 @@
   }
 
   &__text {
-    width: 75%;
+    @media (min-width: 600px) {
+      width: 75%;
+    }
 
     &:not(:last-child) {
       margin-bottom: 2rem;

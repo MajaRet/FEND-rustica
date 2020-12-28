@@ -32,13 +32,24 @@
         <div class="nav__container">
           <ul class="nav__list">
             <!-- TODO font size and weight are wrong (should be 18px, 500), make class -->
-            <li class="mobile-menu-button">
-              <button>
+            <li>
+              <button
+                aria-label="Menüknopf"
+                class="menu-button mobile-menu-button"
+              >
                 <img
                   src="/img/Burger Menu.svg"
                   alt="Menü"
                   class="burger-menu-svg"
                 />
+              </button>
+            </li>
+            <li>
+              <button
+                aria-label="Menü schließen"
+                class="menu-button close-menu-button"
+              >
+                &times;
               </button>
             </li>
             <li class="menu-link"><a href="#">das Café</a></li>
@@ -48,7 +59,7 @@
         </div>
       </nav>
       <h1 class="site-heading--primary">Rustica</h1>
-      <h4 class="subhead--m site-heading--secondary">Bio und Fair seit 1991</h4>
+      <p class="subhead--m site-heading--secondary">Bio und Fair seit 1991</p>
       <button class="button button--dark">Zum Shop</button>
       <!-- 'subhead m' -->
     </header>
@@ -145,7 +156,7 @@
               />
             </div>
             <div class="coffee-text">
-              <div class="coffee-text__origins">Costa Rica</div>
+              <div class="coffee-text__origins">Äthiopien</div>
               <div class="coffee-text__price-range">6,90€ - 26,90€</div>
               <div class="coffee-text__icons">
                 <img
@@ -203,7 +214,7 @@
               />
             </div>
             <div class="coffee-text">
-              <div class="coffee-text__origins">Costa Rica</div>
+              <div class="coffee-text__origins">Äthiopien</div>
               <div class="coffee-text__price-range">6,90€ - 26,90€</div>
               <div class="coffee-text__icons">
                 <img
