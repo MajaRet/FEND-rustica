@@ -9,7 +9,7 @@
     width: 3.5rem;
     filter: brightness(1000);
 
-    @media (min-width: 600px) {
+    @include respond(tablet-land) {
       height: 7rem;
       width: 7rem;
     }
@@ -18,7 +18,7 @@
   &__container {
     display: grid;
 
-    @media (min-width: 600px) {
+    @include respond(tablet-land) {
       grid-template-rows: repeat(3, auto);
       grid-template-columns: repeat(4, 1fr);
       grid-auto-flow: column;
@@ -37,7 +37,7 @@
     .item--heading {
       grid-column: 1 / -1;
 
-      @media (min-width: 600px) {
+      @include respond(tablet-land) {
         grid-column: auto / span 1;
       }
     }
@@ -46,7 +46,7 @@
       grid-column: 1 / -1;
       margin-bottom: 3rem;
 
-      @media (min-width: 600px) {
+      @include respond(tablet-land) {
         grid-column: auto / span 1;
         margin-bottom: 0;
       }
@@ -54,7 +54,7 @@
 
     .item--address {
       margin-bottom: 3rem;
-      @media (min-width: 600px) {
+      @include respond(tablet-land) {
         // TODO Check.
         // It looks centered in the design, but nothing
         // else does. Very weird.
@@ -65,13 +65,13 @@
     }
     // TODO Improve...?
     .item--business-hours {
-      @media (min-width: 600px) {
+      @include respond(tablet-land) {
         margin-top: 5px;
       }
     }
 
     .item--legal {
-      @media (min-width: 600px) {
+      @include respond(tablet-land) {
         grid-area: 2 / 4 / 3 / 5;
       }
     }

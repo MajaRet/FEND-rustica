@@ -1,8 +1,3 @@
-/* TODO
-Mobile nav
-Flexible padding? (so logo and links go closer to edge on smaller windows)
-*/
-
 .navigation {
   position: fixed;
   top: 0;
@@ -62,14 +57,14 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
 .mobile-menu-button {
   width: 3rem;
 
-  @media (min-width: 601px) {
+  @include respond(tablet-port) {
     display: none;
   }
 }
 
 .nav__container {
   display: none;
-  @media (min-width: 601px) {
+  @include respond(tablet-port) {
     display: initial;
   }
 }

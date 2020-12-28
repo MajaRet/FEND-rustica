@@ -1,7 +1,7 @@
 .map {
   &__heading {
     margin: 3.5rem $padding-mobile-horizontal;
-    @media (min-width: 600px) {
+    @include respond(desktop) {
       margin-left: $padding-desktop-horizontal;
       margin-right: $padding-desktop-horizontal;
     }

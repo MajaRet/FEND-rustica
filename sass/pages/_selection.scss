@@ -14,7 +14,7 @@ $vertical-space: 4rem;
   // TODO Should it really change color on mobile?
   background-color: $color-anthrazit;
 
-  @media (min-width: 601px) {
+  @include respond(desktop) {
     background-color: $color-anthrazit-light;
   }
 
@@ -30,7 +30,7 @@ $vertical-space: 4rem;
   &__elem {
     margin-top: $vertical-space;
     width: 40vw;
-    @media (min-width: 600px) {
+    @include respond(desktop) {
       width: 20vw;
     }
 

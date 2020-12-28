@@ -8,19 +8,24 @@
     flex-direction: column;
     &:not(:last-child) {
       margin-bottom: 4rem;
-      @media (min-width: 600px) {
+      @include respond(tablet-land) {
         margin-bottom: 13rem;
       }
     }
 
-    @media (min-width: 600px) {
+    @include respond(tablet-land) {
       flex-direction: row;
     }
 
     &--pic-left {
-      @media (min-width: 600px) {
+      @include respond(tablet-land) {
         flex-direction: row-reverse;
         .about__cell--text {
+          padding-left: 5rem;
+        }
+      }
+      .about__cell--text {
+        @include respond(desktop) {
           padding-left: 10rem;
           padding-top: 5rem;
         }
@@ -33,7 +38,7 @@
 
   &__cell {
     width: 100%;
-    @media (min-width: 600px) {
+    @include respond(tablet-land) {
       width: 50%;
     }
 
@@ -43,7 +48,7 @@
 
     &--text {
       margin-bottom: 4rem;
-      @media (min-width: 600px) {
+      @include respond(tablet-land) {
         margin-bottom: 0;
       }
     }
@@ -66,20 +71,20 @@
 
   &__heading--secondary {
     margin-bottom: 2rem;
-    @media (min-width: 600px) {
+    @include respond(tablet-land) {
       margin-bottom: 3.5rem;
     }
   }
 
   &__heading--tertiary {
     margin-bottom: 1.2rem;
-    @media (min-width: 600px) {
+    @include respond(tablet-land) {
       margin-bottom: 2.4rem;
     }
   }
 
   &__text {
-    @media (min-width: 600px) {
+    @include respond(tablet-land) {
       width: 75%;
     }
 

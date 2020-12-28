@@ -1,6 +1,15 @@
 .u-padding--section {
   padding: $padding-mobile-vertical $padding-mobile-horizontal;
-  @media (min-width: 600px) {
+
+  @include respond(tablet-port) {
+    padding: $padding-tablet-port-vertical $padding-tablet-port-horizontal;
+  }
+
+  @include respond(tablet-land) {
+    padding: $padding-tablet-land-vertical $padding-tablet-land-horizontal;
+  }
+
+  @include respond(desktop) {
     padding: $padding-desktop-vertical $padding-desktop-horizontal;
   }
 }

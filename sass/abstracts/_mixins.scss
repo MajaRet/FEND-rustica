@@ -2,3 +2,31 @@
   font-weight: 900;
   line-height: 1.1;
 }
+
+/*
+Creates a media query for the specified device.
+Possible argument values:
+- tablet-port: screen width >= 600px
+- tablet-land: screen width >= 900px
+- desktop:     screen width >= 1200px
+
+Units are given in em.
+1em = 16px
+*/
+@mixin respond($device) {
+  @if $device == tablet-port {
+    @media (min-width: 37.5em) {
+      @content;
+    }
+  }
+  @if $device == tablet-land {
+    @media (min-width: 56.25em) {
+      @content;
+    }
+  }
+  @if $device == desktop {
+    @media (min-width: 75em) {
+      @content;
+    }
+  }
+}
