@@ -22,7 +22,7 @@
       grid-template-rows: repeat(3, auto);
       grid-template-columns: repeat(4, 1fr);
       grid-auto-flow: column;
-      grid-column-gap: 2rem;
+      column-gap: 2rem;
     }
 
     grid-template-rows: repeat(3, auto) repeat(2, 1fr);
