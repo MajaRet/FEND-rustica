@@ -4,7 +4,7 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
 */
 
 .navigation {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -12,6 +12,7 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
   justify-content: space-between;
   align-items: center;
   padding: 1rem 6.5%; //10rem;
+  z-index: 10;
 
   .logo-svg {
     height: 3.5rem;
@@ -28,8 +29,9 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
     }
   }
 
+  // TODO: This also inverts the text selection color.
+  // Which is very weird.
   .logo-svg {
-    // Turn the logo white
     filter: invert(1);
   }
 }
@@ -43,6 +45,10 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
         color: $color-anthrazit;
       }
     }
+  }
+
+  .burger-menu-svg {
+    filter: brightness(0);
   }
 }
 

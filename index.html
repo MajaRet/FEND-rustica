@@ -19,11 +19,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+
+    <script src="index.js"></script>
   </head>
 
   <body>
     <header class="header">
-      <nav class="navigation navigation--transparent">
+      <nav class="navigation navigation--transparent" id="navigation">
         <div class="nav__logo">
           <img src="/img/Logo.svg" alt="Logo" class="logo-svg" />
         </div>
@@ -218,7 +220,7 @@
         <a href="#">mehr</a>
       </section>
       <section class="contents u-padding--section">
-        <h2>Das steckt drin</h2>
+        <h2 class="contents__heading">Das steckt drin</h2>
         <div class="contents__container">
           <div class="contents__image">
             <img
@@ -267,7 +269,6 @@
           class="map__image"
         />
       </section>
-      <script src="index.js"></script>
     </main>
 
     <footer class="footer u-padding--section">
