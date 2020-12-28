@@ -48,10 +48,14 @@ h3 {
   background-color: #000000; }
   .footer * {
     color: #ffffff; }
-  .footer .logo-svg path {
-    height: 7rem;
-    width: 7rem;
-    fill: crimson; }
+  .footer .logo-svg {
+    filter: invert(1);
+    height: 3.5rem;
+    width: 3.5rem; }
+    @media (min-width: 600px) {
+      .footer .logo-svg {
+        height: 7rem;
+        width: 7rem; } }
   .footer__container {
     display: grid;
     grid-template-rows: repeat(3, auto) repeat(2, 1fr);
@@ -126,14 +130,15 @@ Mobile nav
 Flexible padding? (so logo and links go closer to edge on smaller windows)
 */
 .navigation {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 6.5%; }
+  padding: 1rem 6.5%;
+  z-index: 10; }
   .navigation .logo-svg {
     height: 3.5rem;
     width: 3.5rem; }
@@ -148,6 +153,8 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
   background-color: #ffffff; }
   .navigation--solid ul li a {
     color: #1a1a1a; }
+  .navigation--solid .burger-menu-svg {
+    filter: brightness(0); }
 
 .nav__list {
   list-style-type: none;
@@ -187,7 +194,7 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
 .button {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-items: center;
   padding: 15px 50px;
   border-radius: 5px; }
   .button:hover {
@@ -271,9 +278,12 @@ Flexible padding? (so logo and links go closer to edge on smaller windows)
     }
   }
   */ }
-  .contents h2 {
-    color: #000000;
-    text-align: center; }
+  .contents__heading {
+    text-align: center;
+    margin-bottom: 5rem; }
+    @media (min-height: 600px) {
+      .contents__heading {
+        margin-bottom: 12rem; } }
   .contents__container {
     margin: 0 auto;
     width: 75%;

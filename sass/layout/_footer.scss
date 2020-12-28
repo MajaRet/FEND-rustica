@@ -5,10 +5,13 @@
   background-color: $color-black;
 
   .logo-svg {
-    path {
+    filter: invert(1);
+    height: 3.5rem;
+    width: 3.5rem;
+
+    @media (min-width: 600px) {
       height: 7rem;
       width: 7rem;
-      fill: crimson;
     }
   }
 
