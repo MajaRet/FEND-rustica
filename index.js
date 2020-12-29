@@ -34,8 +34,6 @@ function handleScrolling() {
   }
 }
 
-var menuContainer, menuButton, closeButton;
-
 function main() {
   var menuButton = document.getElementById('mobile-menu-button');
   var closeButton = document.getElementById('mobile-menu-close-button');
