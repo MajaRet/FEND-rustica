@@ -4,6 +4,7 @@
   justify-items: center;
   padding: 15px 50px;
   border-radius: 5px;
+  width: fit-content;
 
   &:hover {
     box-shadow: 2px 2px 3px rgba($color-black, 0.25);
@@ -27,8 +28,12 @@
 }
 
 .button--light-border {
-  background-color: $color-anthrazit-light;
+  background-color: $color-anthrazit;
   border: 3px solid $color-white;
+
+  @include respond(desktop) {
+    background-color: $color-anthrazit-light;
+  }
 
   &:active {
     background-color: $color-white;

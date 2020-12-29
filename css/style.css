@@ -256,7 +256,8 @@ h3 {
   flex-direction: column;
   justify-items: center;
   padding: 15px 50px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  width: fit-content; }
   .button:hover {
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); }
 
@@ -272,8 +273,11 @@ h3 {
     border-width: 2px; }
 
 .button--light-border {
-  background-color: #3a3734;
+  background-color: #1a1a1a;
   border: 3px solid #ffffff; }
+  @media (min-width: 75em) {
+    .button--light-border {
+      background-color: #3a3734; } }
   .button--light-border:active {
     background-color: #ffffff;
     color: #000000; }
