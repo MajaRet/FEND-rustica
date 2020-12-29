@@ -6,7 +6,11 @@
       margin-right: $padding-desktop-horizontal;
     }
   }
-  img {
-    width: 100%;
+
+  &__img {
+    height: 33vh;
+    background-image: url(/img/Map.jpg);
+    background-position: center;
+    background-size: cover;
   }
 }

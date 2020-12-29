@@ -446,8 +446,11 @@ h3 {
       margin-left: 10rem;
       margin-right: 10rem; } }
 
-.map img {
-  width: 100%; }
+.map__img {
+  height: 33vh;
+  background-image: url(/img/Map.jpg);
+  background-position: center;
+  background-size: cover; }
 
 .selection {
   background-color: #1a1a1a; }
