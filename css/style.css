@@ -1,6 +1,7 @@
 /*
 Creates a media query for the specified device.
 Possible argument values:
+- mobile:      screen width < 600px (default)
 - tablet-port: screen width >= 600px
 - tablet-land: screen width >= 900px
 - desktop:     screen width >= 1200px
@@ -62,13 +63,24 @@ h3 {
     h3 {
       font-size: 4.2rem; } }
 
-.subheader--m {
+.subhead-m {
   font-size: 1.8rem; }
 
 .site-heading--primary {
   color: #ffffff; }
 
 .site-heading--secondary {
+  color: #ffffff; }
+
+.menu-link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.8rem; }
+
+.mobile-menu-open .menu-link {
+  font-weight: 900;
+  line-height: 1.1;
+  font-size: 3.2rem;
   color: #ffffff; }
 
 .u-padding--section {
@@ -139,6 +151,9 @@ h3 {
     @media (min-width: 56.25em) {
       .footer__container .item--legal {
         grid-area: 2 / 4 / 3 / 5; } }
+  @media (max-width: 37.5em) {
+    .footer__main-heading {
+      font-size: 2.4rem; } }
 
 .header {
   height: 75vh;
@@ -210,8 +225,6 @@ h3 {
   justify-content: space-around; }
   .nav__list .menu-item:not(:last-child) {
     margin-right: 6.6rem; }
-  .nav__list .menu-item a {
-    text-decoration: none; }
 
 @keyframes slideFromRightSide {
   0% {
@@ -239,11 +252,6 @@ h3 {
   row-gap: 40px;
   display: flex;
   flex-direction: column; }
-  .mobile-menu-open .nav__list .menu-link {
-    font-weight: 900;
-    line-height: 1.1;
-    font-size: 3.2rem;
-    color: #ffffff; }
 
 .mobile-menu-open .close-menu-button {
   position: fixed;

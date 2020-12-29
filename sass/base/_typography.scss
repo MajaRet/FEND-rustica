@@ -1,8 +1,4 @@
-// A variable is used because the menu items in the mobile
-// menu should have the same style as an h3 heading despite
-// not being h3s.
-$h3-mobile-font-size: 3.2rem;
-
+// Default typography styles
 * {
   font-family: Roboto, sans-serif;
   font-weight: 400;
@@ -17,6 +13,13 @@ $h3-mobile-font-size: 3.2rem;
     font-size: 1.8rem;
   }
 }
+
+// Heading typography styles
+
+// A variable is used because the menu items in the mobile
+// menu should have the same style as an h3 heading despite
+// not being h3s.
+$h3-mobile-font-size: 3.2rem;
 
 h1,
 h2,
@@ -72,7 +75,7 @@ h3 {
   }
 }
 
-.subheader--m {
+.subhead-m {
   font-size: 1.8rem;
 }
 
@@ -82,4 +85,20 @@ h3 {
 
 .site-heading--secondary {
   color: $color-white;
+}
+
+// Navigation typography styles
+
+.menu-link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+.mobile-menu-open {
+  .menu-link {
+    @include headingGeneralStyle;
+    font-size: $h3-mobile-font-size;
+    color: $color-white;
+  }
 }

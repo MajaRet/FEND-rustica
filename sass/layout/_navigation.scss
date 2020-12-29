@@ -78,10 +78,6 @@
     &:not(:last-child) {
       margin-right: 6.6rem;
     }
-
-    a {
-      text-decoration: none;
-    }
   }
 
   @keyframes slideFromRightSide {
@@ -121,12 +117,6 @@
     row-gap: 40px;
     display: flex;
     flex-direction: column;
-
-    .menu-link {
-      @include headingGeneralStyle;
-      font-size: $h3-mobile-font-size;
-      color: $color-white;
-    }
   }
 
   .close-menu-button {

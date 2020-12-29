@@ -27,8 +27,6 @@
 
     grid-template-rows: repeat(3, auto) repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
-    .item {
-    }
 
     .item--logo {
       grid-column: 1 / -1;
@@ -63,7 +61,6 @@
         margin-bottom: 0;
       }
     }
-    // TODO Improve...?
     .item--business-hours {
       @include respond(tablet-land) {
         margin-top: 5px;
@@ -74,6 +71,12 @@
       @include respond(tablet-land) {
         grid-area: 2 / 4 / 3 / 5;
       }
+    }
+  }
+
+  &__main-heading {
+    @include respond(phone) {
+      font-size: 2.4rem;
     }
   }
 }
