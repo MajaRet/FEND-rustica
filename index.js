@@ -56,10 +56,12 @@ function trapFocus(e) {
     if (e.shiftKey && document.activeElement === firstItem) {
       // wrap around backwards
       e.preventDefault();
+      // Prevent the previous item from receiving focus
       lastItem.focus();
     } else if (!e.shiftKey && document.activeElement === lastItem) {
       // wrap around forwards
       e.preventDefault();
+      // Prevent the next item from receiving focus
       firstItem.focus();
     }
   }
@@ -69,7 +71,7 @@ function main() {
   var menuButton = document.getElementById('mobile-menu-button');
   var closeButton = document.getElementById('mobile-menu-close-button');
 
-  // Set up event listeners
+  // Set up event handlers
   menuButton.onclick = openMenu;
   closeButton.onclick = closeMenu;
   window.onscroll = handleScrolling;

@@ -8,9 +8,8 @@
   }
 
   &__img {
-    height: 33vh;
-    background-image: url(/img/Map.jpg);
-    background-position: center;
-    background-size: cover;
+    width: 100%;
+    // Prevent space around the image
+    display: block;
   }
 }

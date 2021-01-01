@@ -459,10 +459,8 @@ h3 {
       margin-right: 10rem; } }
 
 .map__img {
-  height: 33vh;
-  background-image: url(/img/Map.jpg);
-  background-position: center;
-  background-size: cover; }
+  width: 100%;
+  display: block; }
 
 .selection {
   background-color: #1a1a1a; }
