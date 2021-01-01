@@ -2,9 +2,12 @@
   display: flex;
   flex-direction: column;
   justify-items: center;
-  padding: 15px 50px;
+
   border-radius: 5px;
   width: fit-content;
+  padding: 15px 50px;
+
+  text-decoration: none;
 
   &:hover {
     box-shadow: 2px 2px 3px rgba($color-black, 0.25);
@@ -12,24 +15,29 @@
 }
 
 .button--dark {
-  background-color: $color-anthrazit;
   border: 2px solid $color-anthrazit;
+
+  background-color: $color-anthrazit;
+
   color: $color-white;
 
   &:hover {
-    background-color: $color-anthrazit-light;
     border-width: 2px; // TODO should be 1px, but that pushes everything around
+
+    background-color: $color-anthrazit-light;
   }
 
   &:active {
-    background-color: $color-kraftpapier;
     border-width: 2px; // TODO should be 1px, but that pushes everything around
+
+    background-color: $color-kraftpapier;
   }
 }
 
 .button--light-border {
-  background-color: $color-anthrazit;
   border: 3px solid $color-white;
+
+  background-color: $color-anthrazit;
 
   @include respond(desktop) {
     background-color: $color-anthrazit-light;
@@ -37,6 +45,7 @@
 
   &:active {
     background-color: $color-white;
+
     color: $color-black;
   }
 }

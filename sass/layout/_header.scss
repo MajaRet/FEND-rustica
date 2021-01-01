@@ -1,28 +1,31 @@
 .header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
   height: 75vh;
+
   background-image: linear-gradient(
       to right,
       rgba($color-anthrazit, 0.3),
       rgba($color-anthrazit, 0.3)
     ),
     url(../../img/FEND-Coffee-latte-art-3.jpg);
-  background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
+  background-size: cover;
 
   @include respond(tablet-land) {
     height: 65vh;
   }
 
-  // TODO move positioning out of this class
-  .button--dark {
+  &__shop-button {
     position: absolute;
     bottom: 10%; // TODO: Exact position?
     left: 50%;
+
     transform: translateX(-50%);
   }
 }

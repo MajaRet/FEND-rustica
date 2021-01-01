@@ -1,68 +1,77 @@
 .contents {
   &__heading {
-    text-align: center;
     margin-bottom: 5rem; // TODO these margins aren't quite right. They're not integers in the design.
+
+    text-align: center;
+
     @include respond(tablet-land) {
       margin-bottom: 12rem;
     }
   }
 
   &__container {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    width: 100%;
+
     @include respond(tablet-land) {
-      width: 75%;
-      margin: 0 auto;
       flex-direction: row;
+
+      margin: 0 auto;
+      width: 75%;
     }
   }
 
   &__image {
-    width: 50vw;
     margin-bottom: 5rem;
-
-    // TODO: Add another breakpoint
-    @include respond(tablet-land) {
-      width: 40vw;
-      margin-bottom: 0;
-    }
+    width: 50vw;
 
     img {
       width: 100%;
+    }
+
+    @include respond(tablet-land) {
+      margin-bottom: 0;
+      width: 40vw;
     }
   }
 
   &__text-and-button {
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+
     width: 100%;
 
     @include respond(tablet-land) {
       align-items: flex-start;
+
       width: fit-content;
     }
   }
 
   &__descriptions {
     display: grid;
-    text-align: center;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     row-gap: 2rem;
-    width: 100%;
+
     margin-bottom: 4rem;
+    width: 100%;
+
+    text-align: center;
 
     @include respond(tablet-land) {
       grid-template-columns: [icon-start] auto [icon-end label-start] auto [label-end];
       grid-template-rows: repeat(3, [row-start] 1fr [row-end]);
       row-gap: 10rem;
       column-gap: 3rem;
+
       margin-bottom: 8rem;
+
       text-align: left;
     }
 
@@ -95,14 +104,6 @@
 
       .icon-3 {
         grid-area: row-start 3 / icon-start / row-end 3 / icon-end;
-      }
-    }
-
-    [id^='contents-icon-'] {
-      svg {
-        path {
-          stroke: $color-anthrazit;
-        }
       }
     }
   }

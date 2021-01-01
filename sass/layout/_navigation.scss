@@ -1,13 +1,15 @@
 .navigation {
   position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
+
   display: flex;
-  width: 100%;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
   padding: 1rem 6.5%; //10rem;
-  z-index: 10;
 
   .logo-svg {
     height: 3.5rem;
@@ -50,8 +52,9 @@
 }
 
 .menu-button {
-  background-color: transparent;
   border: none;
+
+  background-color: transparent;
 }
 
 .mobile-menu-button {
@@ -70,9 +73,10 @@
 }
 
 .nav__list {
-  list-style-type: none;
   display: flex;
   justify-content: space-around;
+
+  list-style-type: none;
 
   .menu-item {
     &:not(:last-child) {
@@ -93,9 +97,6 @@
 
 .mobile-menu-open {
   .nav__container {
-    width: 100vw;
-    height: 100vh;
-
     position: fixed;
     left: 0;
     top: 0;
@@ -106,6 +107,9 @@
     justify-content: center;
     align-items: center;
 
+    width: 100vw;
+    height: 100vh;
+
     background-color: $color-black;
 
     animation-name: slideFromRightSide;
@@ -114,15 +118,15 @@
   }
 
   .nav__list {
-    row-gap: 40px;
     display: flex;
     flex-direction: column;
+    row-gap: 40px;
   }
 
   .close-menu-button {
     position: fixed;
+    z-index: 100;
     top: 2rem;
     right: $padding-mobile-horizontal;
-    z-index: 100;
   }
 }

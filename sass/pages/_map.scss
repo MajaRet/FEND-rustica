@@ -2,8 +2,8 @@
   &__heading {
     margin: 3.5rem $padding-mobile-horizontal;
     @include respond(desktop) {
-      margin-left: $padding-desktop-horizontal;
       margin-right: $padding-desktop-horizontal;
+      margin-left: $padding-desktop-horizontal;
     }
   }
 

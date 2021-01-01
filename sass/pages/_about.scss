@@ -6,6 +6,7 @@
     display: flex;
     column-gap: 1rem; // TODO: Fallback? Not supported for flex layout in IE, Safari and some mobile browsers
     flex-direction: column;
+
     &:not(:last-child) {
       margin-bottom: 4rem;
       @include respond(tablet-land) {
@@ -26,8 +27,8 @@
       }
       .about__cell--text {
         @include respond(desktop) {
-          padding-left: 10rem;
           padding-top: 5rem;
+          padding-left: 10rem;
         }
       }
     }
@@ -88,5 +89,9 @@
     &:not(:last-child) {
       margin-bottom: 2rem;
     }
+  }
+
+  .learn-more-link {
+    text-decoration: none;
   }
 }

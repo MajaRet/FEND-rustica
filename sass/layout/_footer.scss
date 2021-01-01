@@ -7,6 +7,7 @@
   .logo-svg {
     height: 3.5rem;
     width: 3.5rem;
+
     filter: brightness(1000);
 
     @include respond(tablet-land) {
@@ -19,14 +20,22 @@
     display: grid;
 
     @include respond(tablet-land) {
+      grid-auto-flow: column;
       grid-template-rows: repeat(3, auto);
       grid-template-columns: repeat(4, 1fr);
-      grid-auto-flow: column;
       column-gap: 2rem;
     }
 
     grid-template-rows: repeat(3, auto) repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
+
+    .navlist {
+      list-style-type: none;
+
+      li a {
+        text-decoration: none;
+      }
+    }
 
     .item--logo {
       grid-column: 1 / -1;
@@ -42,10 +51,12 @@
 
     .item--subheading {
       grid-column: 1 / -1;
+
       margin-bottom: 3rem;
 
       @include respond(tablet-land) {
         grid-column: auto / span 1;
+
         margin-bottom: 0;
       }
     }
@@ -58,6 +69,7 @@
         // else does. Very weird.
         display: flex;
         align-items: center;
+
         margin-bottom: 0;
       }
     }
