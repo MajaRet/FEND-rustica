@@ -1,6 +1,15 @@
+// Style elements common to all headings
 @mixin headingGeneralStyle {
   font-weight: 900;
   line-height: 1.1;
+}
+
+/*
+Takes a url to an image as an argument and sets the background
+image to that image with an added semi-transparent dark overlay.
+*/
+@mixin bgImageWithOverlay($imgUrl) {
+  background-image: $bg-overlay-dark, url($imgUrl);
 }
 
 /*

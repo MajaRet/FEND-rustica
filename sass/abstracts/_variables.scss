@@ -22,3 +22,10 @@ $padding-tablet-land-vertical: 10rem;
 
 $padding-desktop-horizontal: 10rem;
 $padding-desktop-vertical: 12.5rem;
+
+// VISUAL ELEMENTS
+$bg-overlay-dark: linear-gradient(
+  to right,
+  rgba($color-anthrazit, 0.3),
+  rgba($color-anthrazit, 0.3)
+);
