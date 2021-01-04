@@ -1,0 +1,64 @@
+.gallery {
+  //background-color: purple;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  &__container {
+    //background-color: green;
+    //width: 70%;
+    //display: flex;
+    //flex-wrap: wrap;
+    display: grid;
+    // TODO name columns.
+    grid-template-columns: repeat(4, 1fr);
+    // Two main rows with two 'buffer' rows in the middle to
+    // account for differing image heights.
+    // TODO Name rows or ideally find a better solution.
+    grid-template-rows: repeat(4, min-content);
+    gap: 1.6rem;
+  }
+  &__item {
+    /*
+    width: 50%;
+    @include respond(tablet-land) {
+      width: 25%;
+    }
+    */
+
+    &-1 {
+      grid-row: 1 / span 2;
+    }
+
+    &-2 {
+      grid-row: 1 / span 3;
+    }
+
+    &-3 {
+      grid-row: 1 / span 1;
+    }
+
+    &-4 {
+      grid-row: 1 / span 3;
+    }
+
+    &-5 {
+      grid-row: 3 / span 2;
+    }
+
+    &-6 {
+      grid-row: 4 / span 1;
+    }
+
+    &-7 {
+      grid-row: 2 / span 3;
+    }
+
+    &-8 {
+      grid-row: 4 / span 1;
+    }
+  }
+  &__img {
+    width: 100%;
+    display: block;
+  }
+}

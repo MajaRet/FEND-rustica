@@ -12,10 +12,6 @@ $vertical-space: 4rem;
   // TODO Should it really change color on mobile?
   background-color: $color-anthrazit;
 
-  @include respond(desktop) {
-    background-color: $color-anthrazit-light;
-  }
-
   &__group-of-four {
     display: flex;
     justify-content: space-between;

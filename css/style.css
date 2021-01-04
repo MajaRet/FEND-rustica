@@ -1,4 +1,8 @@
 /*
+Takes a url to an image as an argument and sets the background
+image to that image with an added semi-transparent dark overlay.
+*/
+/*
 Creates a media query for the specified device.
 Possible argument values:
 - mobile:      screen width < 600px (default)
@@ -155,7 +159,6 @@ h3 {
   flex-direction: column;
   justify-content: center;
   height: 75vh;
-  background-image: linear-gradient(to right, rgba(26, 26, 26, 0.3), rgba(26, 26, 26, 0.3)), url(../../img/FEND-Coffee-latte-art-3.jpg);
   background-position: center;
   background-size: cover; }
   @media (min-width: 56.25em) {
@@ -166,6 +169,12 @@ h3 {
     bottom: 10%;
     left: 50%;
     transform: translateX(-50%); }
+
+.header--home {
+  background-image: linear-gradient(to right, rgba(26, 26, 26, 0.3), rgba(26, 26, 26, 0.3)), url("/img/FEND-Coffee-latte-art-3.jpg"); }
+
+.header--cafe {
+  background-image: linear-gradient(to right, rgba(26, 26, 26, 0.3), rgba(26, 26, 26, 0.3)), url("/img/FEND-Coffee-shop.jpg"); }
 
 .navigation {
   position: fixed;
@@ -202,7 +211,7 @@ h3 {
   .menu-link:hover::after {
     width: 100%;
     animation-name: growFromLeft;
-    animation-duration: 0.5s; }
+    animation-duration: 0.3s; }
   .menu-link:active::after {
     width: 100%; }
 
@@ -315,6 +324,42 @@ h3 {
     background-color: #000000; }
   .button--light-border:active {
     background-color: #d7be9d; }
+
+.gallery {
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+  .gallery__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, min-content);
+    gap: 1.6rem; }
+  .gallery__item {
+    /*
+    width: 50%;
+    @include respond(tablet-land) {
+      width: 25%;
+    }
+    */ }
+    .gallery__item-1 {
+      grid-row: 1 / span 2; }
+    .gallery__item-2 {
+      grid-row: 1 / span 3; }
+    .gallery__item-3 {
+      grid-row: 1 / span 1; }
+    .gallery__item-4 {
+      grid-row: 1 / span 3; }
+    .gallery__item-5 {
+      grid-row: 3 / span 2; }
+    .gallery__item-6 {
+      grid-row: 4 / span 1; }
+    .gallery__item-7 {
+      grid-row: 2 / span 3; }
+    .gallery__item-8 {
+      grid-row: 4 / span 1; }
+  .gallery__img {
+    width: 100%;
+    display: block; }
 
 .about * {
   color: #000000; }
@@ -495,9 +540,6 @@ h3 {
     color: #ffffff; }
   .selection > *:not(:last-child) {
     margin-bottom: 8rem; }
-  @media (min-width: 75em) {
-    .selection {
-      background-color: #3a3734; } }
   .selection__group-of-four {
     display: flex;
     justify-content: space-between;
