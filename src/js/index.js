@@ -1,4 +1,6 @@
-var navigation, focusableItems, firstItem, lastItem;
+var navigation, mobileMenuButton, focusableItems, firstItem, lastItem;
+const mobileWidth = 600;
+var overlayOpen;
 
 // Clicking on the mobile menu button will open the navigation on the same page.
 function openMenu() {
@@ -11,6 +13,7 @@ function openMenu() {
   menuButton.classList.add('u-hidden');
   // Disable vertical scrolling
   document.body.classList.add('u-disable-scroll');
+  overlayOpen = true;
   trapFocusInMenu();
 }
 
@@ -24,6 +27,8 @@ function closeMenu() {
   menuButton.classList.remove('u-hidden');
   // Enable vertical scrolling
   document.body.classList.remove('u-disable-scroll');
+
+  overlayOpen = false;
   releaseMenuFocusTrap();
 }
 
@@ -37,6 +42,15 @@ function handleScrolling() {
   } else {
     nav.classList.add('navigation--transparent');
     nav.classList.remove('navigation--solid');
+  }
+}
+
+// If the phone is rotated to landscape mode or the browser window made
+// larger than the width that allows the mobile overlay while the user
+// is in the overlay menu, close it to provide a consistent experience.
+function handleResize() {
+  if (overlayOpen && window.innerWidth > mobileWidth) {
+    closeMenu();
   }
 }
 
@@ -75,6 +89,7 @@ function main() {
   menuButton.onclick = openMenu;
   closeButton.onclick = closeMenu;
   window.onscroll = handleScrolling;
+  window.onresize = handleResize;
 
   // Make sure that the mobile menu overlay is closed when a link is clicked in it.
   var menuLinks = document.querySelectorAll('.menu-link');

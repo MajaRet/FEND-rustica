@@ -1,0 +1,33 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+@import "base/typography";
+@import "base/utilities";
+
+@import "layout/footer";
+@import "layout/header";
+@import "layout/navigation";
+
+@import "components/button";
+@import "components/gallery";
+
+@import "pages/about";
+@import "pages/contents";
+@import "pages/origins";
+@import "pages/map";
+@import "pages/selection";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+}

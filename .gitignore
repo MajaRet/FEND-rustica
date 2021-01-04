@@ -1,4 +1,4 @@
-.yarn/*
-!.yarn/releases
-.pnp.*
-css
+.cache
+dist
+node_modules
+.parcel-cache
