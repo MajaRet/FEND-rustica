@@ -192,9 +192,18 @@ h3 {
     height: 1px;
     width: 0;
     left: 0;
-    bottom: 0;
-    transition: all 0.5s; }
+    bottom: 0; }
+
+@keyframes growFromLeft {
+  0% {
+    width: 0; }
+  100% {
+    width: 100%; } }
   .menu-link:hover::after {
+    width: 100%;
+    animation-name: growFromLeft;
+    animation-duration: 0.5s; }
+  .menu-link:active::after {
     width: 100%; }
 
 .navigation--transparent .menu-link {
