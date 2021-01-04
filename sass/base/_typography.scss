@@ -86,19 +86,3 @@ h3 {
 .site-heading--secondary {
   color: $color-white;
 }
-
-// Navigation typography styles
-
-.menu-link {
-  font-size: 1.8rem;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.mobile-menu-open {
-  .menu-link {
-    @include headingGeneralStyle;
-    font-size: $h3-mobile-font-size;
-    color: $color-white;
-  }
-}
