@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
-  <%- include("head", {title: "das Café | Rustica Kaffeerösterei"}) %>
+  <%- include("./partials/head", {title: "das Café | Rustica Kaffeerösterei"})
+  %>
   <body>
     <header class="header header--cafe">
-      <%- include ("nav.ejs", {activePage: "cafe"}) %>
+      <%- include ("./partials/nav.ejs", {activePage: "cafe"}) %>
     </header>
     <main class="main">
       <section class="about u-padding--section" id="about">
@@ -118,7 +119,8 @@
         </div>
       </section>
     </main>
-    <%- include ("map.ejs") %> <%- include ("footer.ejs") %>
+    <%- include ("./partials/map.ejs") %> <%- include ("./partials/footer.ejs")
+    %>
     <script src="../js/index.js"></script>
   </body>
 </html>
