@@ -12,6 +12,22 @@ image to that image with an added semi-transparent dark overlay.
   background-image: $bg-overlay-dark, url($imgUrl);
 }
 
+@mixin sectionPadding {
+  padding: $padding-media-sm-vertical $padding-media-sm-horizontal;
+
+  @include respond(media-md) {
+    padding: $padding-media-md-vertical $padding-media-md-horizontal;
+  }
+
+  @include respond(media-lg) {
+    padding: $padding-media-lg-vertical $padding-media-lg-horizontal;
+  }
+
+  @include respond(media-xl) {
+    padding: $padding-media-xl-vertical $padding-media-xl-horizontal;
+  }
+}
+
 /*
 Creates a media query for the specified device.
 Possible argument values:
