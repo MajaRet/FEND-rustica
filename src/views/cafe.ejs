@@ -4,7 +4,58 @@
   <body>
     <header class="header header--cafe"><%- include ("nav.ejs") %></header>
     <main class="main">
-      <div class="gallery u-padding--section">
+      <section class="about u-padding--section" id="about">
+        <div class="about__row about__row-pic-right">
+          <div class="about__cell about__cell--text">
+            <h2 class="about__heading--secondary">Rösterei & Café</h2>
+            <p class="about__text">
+              Kaffee aus Kiel, direkt gehandelt und geröstet in der eigenen
+              Rösterei, serviert im gemütlichen Café in der Innenstadt.
+            </p>
+            <div class="about__subrow">
+              <div class="about__subcell">
+                <p class="about__text">
+                  Komm vorbei! <br />
+                  Fraunhoferstr. 13, Kiel
+                </p>
+              </div>
+              <div class="about__subcell">
+                <p class="about__text">
+                  Mo – Fr 8–18 Uhr <br />
+                  Sa 11–18 Uhr
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="about__cell about__cell--image">
+            <img
+              src="../img/FEND-Coffee-machine-2.jpg"
+              alt="Cafè-Inneres"
+              class="about__img"
+            />
+          </div>
+        </div>
+        <div class="about__row about__row--single-cell">
+          <div class="about__cell--single about__cell--text">
+            <h3 class="about__heading--tertiary">
+              Frisches Gebäck von nebenan
+            </h3>
+            <p class="about__text">
+              Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf
+              es einen letzten Blick zurück auf die Skyline seiner Heimatstadt
+              Buchstabhausen, die Headline von Alphabetdorf. Wehmütig lief ihm
+              eine rhetorische Frage über die Wange, dann setzte es seinen Weg
+              fort. Unterwegs traf es eine Copy. Die Copy warnte das
+              Blindtextchen, da, wo sie herkäme wäre sie zigmal umgeschrieben
+              worden und alles, was von ihrem Ursprung noch übrig wäre, sei das
+              Wort "und" und das Blindtextchen solle umkehren und wieder in sein
+              eigenes, sicheres Land zurückkehren.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="u-padding--section gallery">
         <div class="gallery__container">
           <div class="gallery__item-1 gallery__item">
             <img
@@ -63,7 +114,7 @@
             />
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <%- include ("footer.ejs") %>
     <script src="../js/index.js"></script>

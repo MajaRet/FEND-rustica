@@ -1,8 +1,10 @@
 .gallery {
-  //background-color: purple;
-  width: 100%;
   display: flex;
   justify-content: center;
+
+  padding-top: 0;
+  width: 100%;
+
   &__container {
     //background-color: green;
     //width: 70%;
