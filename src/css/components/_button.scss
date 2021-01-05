@@ -9,7 +9,8 @@
 
   text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: 2px 2px 3px rgba($color-black, 0.25);
   }
 }
@@ -21,7 +22,8 @@
 
   color: $color-white;
 
-  &:hover {
+  &:hover,
+  &:focus {
     border-width: 2px; // TODO should be 1px, but that pushes everything around
 
     background-color: $color-anthrazit-light;
@@ -39,7 +41,8 @@
 
   background-color: transparent;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: $color-black;
   }
 
