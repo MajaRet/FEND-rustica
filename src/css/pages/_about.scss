@@ -36,6 +36,10 @@
     &--single-cell {
       display: flex;
       justify-content: center;
+
+      .about__text {
+        width: 100%;
+      }
     }
   }
 
@@ -43,12 +47,6 @@
     width: 100%;
     @include respond(media-lg) {
       width: 50%;
-    }
-
-    &--single {
-      .about__text {
-        width: 100%;
-      }
     }
 
     img {
