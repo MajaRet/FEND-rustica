@@ -123,12 +123,13 @@
 .nav__container {
   display: none;
   @include respond(media-md) {
-    display: initial;
+    display: block;
   }
 }
 
 .nav__list {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
 
   list-style-type: none;

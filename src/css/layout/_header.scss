@@ -26,9 +26,9 @@
 }
 
 .header--home {
-  @include bgImageWithOverlay("/img/FEND-Coffee-latte-art-3.jpg");
+  @include bgImageWithOverlay("../img/FEND-Coffee-latte-art-3.jpg");
 }
 
 .header--cafe {
-  @include bgImageWithOverlay("/img/FEND-Coffee-shop.jpg");
+  @include bgImageWithOverlay("../img/FEND-Coffee-shop.jpg");
 }

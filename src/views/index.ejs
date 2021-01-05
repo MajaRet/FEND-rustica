@@ -1,64 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/main.scss" />
-
-    <title>Startseite | Rustica Kaffeerösterei</title>
-    <!-- TODO Add description -->
-
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
-  </head>
+  <%- include("head", {title: "Startseite | Rustica Kaffeerösterei"}) %>
 
   <body>
     <header class="header header--home">
-      <nav class="navigation navigation--transparent" id="navigation">
-        <div class="nav__logo">
-          <img src="/img/Logo.svg" alt="Logo" class="logo-svg" />
-        </div>
-        <button
-          aria-label="Menüknopf"
-          class="menu-button mobile-menu-button"
-          id="mobile-menu-button"
-        >
-          <img src="/img/Burger Menu.svg" alt="Menü" class="burger-menu-svg" />
-        </button>
-        <button
-          aria-label="Menü schließen"
-          class="menu-button close-menu-button u-hidden"
-          id="mobile-menu-close-button"
-        >
-          <img
-            src="/img/Burger Menu close.svg"
-            alt="Menü schließen"
-            class="burger-menu-svg--close"
-          />
-        </button>
-        <div class="nav__container">
-          <ul class="nav__list">
-            <li class="menu-item">
-              <a href="cafe/index.html" class="menu-link">das Café</a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">Herkunft</a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">Shop</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <%- include ("nav.ejs") %>
       <h1 class="site-heading--primary">Rustica</h1>
       <p class="subhead-m site-heading--secondary">Bio und Fair seit 1991</p>
       <a href="#" class="button button--dark header__shop-button"
@@ -92,7 +38,7 @@
           </div>
           <div class="about__cell about__cell--image">
             <img
-              src="/img/FEND-Coffee-shop.jpg"
+              src="../img/FEND-Coffee-shop.jpg"
               alt="Cafè-Inneres"
               class="about__img"
             />
@@ -111,7 +57,7 @@
           </div>
           <div class="about__cell about__cell--image">
             <img
-              src="/img/FEND-coffee-plant.jpg"
+              src="../img/FEND-coffee-plant.jpg"
               alt="Kaffeepflanze"
               class="about__img"
             />
@@ -124,7 +70,7 @@
           <div class="selection__elem">
             <div class="coffee-img">
               <img
-                src="/img/FEND_Coffee_Costa-Rica 2.png"
+                src="../img/FEND_Coffee_Costa-Rica 2.png"
                 alt="Costa Rica Kaffee"
               />
             </div>
@@ -133,17 +79,17 @@
               <div class="coffee-text__price-range">6,90€ - 26,90€</div>
               <div class="coffee-text__icons">
                 <img
-                  src="/img/Icon Kaffee Bohnen.svg"
+                  src="../img/Icon Kaffee Bohnen.svg"
                   alt="Icon Kaffeebohnen"
                   class="coffee-text__icon"
                 />
                 <img
-                  src="/img/Icon French Press.svg"
+                  src="../img/Icon French Press.svg"
                   alt="Icon French Press"
                   class="coffee-text__icon"
                 />
                 <img
-                  src="/img/Icon Kaffee Schaufel.svg"
+                  src="../img/Icon Kaffee Schaufel.svg"
                   alt="Icon Kaffeeschaufel"
                   class="coffee-text__icon"
                 />
@@ -153,7 +99,7 @@
           <div class="selection__elem">
             <div class="coffee-img">
               <img
-                src="/img/FEND_Coffee_Costa-Rica 2.png"
+                src="../img/FEND_Coffee_Costa-Rica 2.png"
                 alt="Costa Rica Kaffee"
               />
             </div>
@@ -162,17 +108,17 @@
               <div class="coffee-text__price-range">6,90€ - 26,90€</div>
               <div class="coffee-text__icons">
                 <img
-                  src="/img/Icon Kaffee Bohnen.svg"
+                  src="../img/Icon Kaffee Bohnen.svg"
                   alt="Icon Kaffeebohnen"
                   class="coffee-text__icon"
                 />
                 <img
-                  src="/img/Icon French Press.svg"
+                  src="../img/Icon French Press.svg"
                   alt="Icon French Press"
                   class="coffee-text__icon"
                 />
                 <img
-                  src="/img/Icon Kaffee Schaufel.svg"
+                  src="../img/Icon Kaffee Schaufel.svg"
                   alt="Icon Kaffeeschaufel"
                   class="coffee-text__icon"
                 />
@@ -182,7 +128,7 @@
           <div class="selection__elem">
             <div class="coffee-img">
               <img
-                src="/img/FEND_Coffee_Costa-Rica 2.png"
+                src="../img/FEND_Coffee_Costa-Rica 2.png"
                 alt="Costa Rica Kaffee"
               />
             </div>
@@ -191,17 +137,17 @@
               <div class="coffee-text__price-range">6,90€ - 26,90€</div>
               <div class="coffee-text__icons">
                 <img
-                  src="/img/Icon Kaffee Bohnen.svg"
+                  src="../img/Icon Kaffee Bohnen.svg"
                   alt="Icon Kaffeebohnen"
                   class="coffee-text__icon"
                 />
                 <img
-                  src="/img/Icon French Press.svg"
+                  src="../img/Icon French Press.svg"
                   alt="Icon French Press"
                   class="coffee-text__icon"
                 />
                 <img
-                  src="/img/Icon Kaffee Schaufel.svg"
+                  src="../img/Icon Kaffee Schaufel.svg"
                   alt="Icon Kaffeeschaufel"
                   class="coffee-text__icon"
                 />
@@ -211,7 +157,7 @@
           <div class="selection__elem">
             <div class="coffee-img">
               <img
-                src="/img/FEND_Coffee_Costa-Rica 2.png"
+                src="../img/FEND_Coffee_Costa-Rica 2.png"
                 alt="Costa Rica Kaffee"
               />
             </div>
@@ -220,17 +166,17 @@
               <div class="coffee-text__price-range">6,90€ - 26,90€</div>
               <div class="coffee-text__icons">
                 <img
-                  src="/img/Icon Kaffee Bohnen.svg"
+                  src="../img/Icon Kaffee Bohnen.svg"
                   alt="Icon Kaffeebohnen"
                   class="coffee-text__icon"
                 />
                 <img
-                  src="/img/Icon French Press.svg"
+                  src="../img/Icon French Press.svg"
                   alt="Icon French Press"
                   class="coffee-text__icon"
                 />
                 <img
-                  src="/img/Icon Kaffee Schaufel.svg"
+                  src="../img/Icon Kaffee Schaufel.svg"
                   alt="Icon Kaffeeschaufel"
                   class="coffee-text__icon"
                 />
@@ -257,7 +203,7 @@
         <div class="contents__container">
           <div class="contents__image">
             <img
-              src="/img/FEND_Coffee_Costa-Rica 2.png"
+              src="../img/FEND_Coffee_Costa-Rica 2.png"
               alt="Kaffee aus Costa Rica"
             />
           </div>
@@ -265,21 +211,21 @@
             <div class="contents__descriptions">
               <div class="item icon-1">
                 <img
-                  src="/img/Icon Kaffee Tasse.svg"
+                  src="../img/Icon Kaffee Tasse.svg"
                   alt="Icon Kaffeetasse"
                   class="content-icon"
                 />
               </div>
               <div class="item icon-2">
                 <img
-                  src="/img/Icon Kaffee Schaufel Schwarz.svg"
+                  src="../img/Icon Kaffee Schaufel Schwarz.svg"
                   alt="Icon Kaffeeschaufel"
                   class="content-icon"
                 />
               </div>
               <div class="item icon-3">
                 <img
-                  src="/img/Icon-Kaffee Pflanze.svg"
+                  src="../img/Icon-Kaffee Pflanze.svg"
                   alt="Icon Kaffeepflanze"
                   class="content-icon"
                 />
@@ -303,45 +249,7 @@
         ></iframe>
       </section>
     </main>
-
-    <footer class="footer u-padding--section" id="footer">
-      <div class="footer__container">
-        <div class="item item--logo">
-          <img src="/img/Logo.svg" alt="Logo" class="logo-svg" />
-        </div>
-        <div class="item item--heading">
-          <h3 class="footer__main-heading">Rustica</h3>
-        </div>
-        <div class="item item--subheading">
-          <p class="subhead-m">Café & Rösterei</p>
-        </div>
-        <div class="item item--address">
-          <p>
-            Komm uns besuchen!<br />
-            Fraunhoferstr. 13, Kiel
-          </p>
-        </div>
-        <div class="item item--business-hours">
-          <p>
-            Mo – Fr 8–18 Uhr<br />
-            Sa 11–18 Uhr
-          </p>
-        </div>
-        <div class="item item--navlist">
-          <ul class="navlist">
-            <li><a href="cafe/index.html">Café</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Herkunft</a></li>
-          </ul>
-        </div>
-        <div class="item item--legal">
-          <ul class="navlist">
-            <li><a href="#">Impressum</a></li>
-            <li><a href="#">Datenschutz</a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-    <script src="js/index.js"></script>
+    <%- include ("footer.ejs") %>
+    <script src="../js/index.js"></script>
   </body>
 </html>

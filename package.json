@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/index.html",
+    "start": "parcel src/views/index.ejs",
     "build": "parcel build src/index.html",
     "lint": "eslint src/js"
   },
@@ -25,5 +25,8 @@
     "postcss-nested": "4.2.3",
     "prettier": "^2.2.1",
     "sass": "^1.32.0"
+  },
+  "dependencies": {
+    "parcel-plugin-ejs-template": "^0.2.0"
   }
 }
