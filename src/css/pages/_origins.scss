@@ -5,12 +5,13 @@
   justify-content: center;
 
   height: 50vh;
+  min-height: 25rem;
 
   background-image: linear-gradient(
       rgba($color-anthrazit, 0.5),
       rgba($color-anthrazit, 0.5)
     ),
-    url('/img/FEND-Coffee-bags-2.jpg');
+    url("/img/FEND-Coffee-bags-2.jpg");
   background-position: center;
   background-size: cover;
   * {
