@@ -1,5 +1,6 @@
 module.export = {
   locals: {
-    title: "bar",
+    title: "Rustica Kaffeerösterei",
+    activePage: "index",
   },
 };

@@ -2,7 +2,9 @@
 <html lang="de">
   <%- include("head", {title: "das Café | Rustica Kaffeerösterei"}) %>
   <body>
-    <header class="header header--cafe"><%- include ("nav.ejs") %></header>
+    <header class="header header--cafe">
+      <%- include ("nav.ejs", {activePage: "cafe"}) %>
+    </header>
     <main class="main">
       <section class="about u-padding--section" id="about">
         <div class="about__row about__row-pic-right">
