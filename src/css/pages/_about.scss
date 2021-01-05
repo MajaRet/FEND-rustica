@@ -9,24 +9,24 @@
 
     &:not(:last-child) {
       margin-bottom: 4rem;
-      @include respond(tablet-land) {
+      @include respond(media-lg) {
         margin-bottom: 13rem;
       }
     }
 
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       flex-direction: row;
     }
 
     &--pic-left {
-      @include respond(tablet-land) {
+      @include respond(media-lg) {
         flex-direction: row-reverse;
         .about__cell--text {
           padding-left: 5rem;
         }
       }
       .about__cell--text {
-        @include respond(desktop) {
+        @include respond(media-xl) {
           padding-top: 5rem;
           padding-left: 10rem;
         }
@@ -36,7 +36,7 @@
 
   &__cell {
     width: 100%;
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       width: 50%;
     }
 
@@ -46,7 +46,7 @@
 
     &--text {
       margin-bottom: 4rem;
-      @include respond(tablet-land) {
+      @include respond(media-lg) {
         margin-bottom: 0;
       }
     }
@@ -69,20 +69,20 @@
 
   &__heading--secondary {
     margin-bottom: 2rem;
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       margin-bottom: 3.5rem;
     }
   }
 
   &__heading--tertiary {
     margin-bottom: 1.2rem;
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       margin-bottom: 2.4rem;
     }
   }
 
   &__text {
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       width: 75%;
     }
 

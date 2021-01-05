@@ -4,7 +4,7 @@
 
     text-align: center;
 
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       margin-bottom: 12rem;
     }
   }
@@ -16,7 +16,7 @@
 
     width: 100%;
 
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       flex-direction: row;
 
       margin: 0 auto;
@@ -32,7 +32,7 @@
       width: 100%;
     }
 
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       margin-bottom: 0;
       width: 40vw;
     }
@@ -46,7 +46,7 @@
 
     width: 100%;
 
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       align-items: flex-start;
 
       width: fit-content;
@@ -64,7 +64,7 @@
 
     text-align: center;
 
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       grid-template-columns: [icon-start] auto [icon-end label-start] auto [label-end];
       grid-template-rows: repeat(3, [row-start] 1fr [row-end]);
       row-gap: 10rem;
@@ -81,7 +81,7 @@
       justify-content: center;
     }
 
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       .text-1 {
         grid-area: row-start 1 / label-start / row-end 1 / label-end;
       }

@@ -10,7 +10,7 @@
 
     filter: brightness(1000);
 
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       height: 7rem;
       width: 7rem;
     }
@@ -19,7 +19,7 @@
   &__container {
     display: grid;
 
-    @include respond(tablet-land) {
+    @include respond(media-lg) {
       grid-auto-flow: column;
       grid-template-rows: repeat(3, auto);
       grid-template-columns: repeat(4, 1fr);
@@ -44,7 +44,7 @@
     .item--heading {
       grid-column: 1 / -1;
 
-      @include respond(tablet-land) {
+      @include respond(media-lg) {
         grid-column: auto / span 1;
       }
     }
@@ -54,7 +54,7 @@
 
       margin-bottom: 3rem;
 
-      @include respond(tablet-land) {
+      @include respond(media-lg) {
         grid-column: auto / span 1;
 
         margin-bottom: 0;
@@ -63,7 +63,7 @@
 
     .item--address {
       margin-bottom: 3rem;
-      @include respond(tablet-land) {
+      @include respond(media-lg) {
         // TODO Check.
         // It looks centered in the design, but nothing
         // else does. Very weird.
@@ -74,21 +74,23 @@
       }
     }
     .item--business-hours {
-      @include respond(tablet-land) {
+      @include respond(media-lg) {
         margin-top: 5px;
       }
     }
 
     .item--legal {
-      @include respond(tablet-land) {
+      @include respond(media-lg) {
         grid-area: 2 / 4 / 3 / 5;
       }
     }
   }
-
+  // TODO fix
+  /*
   &__main-heading {
     @include respond(phone) {
       font-size: 2.4rem;
     }
   }
+  */
 }

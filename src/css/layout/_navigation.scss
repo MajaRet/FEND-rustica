@@ -9,11 +9,21 @@
   justify-content: space-between;
 
   width: 100%;
-  padding: 1rem 6.5%; //10rem;
+  padding: 1rem 6.5%;
+
+  @include respond(media-xxl) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 
   .logo-svg {
     height: 3.5rem;
     width: 3.5rem;
+
+    @include respond(media-xxl) {
+      height: 5rem;
+      width: 5rem;
+    }
   }
 }
 
@@ -25,8 +35,12 @@
   text-decoration: none;
   position: relative;
 
+  @include respond(media-xxl) {
+    font-size: 2.4rem;
+  }
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     height: 1px;
     width: 0;
@@ -101,14 +115,14 @@
 .mobile-menu-button {
   width: 3rem;
 
-  @include respond(tablet-port) {
+  @include respond(media-md) {
     display: none;
   }
 }
 
 .nav__container {
   display: none;
-  @include respond(tablet-port) {
+  @include respond(media-md) {
     display: initial;
   }
 }
@@ -174,6 +188,6 @@
     position: fixed;
     z-index: 100;
     top: 2rem;
-    right: $padding-mobile-horizontal;
+    right: $padding-media-sm-horizontal;
   }
 }

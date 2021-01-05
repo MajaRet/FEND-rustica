@@ -9,7 +9,6 @@ $vertical-space: 4rem;
   > *:not(:last-child) {
     margin-bottom: 8rem;
   }
-  // TODO Should it really change color on mobile?
   background-color: $color-anthrazit;
 
   &__group-of-four {
@@ -26,7 +25,7 @@ $vertical-space: 4rem;
     margin-top: $vertical-space;
     width: 40vw;
 
-    @include respond(desktop) {
+    @include respond(media-xl) {
       width: 20vw;
     }
 

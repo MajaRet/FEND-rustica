@@ -15,32 +15,39 @@ image to that image with an added semi-transparent dark overlay.
 /*
 Creates a media query for the specified device.
 Possible argument values:
-- mobile:      screen width < 600px (default)
-- tablet-port: screen width >= 600px
-- tablet-land: screen width >= 900px
-- desktop:     screen width >= 1200px
+- media-sm:      screen width >= 576px (36em)
+- media-md: screen width >= 768px (48em)
+- media-lg: screen width >= 992px
+- media-xl:     screen width >= 1200px
+- media-xxl: screen width >= 1920px
 
 Units are given in em.
 1em = 16px
 */
-@mixin respond($device) {
-  @if $device == phone {
-    @media (max-width: 37.5em) {
+@mixin respond($size) {
+  @if $size == media-sm {
+    @media (min-width: 36em) {
       @content;
     }
   }
-  @if $device == tablet-port {
-    @media (min-width: 37.5em) {
+  @if $size == media-md {
+    @media (min-width: 48em) {
       @content;
     }
   }
-  @if $device == tablet-land {
-    @media (min-width: 56.25em) {
+  @if $size == media-lg {
+    @media (min-width: 62em) {
       @content;
     }
   }
-  @if $device == desktop {
+  @if $size == media-xl {
     @media (min-width: 75em) {
+      @content;
+    }
+  }
+
+  @if $size == media-xxl {
+    @media (min-width: 120em) {
       @content;
     }
   }
