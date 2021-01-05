@@ -12,4 +12,13 @@
     // Prevent space around the image
     display: block;
   }
+
+  &__frame {
+    // Remove space under the map
+    display: block;
+
+    border: none;
+    height: 50vh;
+    width: 100%;
+  }
 }
