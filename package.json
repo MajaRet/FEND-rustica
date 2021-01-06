@@ -27,6 +27,7 @@
     "sass": "^1.32.0"
   },
   "dependencies": {
+    "node-forge": "0.10.0",
     "parcel-plugin-ejs-template": "^0.2.0"
   }
 }
