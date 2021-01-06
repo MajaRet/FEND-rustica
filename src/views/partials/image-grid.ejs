@@ -1,0 +1,8 @@
+<div class="grid">
+  <% for (let i = 0; i < locals.gridImages.length; i++) { %>
+  <div class="grid__item-<%= i+1 %> grid__item">
+    <img src="<%="../img/" + locals.gridImages[i].src + ".jpg"%>" alt="<%=
+    locals.gridImages[i].alt %>" class="grid__img-<%= i+1 %> grid__img" />
+  </div>
+  <% } %>
+</div>

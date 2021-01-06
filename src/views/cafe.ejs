@@ -58,7 +58,21 @@
         </div>
       </section>
 
-      <section class="u-padding--section gallery">
+      <section class="gallery">
+        <!-- prettier-ignore -->
+        <%- include("./partials/image-grid.ejs", 
+        {gridImages: [
+          {src: "FEND-danish 1", alt: "Dänisches Gebäck"},
+          {src: "FEND-Coffee-latte-art-2", alt: "Kaffeekunst"},
+          {src: "FEND-coffee-machine", alt: "Kaffeemaschine"},
+          {src: "FEND-coffee-list", alt: "Menü"},
+          {src: "FEND-Coffee-sign", alt: "Dekoratives Schild"},
+          {src: "FEND-Coffee-latte-art-3", alt: "Kaffeekunst"},
+          {src: "FEND-Coffee-latte-art", alt: "Kaffeekunst"},
+          {src: "FEND-coffee-breakfast 1", alt: "Frühstück mit Kaffee"}
+          ] }) %>
+
+        <!-- Version without using the partial. (Also without alt texts)
         <div class="gallery__container">
           <div class="gallery__item-1 gallery__item">
             <img
@@ -117,7 +131,7 @@
             />
           </div>
         </div>
-      </section>
+      --></section>
     </main>
     <%- include ("./partials/map.ejs") %> <%- include ("./partials/footer.ejs")
     %>
