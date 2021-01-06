@@ -1,3 +1,13 @@
+<!-- 
+This template, when given a list of src and alt attributes, 
+will create the basis for a grid containing the given images that can then
+be styled with CSS.
+
+Parameters:
+gridImages - a list of objects with src and alt attributes. The images
+             are assumed to be in .jpg format and located in the img folder.
+-->
+
 <div class="grid">
   <% for (let i = 0; i < locals.gridImages.length; i++) { %>
   <div class="grid__item-<%= i+1 %> grid__item">
