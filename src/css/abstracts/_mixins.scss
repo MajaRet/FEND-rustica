@@ -8,8 +8,8 @@
 Takes a url to an image as an argument and sets the background
 image to that image with an added semi-transparent dark overlay.
 */
-@mixin bgImageWithOverlay($imgUrl) {
-  background-image: $bg-overlay-dark, url($imgUrl);
+@mixin bgImageWithOverlay($imgUrl, $color) {
+  background-image: linear-gradient($color, $color), url($imgUrl);
 }
 
 @mixin sectionPadding {

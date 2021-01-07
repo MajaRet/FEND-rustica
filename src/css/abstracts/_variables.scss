@@ -10,6 +10,11 @@ $color-rosa: #edd1c9;
 $color-orange: #d77c12;
 $color-black: #000000;
 
+// OVERLAYS
+
+$overlay-dark-weak: rgba($color-black, 0.3);
+$overlay-dark-strong: rgba($color-black, 0.5);
+
 // DIMENSIONS
 $padding-media-sm-horizontal: 2.4rem;
 $padding-media-sm-vertical: 6rem;
@@ -22,9 +27,3 @@ $padding-media-lg-vertical: 10rem;
 
 $padding-media-xl-horizontal: 10rem;
 $padding-media-xl-vertical: 12.5rem;
-
-// VISUAL ELEMENTS
-$bg-overlay-dark: linear-gradient(
-  rgba($color-black, 0.3),
-  rgba($color-black, 0.3)
-);

@@ -7,11 +7,10 @@
   height: 50vh;
   min-height: 25rem;
 
-  background-image: linear-gradient(
-      rgba($color-anthrazit, 0.5),
-      rgba($color-anthrazit, 0.5)
-    ),
-    url("../img/FEND-Coffee-bags-2.jpg");
+  @include bgImageWithOverlay(
+    "../img/FEND-Coffee-bags-2.jpg",
+    $overlay-dark-strong
+  );
   background-position: center;
   background-size: cover;
   * {
