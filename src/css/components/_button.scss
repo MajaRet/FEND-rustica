@@ -8,6 +8,8 @@
 
   text-decoration: none;
 
+  transition: background-color 0.2s ease-out;
+
   &:hover {
     box-shadow: 2px 2px 3px rgba($color-black, 0.25);
   }
@@ -36,13 +38,23 @@
 .button--light-border {
   border: 3px solid $color-white;
 
-  background-color: transparent;
+  background-size: 200% 100%;
+  background-position: right;
+  // Move this to :hover styles to have the animation only when starting to hover.
+  background-image: linear-gradient(
+    to right,
+    $color-black 50%,
+    transparent 50%
+  );
+
+  transition: background-color 0.2s ease-out, background-position 0.2s ease-out;
 
   &:hover {
-    background-color: $color-black;
+    background-position: left;
   }
 
   &:active {
+    background-image: none;
     background-color: $color-kraftpapier;
   }
 }
