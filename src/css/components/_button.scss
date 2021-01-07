@@ -3,14 +3,12 @@
   align-items: center;
 
   border-radius: 5px;
-  height: 4.8rem;
   width: fit-content;
   padding: 15px 50px;
 
   text-decoration: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     box-shadow: 2px 2px 3px rgba($color-black, 0.25);
   }
 }
@@ -22,8 +20,7 @@
 
   color: $color-white;
 
-  &:hover,
-  &:focus {
+  &:hover {
     border-width: 2px; // TODO should be 1px, but that pushes everything around
 
     background-color: $color-anthrazit-light;
@@ -41,8 +38,7 @@
 
   background-color: transparent;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $color-black;
   }
 
