@@ -11,6 +11,18 @@
   width: 100%;
   padding: 1rem 6.5%;
 
+  // Gradient to slide up and down to toggle white and transparent backgrounds.
+  background-image: linear-gradient(
+    to bottom,
+    $color-white 50%,
+    transparent 50%
+  );
+  background-size: 100% 200%;
+  background-position: bottom;
+
+  // Gently transition between the transparent and solid navigation bar.
+  transition: all 0.2s ease-out;
+
   @include respond(media-xxl) {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -24,6 +36,45 @@
       height: 5rem;
       width: 5rem;
     }
+  }
+}
+
+// When the page is not scrolled, the navigation bar is transparent with
+// white text.
+.navigation--transparent {
+  .menu-link {
+    color: $color-white;
+
+    // Set the color of the marker underline to white.
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  .logo-svg {
+    filter: brightness(1000);
+  }
+}
+
+// When the page is scrolled down, the navigation bar is white with black text.
+.navigation--solid {
+  background-position: top;
+
+  .menu-link {
+    color: $color-black;
+
+    // Set the color of the marker underline to black
+    &::after {
+      background-color: $color-black;
+    }
+  }
+
+  .nav__logo {
+    filter: brightness(0);
+  }
+
+  .burger-menu-svg {
+    filter: brightness(0);
   }
 }
 
@@ -48,16 +99,6 @@
     bottom: 0;
   }
 
-  @keyframes growFromLeft {
-    0% {
-      width: 0;
-    }
-
-    100% {
-      width: 100%;
-    }
-  }
-
   &:hover {
     &::after {
       width: 100%;
@@ -73,9 +114,9 @@
   }
 }
 
-// The active page is underlined.
 .active {
   .menu-link {
+    // The active page is underlined.
     &::after {
       width: 100%;
     }
@@ -86,39 +127,6 @@
         animation-name: none;
       }
     }
-  }
-}
-
-.navigation--transparent {
-  .menu-link {
-    color: $color-white;
-
-    &::after {
-      background-color: $color-white;
-    }
-  }
-
-  .logo-svg {
-    filter: brightness(1000);
-  }
-}
-
-.navigation--solid {
-  background-color: $color-white;
-
-  .menu-link {
-    color: $color-black;
-    &::after {
-      background-color: $color-black;
-    }
-  }
-
-  .nav__logo {
-    filter: brightness(0);
-  }
-
-  .burger-menu-svg {
-    filter: brightness(0);
   }
 }
 
@@ -157,18 +165,9 @@
       margin-right: 6.6rem;
     }
   }
-
-  @keyframes slideFromRightSide {
-    0% {
-      transform: translateX(100%);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
-  }
 }
 
+// Styles for the mobile menu overlay
 .mobile-menu-open {
   .nav__container {
     position: fixed;
