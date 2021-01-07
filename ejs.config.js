@@ -3,5 +3,6 @@ module.export = {
     title: "Rustica Kaffeerösterei",
     activePage: "index",
     gridImages: [],
+    products: [],
   },
 };

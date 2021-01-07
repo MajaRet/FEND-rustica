@@ -24,17 +24,16 @@
   </button>
   <div class="nav__container">
     <ul class="nav__list">
-      <% [
-           {name: "das Café", target: "cafe"}, 
-           {name: "Herkunft", target: "origins"},
-           {name: "Shop", target: "shop"}
-          ].forEach(function(item){ %>
-        <li>
-          <li class="menu-item <%if (locals.activePage == item.target ) { %>active<% } %>">
-            <a href= <%= item.target + ".ejs" %> class="menu-link"
-              ><%= item.name %></a
-            >  
-        </li>
+      <% [ {name: "das Café", target: "cafe"}, {name: "Herkunft", target:
+      "origins"}, {name: "Shop", target: "shop"} ].forEach(function(item){ %>
+      <li></li>
+      <li
+        class="menu-item <%if (locals.activePage == item.target ) { %>active<% } %>"
+      >
+        <a href="<%=`${item.target}.ejs`%>" class="menu-link"
+          ><%= item.name %></a
+        >
+      </li>
       <% }); %>
     </ul>
   </div>

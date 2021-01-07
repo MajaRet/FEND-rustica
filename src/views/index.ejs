@@ -68,122 +68,54 @@
       <section class="selection" id="shop">
         <h2>Entdecke unsere<br />Kaffeesorten</h2>
         <div class="selection__group-of-four">
-          <div class="selection__elem">
-            <div class="coffee-img">
-              <img
-                src="../img/FEND_Coffee_Costa-Rica 2.png"
-                alt="Costa Rica Kaffee"
-              />
-            </div>
-            <div class="coffee-text">
-              <div class="coffee-text__origins subhead-m">Costa Rica</div>
-              <div class="coffee-text__price-range">6,90€ - 26,90€</div>
-              <div class="coffee-text__icons">
-                <img
-                  src="../img/Icon Kaffee Bohnen.svg"
-                  alt="Icon Kaffeebohnen"
-                  class="coffee-text__icon"
-                />
-                <img
-                  src="../img/Icon French Press.svg"
-                  alt="Icon French Press"
-                  class="coffee-text__icon"
-                />
-                <img
-                  src="../img/Icon Kaffee Schaufel.svg"
-                  alt="Icon Kaffeeschaufel"
-                  class="coffee-text__icon"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="selection__elem">
-            <div class="coffee-img">
-              <img
-                src="../img/FEND_Coffee_Costa-Rica 2.png"
-                alt="Costa Rica Kaffee"
-              />
-            </div>
-            <div class="coffee-text">
-              <div class="coffee-text__origins subhead-m">Äthiopien</div>
-              <div class="coffee-text__price-range">6,90€ - 26,90€</div>
-              <div class="coffee-text__icons">
-                <img
-                  src="../img/Icon Kaffee Bohnen.svg"
-                  alt="Icon Kaffeebohnen"
-                  class="coffee-text__icon"
-                />
-                <img
-                  src="../img/Icon French Press.svg"
-                  alt="Icon French Press"
-                  class="coffee-text__icon"
-                />
-                <img
-                  src="../img/Icon Kaffee Schaufel.svg"
-                  alt="Icon Kaffeeschaufel"
-                  class="coffee-text__icon"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="selection__elem">
-            <div class="coffee-img">
-              <img
-                src="../img/FEND_Coffee_Costa-Rica 2.png"
-                alt="Costa Rica Kaffee"
-              />
-            </div>
-            <div class="coffee-text">
-              <div class="coffee-text__origins subhead-m">Costa Rica</div>
-              <div class="coffee-text__price-range">6,90€ - 26,90€</div>
-              <div class="coffee-text__icons">
-                <img
-                  src="../img/Icon Kaffee Bohnen.svg"
-                  alt="Icon Kaffeebohnen"
-                  class="coffee-text__icon"
-                />
-                <img
-                  src="../img/Icon French Press.svg"
-                  alt="Icon French Press"
-                  class="coffee-text__icon"
-                />
-                <img
-                  src="../img/Icon Kaffee Schaufel.svg"
-                  alt="Icon Kaffeeschaufel"
-                  class="coffee-text__icon"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="selection__elem">
-            <div class="coffee-img">
-              <img
-                src="../img/FEND_Coffee_Costa-Rica 2.png"
-                alt="Costa Rica Kaffee"
-              />
-            </div>
-            <div class="coffee-text">
-              <div class="coffee-text__origins subhead-m">Äthiopien</div>
-              <div class="coffee-text__price-range">6,90€ - 26,90€</div>
-              <div class="coffee-text__icons">
-                <img
-                  src="../img/Icon Kaffee Bohnen.svg"
-                  alt="Icon Kaffeebohnen"
-                  class="coffee-text__icon"
-                />
-                <img
-                  src="../img/Icon French Press.svg"
-                  alt="Icon French Press"
-                  class="coffee-text__icon"
-                />
-                <img
-                  src="../img/Icon Kaffee Schaufel.svg"
-                  alt="Icon Kaffeeschaufel"
-                  class="coffee-text__icon"
-                />
-              </div>
-            </div>
-          </div>
+          <!-- prettier-ignore -->
+          <%- include ("./partials/products.ejs", 
+          {products: [
+            {
+              imgName: "FEND_Coffee_Costa-Rica 2", 
+              countryOfOrigin: "Costa Rica", 
+              priceRangeStart: "6,90",
+              priceRangeEnd: "26,90",
+              icons: [
+                "Icon Kaffee Bohnen", 
+                "Icon French Press", 
+                "Icon Kaffee Schaufel"
+              ]
+            },
+            {
+              imgName: "FEND_Coffee_Costa-Rica 2", 
+              countryOfOrigin: "Äthiopien", 
+              priceRangeStart: "6,90",
+              priceRangeEnd: "26,90",
+              icons: [
+                "Icon Kaffee Bohnen", 
+                "Icon French Press", 
+                "Icon Kaffee Schaufel"
+              ]
+            },
+            {
+              imgName: "FEND_Coffee_Costa-Rica 2", 
+              countryOfOrigin: "Costa Rica", 
+              priceRangeStart: "6,90",
+              priceRangeEnd: "26,90",
+              icons: [
+                "Icon Kaffee Bohnen", 
+                "Icon French Press", 
+                "Icon Kaffee Schaufel"
+              ]
+            },
+            {
+              imgName: "FEND_Coffee_Costa-Rica 2", 
+              countryOfOrigin: "Äthiopien", 
+              priceRangeStart: "6,90",
+              priceRangeEnd: "26,90",
+              icons: [
+                "Icon Kaffee Bohnen", 
+                "Icon French Press", 
+                "Icon Kaffee Schaufel"
+              ]
+            },
+          ]}) %>
         </div>
         <a href="#" class="button button--light-border selection__button">
           alle Produkte

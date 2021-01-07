@@ -1,0 +1,28 @@
+<!-- prettier-ignore -->
+<% locals.products.forEach(function(product) {%>
+<div class="selection__elem">
+  <div class="coffee-img">
+    <img
+      src="../img/<%= product.imgName %>.png"
+      alt="<%= product.countryOfOrigin %> Kaffee"
+    />
+  </div>
+  <div class="coffee-text">
+    <div class="coffee-text__origins subhead-m">
+      <%= product.countryOfOrigin %>
+    </div>
+    <div class="coffee-text__price-range">
+      <%=`${product.priceRangeStart}€ - ${product.priceRangeEnd}€`%>
+    </div>
+    <!-- prettier-ignore -->
+    <div class="coffee-text__icons">
+        <% product.icons.forEach(function(icon) { %>
+        <img 
+          src="../img/<%= icon %>.svg" 
+          alt=<%=icon%>
+          class="coffee-text__icon" /> 
+     <% }) %>
+      </div>
+  </div>
+</div>
+<% }) %>
