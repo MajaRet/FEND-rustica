@@ -1,10 +1,11 @@
 .footer {
+  @include sectionPadding;
+
   * {
     color: $color-white;
   }
-  background-color: $color-black;
 
-  @include sectionPadding;
+  background-color: $color-black;
 
   .logo-svg {
     height: 3.5rem;
@@ -29,14 +30,6 @@
       grid-template-rows: repeat(4, auto);
       grid-template-columns: repeat(4, 1fr);
       column-gap: 2rem;
-    }
-
-    .link-list {
-      list-style-type: none;
-
-      li a {
-        text-decoration: none;
-      }
     }
 
     .item--logo {
@@ -84,7 +77,7 @@
       }
     }
 
-    // Allowed to go into an extra row in case there
+    // Allow navigation list to go into an extra row in case there
     // are many elements in the navigation.
     .item--navlist {
       @include respond(media-lg) {
@@ -99,12 +92,12 @@
       }
     }
   }
-  // TODO fix
-  /*
-  &__main-heading {
-    @include respond(phone) {
-      font-size: 2.4rem;
+
+  .link-list {
+    list-style-type: none;
+
+    li a {
+      text-decoration: none;
     }
   }
-  */
 }
