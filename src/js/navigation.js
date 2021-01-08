@@ -1,6 +1,6 @@
 import trapFocus from "./util";
 
-const menuContainer = document.getElementById("navigation");
+const menuContainer = document.querySelector(".nav__container");
 const menuButton = document.getElementById("mobile-menu-button");
 const closeButton = document.getElementById("mobile-menu-close-button");
 const navigation = document.getElementById("navigation");
@@ -32,17 +32,19 @@ function releaseMenuFocusTrap() {
 
 // Clicking on the mobile menu button will open the navigation on the same page.
 function openMenu() {
-  menuContainer.classList.add("mobile-menu-open");
+  navigation.classList.add("mobile-menu-open");
   closeButton.classList.remove("u-hidden");
   menuButton.classList.add("u-hidden");
   // Disable vertical scrolling
   document.body.classList.add("u-disable-scroll");
+  // Scroll to the top of the menu overlay in case it was scrolled down before.
+  menuContainer.scrollTop = 0;
   // Enable focus trap
   trapFocusInMenu();
 }
 
 function closeMenu() {
-  menuContainer.classList.remove("mobile-menu-open");
+  navigation.classList.remove("mobile-menu-open");
   closeButton.classList.add("u-hidden");
   menuButton.classList.remove("u-hidden");
   // Enable vertical scrolling

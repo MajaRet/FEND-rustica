@@ -21,11 +21,15 @@
   background-position: bottom;
 
   // Gently transition between the transparent and solid navigation bar.
-  transition: all 0.2s ease-out;
+  transition: all 0.3s ease-out;
 
   @include respond(media-xxl) {
     padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+
+  .menu-link {
+    color: $color-white;
   }
 
   .logo-svg {
@@ -59,13 +63,14 @@
 // When the page is scrolled down, the navigation bar is white with black text.
 .navigation--solid {
   background-position: top;
+  @include respond(media-md) {
+    .menu-link {
+      color: $color-black;
 
-  .menu-link {
-    color: $color-black;
-
-    // Set the color of the marker underline to black
-    &::after {
-      background-color: $color-black;
+      // Set the color of the marker underline to black
+      &::after {
+        background-color: $color-black;
+      }
     }
   }
 
@@ -144,11 +149,68 @@
   }
 }
 
+.close-menu-button {
+  position: absolute;
+  z-index: 100;
+  top: 2rem;
+  right: 6.5%;
+}
+
 .nav__container {
-  max-width: 90%;
-  display: none;
+  position: absolute;
+  left: 100vw;
+  top: 0;
+  z-index: 50;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+
+  background-color: $color-black;
+
+  overflow: scroll;
+
+  transition: left 0.3s ease-out;
+
+  .menu-link {
+    @include headingGeneralStyle;
+    font-size: $h3-mobile-font-size;
+  }
+
+  .nav__list {
+    padding: 8rem 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(max(-50%, -50vh));
+  }
+
   @include respond(media-md) {
-    display: block;
+    position: initial;
+    max-width: 90%;
+    display: flex;
+    background-color: transparent;
+    height: fit-content;
+    overflow: hidden;
+    flex-direction: row;
+    justify-content: flex-end;
+    .nav__list {
+      position: initial;
+      flex-direction: row;
+      transform: translateY(0);
+      padding: 0;
+
+      .menu-link {
+        font-size: 2rem;
+        font-weight: 500;
+      }
+    }
   }
 }
 
@@ -169,50 +231,7 @@
 
 // Styles for the mobile menu overlay
 .mobile-menu-open {
-  backface-visibility: hidden;
   .nav__container {
-    position: fixed;
     left: 0;
-    top: 0;
-    z-index: 50;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 100vw;
-    max-width: 100%;
-    height: 100vh;
-
-    background-color: $color-black;
-
-    overflow: scroll;
-
-    animation-name: slideFromRightSide;
-    animation-duration: 300ms;
-    animation-timing-function: ease-out;
-
-    .menu-link {
-      @include headingGeneralStyle;
-      font-size: $h3-mobile-font-size;
-      color: $color-white;
-    }
-  }
-
-  .nav__list {
-    padding: 8rem 0;
-    display: flex;
-    flex-direction: column;
-    row-gap: 40px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(max(-50%, -50vh));
-  }
-
-  .close-menu-button {
-    position: fixed;
-    z-index: 100;
-    top: 2rem;
-    right: $padding-media-sm-horizontal;
   }
 }
