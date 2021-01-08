@@ -1,4 +1,4 @@
-.navigation {
+.nav {
   position: fixed;
   z-index: 10;
   top: 0;
@@ -18,7 +18,7 @@
   background-size: 100% 200%;
   background-position: bottom;
 
-  // Gently transition between the transparent and solid navigation bar.
+  // Gently transition between the transparent and solid nav bar.
   transition: all 0.3s ease-out;
 
   @include respond(media-xxl) {
@@ -26,196 +26,192 @@
     padding-bottom: 2rem;
   }
 
-  .menu-link {
-    color: $color-white;
-  }
+  // nav typography styles
 
-  .logo-svg {
-    height: 3.5rem;
-    width: 3.5rem;
+  .menu-link {
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
 
     @include respond(media-xxl) {
-      height: 5rem;
-      width: 5rem;
+      font-size: 2.4rem;
     }
-  }
-}
 
-// When the page is not scrolled, the navigation bar is transparent with
-// white text.
-.navigation--transparent {
-  .menu-link {
-    color: $color-white;
-
-    // Set the color of the marker underline to white.
     &::after {
-      background-color: $color-white;
-    }
-  }
-
-  .logo-svg {
-    filter: brightness(1000);
-  }
-}
-
-// When the page is scrolled down, the navigation bar is white with black text.
-.navigation--solid {
-  background-position: top;
-  .menu-link {
-    color: $color-black;
-
-    // Set the color of the marker underline to black
-    &::after {
-      background-color: $color-black;
-    }
-  }
-
-  .nav__logo {
-    filter: brightness(0);
-  }
-
-  .burger-menu-svg {
-    filter: brightness(0);
-  }
-}
-
-// Navigation typography styles
-
-.menu-link {
-  font-size: 1.8rem;
-  font-weight: 500;
-  text-decoration: none;
-  position: relative;
-
-  @include respond(media-xxl) {
-    font-size: 2.4rem;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    height: 1px;
-    width: 0;
-    left: 0;
-    bottom: 0;
-  }
-
-  &:hover {
-    &::after {
-      width: 100%;
-      animation-name: growFromLeft;
-      animation-duration: 0.3s;
-    }
-  }
-
-  &:active {
-    &::after {
-      width: 100%;
-    }
-  }
-}
-
-.active {
-  .menu-link {
-    // The active page is underlined.
-    &::after {
-      width: 100%;
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 0;
+      left: 0;
+      bottom: 0;
     }
 
-    // Disable hover animation on active page.
     &:hover {
       &::after {
-        animation-name: none;
+        width: 100%;
+        animation-name: growFromLeft;
+        animation-duration: 0.3s;
+      }
+    }
+
+    &:active {
+      &::after {
+        width: 100%;
       }
     }
   }
-}
 
-.menu-button {
-  border: none;
-
-  background-color: transparent;
-}
-
-.mobile-menu-button {
-  width: 3rem;
-
-  @include respond(media-md) {
-    display: none;
-  }
-}
-
-.close-menu-button {
-  position: fixed;
-  z-index: 100;
-  top: 2rem;
-  right: 6.5%;
-}
-
-.nav--overlay {
-  position: absolute;
-  left: 100vw;
-  top: 0;
-  z-index: 50;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  width: 100vw;
-  max-width: 100%;
-  height: 100vh;
-
-  background-color: $color-black;
-
-  overflow: scroll;
-
-  transition: left 0.3s ease-out;
-
-  .nav__list {
-    padding: 8rem 0;
-    display: flex;
-    flex-direction: column;
-    row-gap: 40px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(max(-50%, -50vh));
-
+  .active {
     .menu-link {
-      @include headingGeneralStyle;
-      font-size: $h3-mobile-font-size;
+      // The active page is underlined.
+      &::after {
+        width: 100%;
+      }
 
+      // Disable hover animation on active page.
+      &:hover {
+        &::after {
+          animation-name: none;
+        }
+      }
+    }
+  }
+
+  .menu-button {
+    border: none;
+
+    background-color: transparent;
+  }
+
+  .mobile-menu-button {
+    width: 3rem;
+
+    @include respond(media-md) {
+      display: none;
+    }
+  }
+
+  .close-menu-button {
+    position: fixed;
+    z-index: 100;
+    top: 2rem;
+    right: 6.5%;
+  }
+
+  // When the page is not scrolled, the nav bar is transparent with
+  // white text.
+  &--transparent {
+    .menu-link {
       color: $color-white;
 
-      // Set the color of the marker underline to white
+      // Set the color of the marker underline to white.
       &::after {
         background-color: $color-white;
       }
     }
+
+    .logo-svg {
+      filter: brightness(1000);
+    }
   }
-}
 
-.nav--regular {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  // When the page is scrolled down, the nav bar is white with black text.
+  &--solid {
+    background-position: top;
+    .menu-link {
+      color: $color-black;
 
-  width: 100%;
+      // Set the color of the marker underline to black
+      &::after {
+        background-color: $color-black;
+      }
+    }
 
-  .nav__list {
-    display: none;
+    .nav__logo {
+      filter: brightness(0);
+    }
 
-    @include respond(media-md) {
+    .burger-menu-svg {
+      filter: brightness(0);
+    }
+  }
+
+  // Styles for the navigation bar visible when the overlay is closed.
+  &--regular {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    .logo-svg {
+      height: 3.5rem;
+      width: 3.5rem;
+
+      @include respond(media-xxl) {
+        height: 5rem;
+        width: 5rem;
+      }
+    }
+
+    .nav__list {
+      display: none;
+
+      @include respond(media-md) {
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        flex-wrap: wrap;
+        row-gap: 1rem;
+        list-style-type: none;
+
+        .menu-item {
+          margin-left: 6.6rem;
+        }
+      }
+    }
+  }
+
+  // Styles for the navigation overlay
+  &--overlay {
+    position: absolute;
+    left: 100vw;
+    top: 0;
+    z-index: 50;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+
+    background-color: $color-black;
+
+    overflow: scroll;
+
+    transition: left 0.3s ease-out;
+
+    .nav__list {
+      padding: 8rem 0;
       display: flex;
-      flex-direction: row;
-      justify-content: right;
-      flex-wrap: wrap;
-      row-gap: 1rem;
-      list-style-type: none;
+      flex-direction: column;
+      row-gap: 40px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(max(-50%, -50vh));
 
-      .menu-item {
-        &:not(:last-child) {
-          margin-right: 6.6rem;
+      .menu-link {
+        @include headingGeneralStyle;
+        font-size: $h3-mobile-font-size;
+
+        color: $color-white;
+
+        // Set the color of the marker underline to white
+        &::after {
+          background-color: $color-white;
         }
       }
     }

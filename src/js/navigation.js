@@ -74,4 +74,15 @@ function initNavigation() {
   disableOverlayFocus();
 }
 
+// When the website is scrolled down at all, the navigation turns solid white.
+export function handleNavigationScrolling() {
+  if (window.pageYOffset) {
+    navigation.classList.remove("nav--transparent");
+    navigation.classList.add("nav--solid");
+  } else {
+    navigation.classList.add("nav--transparent");
+    navigation.classList.remove("nav--solid");
+  }
+}
+
 export default initNavigation;
