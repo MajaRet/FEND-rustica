@@ -1,11 +1,13 @@
 import trapFocus from "./util";
 
-const menuContainer = document.querySelector(".nav__container");
-const menuButton = document.getElementById("mobile-menu-button");
-const closeButton = document.getElementById("mobile-menu-close-button");
 const navigation = document.getElementById("navigation");
+const menuButton = document.getElementById("mobile-menu-button");
+const menuOverlay = document.querySelector(".nav--overlay");
+const closeButton = document.getElementById("mobile-menu-close-button");
 const focusableNavOverlayItems = Array.prototype.slice.call(
-  document.querySelectorAll(".menu-link, #mobile-menu-close-button"),
+  document.querySelectorAll(
+    ".nav--overlay .menu-link, #mobile-menu-close-button"
+  ),
   0
 );
 const [firstNavOverlayItem] = focusableNavOverlayItems;
@@ -20,14 +22,18 @@ const trapMenuFocus = trapFocus.bind(
 );
 
 // Activates the mobile menu keyboard trap.
-function trapFocusInMenu() {
+function enableOverlayFocus() {
+  focusableNavOverlayItems.forEach(function makeFocusable(e) {
+    e.tabIndex = 0;
+  });
   firstNavOverlayItem.focus();
-  navigation.addEventListener("keydown", trapMenuFocus);
 }
 
 // Disables the mobile menu keyboard trap.
-function releaseMenuFocusTrap() {
-  navigation.removeEventListener("keydown", trapMenuFocus);
+function disableOverlayFocus() {
+  focusableNavOverlayItems.forEach(function makeUnfocusable(e) {
+    e.tabIndex = -1;
+  });
 }
 
 // Clicking on the mobile menu button will open the navigation on the same page.
@@ -37,10 +43,13 @@ function openMenu() {
   menuButton.classList.add("u-hidden");
   // Disable vertical scrolling
   document.body.classList.add("u-disable-scroll");
+
+  menuOverlay.ariaHidden = false;
   // Scroll to the top of the menu overlay in case it was scrolled down before.
-  menuContainer.scrollTop = 0;
-  // Enable focus trap
-  trapFocusInMenu();
+  menuOverlay.scrollTop = 0;
+
+  // Trap focus in the overlay
+  enableOverlayFocus();
 }
 
 function closeMenu() {
@@ -50,13 +59,19 @@ function closeMenu() {
   // Enable vertical scrolling
   document.body.classList.remove("u-disable-scroll");
 
-  releaseMenuFocusTrap();
+  menuOverlay.ariaHidden = true;
+
+  disableOverlayFocus();
 }
 
-// Adds the mobile menu button's functionality.
-function activateMenuButton() {
+function initNavigation() {
+  // Adds the mobile menu button's functionality.
   menuButton.onclick = openMenu;
   closeButton.onclick = closeMenu;
+  // The overlay listens for Tab or Shift + Tab to trap focus.
+  menuOverlay.addEventListener("keydown", trapMenuFocus);
+  // Initially, the overlay links are not focusable.
+  disableOverlayFocus();
 }
 
-export default activateMenuButton;
+export default initNavigation;

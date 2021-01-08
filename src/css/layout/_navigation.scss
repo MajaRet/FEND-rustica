@@ -5,8 +5,6 @@
   left: 0;
 
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 
   width: 100%;
   padding: 1rem 6.5%;
@@ -63,14 +61,12 @@
 // When the page is scrolled down, the navigation bar is white with black text.
 .navigation--solid {
   background-position: top;
-  @include respond(media-md) {
-    .menu-link {
-      color: $color-black;
+  .menu-link {
+    color: $color-black;
 
-      // Set the color of the marker underline to black
-      &::after {
-        background-color: $color-black;
-      }
+    // Set the color of the marker underline to black
+    &::after {
+      background-color: $color-black;
     }
   }
 
@@ -150,13 +146,13 @@
 }
 
 .close-menu-button {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 2rem;
   right: 6.5%;
 }
 
-.nav__container {
+.nav--overlay {
   position: absolute;
   left: 100vw;
   top: 0;
@@ -176,11 +172,6 @@
 
   transition: left 0.3s ease-out;
 
-  .menu-link {
-    @include headingGeneralStyle;
-    font-size: $h3-mobile-font-size;
-  }
-
   .nav__list {
     padding: 8rem 0;
     display: flex;
@@ -189,49 +180,51 @@
     position: absolute;
     top: 50%;
     transform: translateY(max(-50%, -50vh));
-  }
 
-  @include respond(media-md) {
-    position: initial;
-    max-width: 90%;
-    display: flex;
-    background-color: transparent;
-    height: fit-content;
-    overflow: hidden;
-    flex-direction: row;
-    justify-content: flex-end;
-    .nav__list {
-      position: initial;
-      flex-direction: row;
-      transform: translateY(0);
-      padding: 0;
+    .menu-link {
+      @include headingGeneralStyle;
+      font-size: $h3-mobile-font-size;
 
-      .menu-link {
-        font-size: 2rem;
-        font-weight: 500;
+      color: $color-white;
+
+      // Set the color of the marker underline to white
+      &::after {
+        background-color: $color-white;
       }
     }
   }
 }
 
-.nav__list {
+.nav--regular {
   display: flex;
-  flex-direction: row;
-  justify-content: right;
-  flex-wrap: wrap;
-  row-gap: 1rem;
-  list-style-type: none;
+  align-items: center;
+  justify-content: space-between;
 
-  .menu-item {
-    &:not(:last-child) {
-      margin-right: 6.6rem;
+  width: 100%;
+
+  .nav__list {
+    display: none;
+
+    @include respond(media-md) {
+      display: flex;
+      flex-direction: row;
+      justify-content: right;
+      flex-wrap: wrap;
+      row-gap: 1rem;
+      list-style-type: none;
+
+      .menu-item {
+        &:not(:last-child) {
+          margin-right: 6.6rem;
+        }
+      }
     }
   }
 }
 
 // Styles for the mobile menu overlay
 .mobile-menu-open {
-  .nav__container {
+  .nav--overlay {
     left: 0;
   }
 }
