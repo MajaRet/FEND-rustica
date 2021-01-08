@@ -86,7 +86,7 @@
   .mobile-menu-button {
     width: 3rem;
 
-    @include respond(media-md) {
+    @include respond(media-sm) {
       display: none;
     }
   }
@@ -157,7 +157,7 @@
     .nav__list {
       display: none;
 
-      @include respond(media-md) {
+      @include respond(media-sm) {
         display: flex;
         flex-direction: row;
         justify-content: right;
