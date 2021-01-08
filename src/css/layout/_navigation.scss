@@ -31,7 +31,6 @@
   .menu-link {
     font-size: 1.8rem;
     font-weight: 500;
-    text-decoration: none;
     position: relative;
 
     @include respond(media-xxl) {
@@ -164,7 +163,6 @@
         justify-content: right;
         flex-wrap: wrap;
         row-gap: 1rem;
-        list-style-type: none;
 
         .menu-item {
           margin-left: 6.6rem;
@@ -222,5 +220,14 @@
 .mobile-menu-open {
   .nav--overlay {
     left: 0;
+  }
+}
+
+// General styles for the actual list of links.
+.nav__list {
+  list-style-type: none;
+
+  .menu-link {
+    text-decoration: none;
   }
 }
