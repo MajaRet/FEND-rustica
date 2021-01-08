@@ -210,6 +210,7 @@
         // Set the color of the marker underline to white
         &::after {
           background-color: $color-white;
+          height: 3px;
         }
       }
     }
