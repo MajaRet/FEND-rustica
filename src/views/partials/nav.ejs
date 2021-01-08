@@ -24,9 +24,15 @@
   </button>
   <div class="nav__container">
     <ul class="nav__list">
-      <% [ {name: "das Café", target: "cafe"}, {name: "Herkunft", target:
-      "origins"}, {name: "Shop", target: "shop"} ].forEach(function(item){ %>
-      <li></li>
+      <!-- prettier-ignore -->
+      <% [ {name: "das Café", target: "cafe"}, 
+           {name: "Herkunft", target: "origins"},
+           {name: "Shop", target: "shop"},
+           {name: "das Café", target: "cafe"}, 
+           {name: "Herkunft", target: "origins"},
+           {name: "das Café", target: "cafe"}, 
+           {name: "Herkunft", target: "origins"},
+           {name: "Shop", target: "shop"}].forEach(function(item){ %>
       <li
         class="menu-item <%if (locals.activePage == item.target ) { %>active<% } %>"
       >

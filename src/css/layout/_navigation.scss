@@ -169,6 +169,7 @@
 
 // Styles for the mobile menu overlay
 .mobile-menu-open {
+  backface-visibility: hidden;
   .nav__container {
     position: fixed;
     left: 0;
@@ -177,7 +178,6 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
     width: 100vw;
@@ -185,6 +185,8 @@
     height: 100vh;
 
     background-color: $color-black;
+
+    overflow: scroll;
 
     animation-name: slideFromRightSide;
     animation-duration: 300ms;
@@ -198,9 +200,13 @@
   }
 
   .nav__list {
+    padding: 8rem 0;
     display: flex;
     flex-direction: column;
     row-gap: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(max(-50%, -50vh));
   }
 
   .close-menu-button {
