@@ -1,12 +1,12 @@
 // COLORS
 $color-white: #ffffff;
-$color-anthrazit: #1a1a1a;
-$color-anthrazit-light: #3a3734;
+$color-anthracite: #1a1a1a;
+$color-anthracite-light: #3a3734;
 $color-medium-grey: #737373;
 $color-light-grey: #e9e9e9;
-$color-kraftpapier: #d7be9d;
+$color-kraft-paper: #d7be9d;
 $color-petrol: #006d7e;
-$color-rosa: #edd1c9;
+$color-flesh: #edd1c9;
 $color-orange: #d77c12;
 $color-black: #000000;
 
@@ -26,3 +26,9 @@ $padding-media-lg-vertical: 10rem;
 
 $padding-media-xl-horizontal: 10rem;
 $padding-media-xl-vertical: 12.5rem;
+
+// BREAKPOINTS
+
+// The screen width from which on the navigation is displayed as a bar instead
+// of an overlay.
+$nav-bar-breakpoint: media-sm;

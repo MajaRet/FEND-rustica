@@ -1,16 +1,14 @@
+// TYPOGRAPHY
+
 // Style elements common to all headings
 @mixin headingGeneralStyle {
   font-weight: 900;
   line-height: 1.1;
 }
 
-/*
-Takes a url to an image as an argument and sets the background
-image to that image with an added semi-transparent dark overlay.
-*/
-@mixin bgImageWithOverlay($imgUrl, $color) {
-  background-image: linear-gradient($color, $color), url($imgUrl);
-}
+// todo other styles, including base
+
+// PADDING
 
 @mixin sectionPadding {
   padding: $padding-media-sm-vertical $padding-media-sm-horizontal;
@@ -27,6 +25,8 @@ image to that image with an added semi-transparent dark overlay.
     padding: $padding-media-xl-vertical $padding-media-xl-horizontal;
   }
 }
+
+// MEDIA QUERIES
 
 /*
 Creates a media query for the specified device.
@@ -67,4 +67,14 @@ Units are given in em.
       @content;
     }
   }
+}
+
+// BACKGROUND
+
+/*
+Takes a url to an image as an argument and sets the background
+image to that image with an added semi-transparent dark overlay.
+*/
+@mixin bgImageWithOverlay($imgUrl, $color) {
+  background-image: linear-gradient($color, $color), url($imgUrl);
 }

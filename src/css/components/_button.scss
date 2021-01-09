@@ -16,22 +16,22 @@
 }
 
 .button--dark {
-  border: 2px solid $color-anthrazit;
+  border: 2px solid $color-anthracite;
 
-  background-color: $color-anthrazit;
+  background-color: $color-anthracite;
 
   color: $color-white;
 
   &:hover {
     border-width: 2px; // TODO should be 1px, but that pushes everything around
 
-    background-color: $color-anthrazit-light;
+    background-color: $color-anthracite-light;
   }
 
   &:active {
     border-width: 2px; // TODO should be 1px, but that pushes everything around
 
-    background-color: $color-kraftpapier;
+    background-color: $color-kraft-paper;
   }
 }
 
@@ -55,6 +55,6 @@
 
   &:active {
     background-image: none;
-    background-color: $color-kraftpapier;
+    background-color: $color-kraft-paper;
   }
 }
