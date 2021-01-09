@@ -194,8 +194,7 @@
       padding: 8rem 0;
 
       .menu-link {
-        @include headingGeneralStyle;
-        font-size: $h3-mobile-font-size;
+        @include headingLevel3;
 
         color: $color-white;
 

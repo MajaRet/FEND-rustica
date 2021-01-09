@@ -1,94 +1,22 @@
 // Default typography styles
 * {
   font-family: Roboto, sans-serif;
-  font-size: 1.4rem;
-  font-weight: 400;
   line-height: 1.3;
-
-  @include respond(media-md) {
-    font-size: 1.6rem;
-  }
-
-  @include respond(media-xl) {
-    font-size: 1.8rem;
-  }
-
-  @include respond(media-xxl) {
-    font-size: 2rem;
-  }
+  @include bodyText;
 }
 
 // Heading typography styles
 
-// A variable is used because the menu items in the mobile
-// menu should have the same style as an h3 heading despite
-// not being h3s.
-$h3-mobile-font-size: 3.2rem;
-
-h1,
-h2,
-h3 {
-  @include headingGeneralStyle;
-}
-
 h1 {
-  font-size: 6.4rem;
-
-  @include respond(media-md) {
-    font-size: 7.4rem;
-  }
-
-  @include respond(media-lg) {
-    font-size: 8.2rem;
-  }
-
-  @include respond(media-xl) {
-    font-size: 9.6rem;
-  }
-
-  @include respond(media-xxl) {
-    font-size: 12rem;
-  }
+  @include headingLevel1;
 }
 
 h2 {
-  font-size: 3.6rem;
-
-  @include respond(media-md) {
-    font-size: 4rem;
-  }
-
-  @include respond(media-lg) {
-    font-size: 4.4rem;
-  }
-
-  @include respond(media-xl) {
-    font-size: 4.8rem;
-  }
-
-  @include respond(media-xxl) {
-    font-size: 6rem;
-  }
+  @include headingLevel2;
 }
 
 h3 {
-  font-size: $h3-mobile-font-size;
-
-  @include respond(media-md) {
-    font-size: 3.6rem;
-  }
-
-  @include respond(media-lg) {
-    font-size: 4rem;
-  }
-
-  @include respond(media-xl) {
-    font-size: 4.2rem;
-  }
-
-  @include respond(media-xl) {
-    font-size: 5rem;
-  }
+  @include headingLevel3;
 }
 
 .subhead-m {
