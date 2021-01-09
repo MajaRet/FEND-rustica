@@ -13,7 +13,11 @@
     display: block;
 
     border: none;
-    height: 50vh;
+    height: 35vh;
     width: 100%;
+
+    @include respond(media-lg) {
+      height: 45vh;
+    }
   }
 }
