@@ -1,7 +1,7 @@
 <nav class="nav nav--transparent" id="navigation">
   <div class="nav--regular">
     <div class="nav__logo">
-      <a href="index.ejs"
+      <a href="index.ejs" aria-describedby="logo-link-description"
         ><img src="../img/icons/Logo.svg" alt="Rustica Logo" class="logo-svg"
       /></a>
     </div>
@@ -11,15 +11,18 @@
       class="menu-button mobile-menu-button"
       id="mobile-menu-button"
     >
-      <div id="menu-button-description" class="u-hidden">
-        <p>Dieser Knopf öffnet ein modales Navigationsmenü.</p>
-      </div>
       <img
         src="../img/icons/Burger Menu.svg"
         alt="Menü öffnen"
         class="burger-menu-svg"
       />
     </button>
+    <div id="menu-button-description" class="u-hidden">
+      <p>Dieser Knopf öffnet ein modales Navigationsmenü.</p>
+    </div>
+    <div id="logo-link-description" class="u-hidden">
+      <p>Dieser Link führt zur Startseite.</p>
+    </div>
     <%- include("./nav-list.ejs") %>
   </div>
   <div
