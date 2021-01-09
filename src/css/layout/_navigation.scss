@@ -44,13 +44,12 @@
       width: 0;
       left: 0;
       bottom: 0;
+      transition: width 0.3s ease-out;
     }
 
     &:hover {
       &::after {
         width: 100%;
-        animation-name: growFromLeft;
-        animation-duration: 0.3s;
       }
     }
 
@@ -67,13 +66,6 @@
       &::after {
         width: 100%;
       }
-
-      // Disable hover animation on active page.
-      &:hover {
-        &::after {
-          animation-name: none;
-        }
-      }
     }
   }
 
@@ -86,7 +78,7 @@
   .mobile-menu-button {
     width: 3rem;
 
-    @include respond(media-sm) {
+    @include respond($nav-bar-breakpoint) {
       display: none;
     }
   }
@@ -157,7 +149,7 @@
     .nav__list {
       display: none;
 
-      @include respond(media-sm) {
+      @include respond($nav-bar-breakpoint) {
         display: flex;
         flex-direction: row;
         justify-content: right;
