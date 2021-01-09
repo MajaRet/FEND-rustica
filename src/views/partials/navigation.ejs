@@ -2,23 +2,33 @@
   <div class="nav--regular">
     <div class="nav__logo">
       <a href="index.ejs"
-        ><img src="../img/icons/Logo.svg" alt="Logo" class="logo-svg"
+        ><img src="../img/icons/Logo.svg" alt="Rustica Logo" class="logo-svg"
       /></a>
     </div>
     <button
       aria-label="Menüknopf"
+      aria-describedby="menu-button-description"
       class="menu-button mobile-menu-button"
       id="mobile-menu-button"
     >
+      <div id="menu-button-description" class="u-hidden">
+        <p>Dieser Knopf öffnet ein modales Navigationsmenü.</p>
+      </div>
       <img
         src="../img/icons/Burger Menu.svg"
-        alt="Menü"
+        alt="Menü öffnen"
         class="burger-menu-svg"
       />
     </button>
     <%- include("./nav-list.ejs") %>
   </div>
-  <div class="nav--overlay" aria-hidden="true">
+  <div
+    class="nav--overlay"
+    role="dialog"
+    aria-label="Menü"
+    aria-modal="true"
+    aria-hidden="true"
+  >
     <button
       aria-label="Menü schließen"
       class="menu-button close-menu-button u-hidden"

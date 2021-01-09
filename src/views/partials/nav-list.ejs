@@ -7,7 +7,10 @@ argument. %>
        {name: "Herkunft", target: "origins"},
        {name: "Shop", target: "shop"}].forEach(function(item){ %>
   <li
-    class="menu-item <%if (locals.activePage == item.target ) { %>active<% } %>"
+    <%if (locals.activePage == item.target ) { %> aria-current="page" <% } %>
+    class="menu-item <%if (locals.activePage == item.target ) { 
+        %> active <% 
+    } %>"
   >
     <a href="<%=`${item.target}.ejs`%>" class="menu-link"><%= item.name %></a>
   </li>
