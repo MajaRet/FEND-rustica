@@ -63,7 +63,7 @@
       // Two main rows with two 'buffer' rows in the middle to
       // account for differing image heights.
       // TODO Name rows or ideally find a better solution.
-      grid-template-rows: repeat(4, min-content);
+      grid-template-rows: repeat(4, max-content);
       gap: 1.6rem;
 
       &__item {

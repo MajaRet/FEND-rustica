@@ -7,7 +7,7 @@
   justify-content: center;
 
   height: 75vh;
-  min-height: 30rem;
+  min-height: 300px;
 
   background-position: center;
   background-size: cover;
@@ -30,6 +30,13 @@
     "../img/FEND-Coffee-latte-art-3.jpg",
     $overlay-dark-weak
   );
+
+  @include respond(media-lg) {
+    @include bgImageWithOverlay(
+      "../img/FEND-Coffee-latte-art-3-lg.jpg",
+      $overlay-dark-weak
+    );
+  }
 }
 
 .header--cafe {
