@@ -11,32 +11,31 @@
   transition: background-color 0.3s ease-out;
 
   &:hover {
-    box-shadow: 2px 2px 3px rgba($color-black, 0.25);
+    box-shadow: $button-hover-shadow;
   }
 }
 
 .button--dark {
-  border: 2px solid $color-anthracite;
+  //border: 2px solid $color-anthracite;
+  box-shadow: $inner-border 2px $color-anthracite;
 
   background-color: $color-anthracite;
 
   color: $color-white;
 
   &:hover {
-    border-width: 2px; // TODO should be 1px, but that pushes everything around
-
     background-color: $color-anthracite-light;
+    box-shadow: $button-hover-shadow, $inner-border 1px $color-anthracite;
   }
 
   &:active {
-    border-width: 2px; // TODO should be 1px, but that pushes everything around
-
     background-color: $color-kraft-paper;
+    box-shadow: $button-hover-shadow, $inner-border 1px $color-anthracite;
   }
 }
 
 .button--light-border {
-  border: 3px solid $color-white;
+  box-shadow: $inner-border 3px $color-white;
 
   background-size: 200% 100%;
   background-position: right;
@@ -51,10 +50,12 @@
 
   &:hover {
     background-position: left;
+    box-shadow: $button-hover-shadow, $inner-border 3px $color-black;
   }
 
   &:active {
     background-image: none;
     background-color: $color-kraft-paper;
+    box-shadow: $button-hover-shadow, $inner-border 1px $color-black;
   }
 }
