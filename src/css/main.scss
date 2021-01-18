@@ -5,11 +5,13 @@
 @import "base/typography";
 @import "base/utilities";
 
+@import "components/button";
+
 @import "layout/footer";
 @import "layout/header";
 @import "layout/navigation";
 
-@import "components/button";
+@import "pages/impressum";
 
 @import "sections/about";
 @import "sections/contents";
