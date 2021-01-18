@@ -25,6 +25,7 @@
   }
 }
 
+// TODO: Add more image sizes
 .header--home {
   @include bgImageWithOverlay(
     "../img/FEND-Coffee-latte-art-3.jpg",
@@ -44,4 +45,20 @@
     "../img/FEND-Coffee-shop.jpg",
     $overlay-dark-weak
   );
+}
+
+// NOTE: There's no overlay in the Figma design right now,
+// but the nav bar is a little difficult to read without it.
+.header--origins {
+  @include bgImageWithOverlay(
+    "../img/FEND-Coffee-beans-hand-2.jpg",
+    $overlay-dark-weak
+  );
+
+  @include respond(media-lg) {
+    @include bgImageWithOverlay(
+      "../img/FEND-Coffee-beans-hand-2.jpg",
+      $overlay-dark-weak
+    );
+  }
 }
