@@ -8,6 +8,3 @@ function handleScrolling() {
 window.onscroll = handleScrolling;
 // Activate the functionality of the mobile menu button
 initNavigation();
-
-// In case the page is already scrolled when it is (re-)loaded
-handleScrolling();

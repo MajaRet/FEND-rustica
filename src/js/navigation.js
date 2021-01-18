@@ -14,6 +14,12 @@ const [firstNavOverlayItem] = focusableNavOverlayItems;
 const lastNavOverlayItem =
   focusableNavOverlayItems[focusableNavOverlayItems.length - 1];
 
+// Pages that do not have a transparent navigation bar.
+const whiteNavPages = ["/impressum.html"];
+
+let navBarTransparent = true;
+let transparentNavBarEnabled;
+
 // Partial application of trapFocus to trap focus in the menu overlay.
 const trapMenuFocus = trapFocus.bind(
   null,
@@ -64,6 +70,27 @@ function closeMenu() {
   disableOverlayFocus();
 }
 
+// When the website is scrolled down at all, the navigation turns solid white.
+export function handleNavigationScrolling() {
+  if (window.pageYOffset && navBarTransparent) {
+    navigation.classList.remove("nav--transparent");
+    navigation.classList.add("nav--solid");
+    navBarTransparent = false;
+  } else if (!window.pageYOffset && transparentNavBarEnabled) {
+    navigation.classList.add("nav--transparent");
+    navigation.classList.remove("nav--solid");
+    navBarTransparent = true;
+  }
+}
+
+function initNavBarAppearance() {
+  transparentNavBarEnabled = !whiteNavPages.includes(window.location.pathname);
+  if (transparentNavBarEnabled && !window.pageYOffset) {
+    navigation.classList.add("nav--transparent");
+  } else {
+    navigation.classList.add("nav--solid");
+  }
+}
 function initNavigation() {
   // Adds the mobile menu button's functionality.
   menuButton.onclick = openMenu;
@@ -72,17 +99,7 @@ function initNavigation() {
   menuOverlay.addEventListener("keydown", trapMenuFocus);
   // Initially, the overlay links are not focusable.
   disableOverlayFocus();
-}
-
-// When the website is scrolled down at all, the navigation turns solid white.
-export function handleNavigationScrolling() {
-  if (window.pageYOffset) {
-    navigation.classList.remove("nav--transparent");
-    navigation.classList.add("nav--solid");
-  } else {
-    navigation.classList.add("nav--transparent");
-    navigation.classList.remove("nav--solid");
-  }
+  initNavBarAppearance();
 }
 
 export default initNavigation;
