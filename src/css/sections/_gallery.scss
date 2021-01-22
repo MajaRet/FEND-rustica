@@ -1,3 +1,22 @@
+// TODO:
+// Currently, the layout uses flex order to reorder items because
+// I cannot see a way to put them into individual flex containers in
+// a way that will allow me to recreate the order.
+// CSS Columns does not seem to work with display: flex (so I cannot reorder
+// items) and I have not found a way to make the rows the right size in the
+// mobile layout when using CSS Grid.
+//
+// Because flex order is used, the items are wrapped using flex-wrap.
+// However, that requires the container to have a height, which has
+// to be relative to the gallery's width, i.e. the screen width.
+//
+// The current approach is very hacky and only works if the gallery stretches over
+// the entire page horizontally (because the height is set relative to the viewport width,
+// not the container width).
+// The measurements are also not exact, though I suppose I could make them more exact.
+// Therefore, it is possible that the layout does not work for all screen sizes.
+//
+// So... change it to something better.
 .gallery {
   display: flex;
   justify-content: center;
@@ -5,106 +24,135 @@
   padding-top: 0;
   width: 100%;
 
+  $gallery-gap: 2vw;
   .grid {
-    display: inline-grid;
+    width: 100%;
+    //display: inline-grid;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
+    row-gap: $gallery-gap;
+
+    $num-of-cols: 2;
+    $num-of-rows: 2;
+    $row-gap: $gallery-gap;
+    $column-gap: $gallery-gap;
+
+    //max-height: calc(100vw / 2 * 25 / 12);
+    max-height: computeGalleryHeight(2, 2, $gallery-gap);
+    //max-height: calc((100vw - 2 * 6vw - #{$gallery-column-gap}) * 2.5);
     &__img {
       width: 100%;
       display: block;
     }
 
     // TODO name columns.
-    grid-template-columns: repeat(2, 1fr);
+    //grid-template-columns: repeat(2, 1fr);
 
     // TODO Name rows or ideally find a better solution.
-    gap: 0rem;
+    //gap: 0rem;
 
     &__item {
+      width: calc(50% - #{$gallery-gap});
       &-danish {
-        grid-row: 1 / span 1;
+        //grid-row: 1 / span 1;
       }
 
       &-latte-art-2 {
-        grid-column: 2 / span 1;
-        grid-row: 1 / span 2;
+        //grid-column: 2 / span 1;
+        //grid-row: 1 / span 2;
       }
 
       &-coffee-machine {
-        grid-row: 2 / span 2;
+        //grid-row: 2 / span 2;
       }
 
       &-breakfast {
-        grid-column: 2 / span 1;
-        grid-row: 3 / span 3;
+        //grid-column: 2 / span 1;
+        //grid-row: 3 / span 3;
       }
 
       &-latte-art {
-        grid-row: 4 / span 2;
+        //grid-row: 4 / span 2;
       }
 
       &-coffee-list {
-        grid-column: 2 / span 1;
-        grid-row: 5 / span 2;
+        //grid-column: 2 / span 1;
+        //grid-row: 5 / span 2;
       }
 
       &-sign {
-        grid-row: 6 / span 2;
+        //grid-row: 6 / span 2;
+        flex-basis: 50%;
+        flex-grow: 1;
       }
 
       &-latte-art-3 {
-        grid-column: 2 / span 1;
-        grid-row: 7 / span 1;
+        //grid-column: 2 / span 1;
+        //grid-row: 7 / span 1;
       }
     }
 
     @include respond(media-lg) {
       // TODO name columns.
-      grid-template-columns: repeat(4, 1fr);
+      //grid-template-columns: repeat(4, 1fr);
       // Two main rows with two 'buffer' rows in the middle to
       // account for differing image heights.
       // TODO Name rows or ideally find a better solution.
-      grid-template-rows: repeat(4, max-content);
-      gap: 1.6rem;
+      //grid-template-rows: repeat(4, max-content);
+      //gap: 1.6rem;
+
+      max-height: computeGalleryHeight(1, 4, $gallery-gap);
 
       &__item {
+        width: calc(25% - 3 / 4 *#{$gallery-gap});
         &-danish {
-          grid-column: 1 / span 1;
-          grid-row: 1 / span 2;
+          //grid-column: 1 / span 1;
+          //grid-row: 1 / span 2;
+          order: 1;
         }
 
         &-latte-art-2 {
-          grid-column: 2 / span 1;
-          grid-row: 1 / span 3;
+          //grid-column: 2 / span 1;
+          //grid-row: 1 / span 3;
+          order: 3;
         }
 
         &-coffee-machine {
-          grid-column: 3 / span 1;
-          grid-row: 1 / span 1;
+          //grid-column: 3 / span 1;
+          //grid-row: 1 / span 1;
+          order: 5;
         }
 
         &-coffee-list {
-          grid-column: 4 / span 1;
-          grid-row: 1 / span 3;
+          //grid-column: 4 / span 1;
+          //grid-row: 1 / span 3;
+          order: 7;
         }
 
         &-sign {
-          grid-column: 1 / span 1;
-          grid-row: 3 / span 2;
+          //grid-column: 1 / span 1;
+          //grid-row: 3 / span 2;
+          order: 2;
         }
 
         &-latte-art-3 {
-          grid-column: 2 / span 1;
-          grid-row: 4 / span 1;
+          //grid-column: 2 / span 1;
+          //grid-row: 4 / span 1;
+          order: 4;
         }
 
         &-latte-art {
-          grid-column: 3 / span 1;
-          grid-row: 2 / span 3;
+          //grid-column: 3 / span 1;
+          //grid-row: 2 / span 3;
+          order: 6;
         }
 
         &-breakfast {
-          grid-column: 4 / span 1;
-          grid-row: 4 / span 1;
+          //grid-column: 4 / span 1;
+          //grid-row: 4 / span 1;
+          order: 8;
         }
       }
     }
