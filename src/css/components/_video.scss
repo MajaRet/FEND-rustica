@@ -32,6 +32,15 @@
 
     border-radius: 50%;
     border: none;
+
+    transition: all 300ms ease-out;
+  }
+
+  .playing {
+    opacity: 0;
+  }
+
+  .paused {
     background-color: rgba($color-white, 0.47);
 
     transition: all 300ms ease-out;
@@ -39,20 +48,26 @@
     &:hover {
       background-color: rgba($color-white, 0.7);
     }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      display: block;
+      content: "";
+      width: 30%;
+      height: 35%;
+      background-image: url("../img/Polygon 1.svg");
+      background-size: cover;
+    }
   }
 
-  .play-button--paused {
-    position: absolute;
-    top: 50%;
-    left: 55%;
-    transform: translate(-50%, -50%);
+  .playing {
+    opacity: 0%;
 
-    width: 30%;
-    height: 35%;
-    background-image: url("../img/Polygon 1.svg");
-    background-size: cover;
-  }
-
-  .play-button--playing {
+    &:hover {
+      opacity: 20%;
+    }
   }
 }

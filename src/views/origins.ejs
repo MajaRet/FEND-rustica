@@ -8,19 +8,18 @@
     </header>
     <section class="text"><p>Text</p></section>
     <div class="video-container">
-      <video class="video origins__video">
+      <video class="video origins__video" id="video-origins">
         <source src="../img/close-up-of-dark-roasted.webm" type="video/webm" />
         <source src="../img/close-up-of-dark-roasted.mp4" type="video/mp4" />
         Das Video kann nicht angezeigt werden.
       </video>
       <div class="play-button-container">
-        <button class="play-button">
-          <div class="play-button--paused"></div>
-        </button>
+        <button class="play-button paused" id="play-button-origins"></button>
       </div>
     </div>
 
     <%- include("./partials/footer") %>
     <script src="../js/index.js"></script>
+    <script src="../js/video.js"></script>
   </body>
 </html>
