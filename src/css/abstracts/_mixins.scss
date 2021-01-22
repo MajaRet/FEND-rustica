@@ -84,7 +84,7 @@
     font-size: 4.2rem;
   }
 
-  @include respond(media-xxl) {
+  @include respond(media-xl) {
     font-size: 5rem;
   }
 }
