@@ -7,8 +7,8 @@
       <h1 class="u-sr-only">Das Café</h1>
       <%- include ("./partials/navigation.ejs", {activePage: "cafe"}) %>
     </header>
-    <main class="main">
-      <section class="about u-padding--section" id="about">
+    <main class="main cafe">
+      <section class="about" id="about">
         <div class="about__row about__row-pic-right">
           <div class="about__cell about__cell--text">
             <h2 class="about__heading--secondary">Rösterei & Café</h2>
@@ -78,8 +78,10 @@
           ] }) %>
       </section>
     </main>
-    <%- include ("./partials/map.ejs") %> <%- include ("./partials/footer.ejs")
-    %>
+    <footer class="footer">
+      <%- include ("./partials/map.ejs") %> <%- include
+      ("./partials/footer.ejs") %>
+    </footer>
     <script src="../js/index.js"></script>
   </body>
 </html>
