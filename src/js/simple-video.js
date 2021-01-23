@@ -21,7 +21,6 @@ function playOrPauseVideo(video, playButton) {
   } else {
     playVideo(video, playButton);
   }
-  // TODO Change play button to pause button
 }
 
 playButtons.forEach(function assignPlayListener(btn) {
