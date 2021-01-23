@@ -1,4 +1,4 @@
-.about {
+.text-and-images {
   * {
     color: $color-black;
   }
@@ -21,11 +21,11 @@
     &--pic-left {
       @include respond(media-lg) {
         flex-direction: row-reverse;
-        .about__cell--text {
+        .text-and-images__cell--text {
           padding-left: 5rem;
         }
       }
-      .about__cell--text {
+      .text-and-images__cell--text {
         @include respond(media-xl) {
           padding-top: 5rem;
           padding-left: 10rem;
