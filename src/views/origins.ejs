@@ -7,10 +7,23 @@
       <%- include("./partials/navigation", {activePage: "origins"}) %>
     </header>
     <main class="origins">
-      <section class="text"><p>Text</p></section>
+      <div class="origins__overview">
+        <h2>Der Ursprung von Rustica</h2>
+        <p>
+          Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und
+          Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in
+          Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.
+          Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt
+          sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in
+          dem einem gebratene Satzteile in den Mund fliegen.Nicht einmal von der
+          allmächtigen Interpunktion werden die Blindtexte beherrscht – ein
+          geradezu unorthographisches Leben.
+        </p>
+      </div>
 
-      <!-- prettier-ignore -->
-      <%- include ("./partials/simple-video.ejs", { 
+      <div class="origins__video">
+        <!-- prettier-ignore -->
+        <%- include ("./partials/simple-video.ejs", { 
         video: {
           id: "origins",
           sources: [ 
@@ -19,6 +32,11 @@
           ]
         }
       }) %>
+      </div>
+
+      <div class="origins__text">
+        <h3>Huhuhuhu</h3>
+      </div>
     </main>
     <%- include("./partials/footer") %>
     <script src="../js/index.js"></script>
