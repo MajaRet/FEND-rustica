@@ -1,0 +1,17 @@
+<%# This template creates the HTML markup for a simple custom video player that
+only provides play and pause functionality. To add its functionality, a page
+using this video player must also include the "simple-video.js" script. #%>
+
+<div class="video-container">
+  <video class="video" id="video-<%=locals.video.id%>">
+    <% for(src of locals.video.sources) {%>
+    <source src="<%=src.path%>" type="<%=src.type%>" />
+    <% } %> Das Video kann nicht angezeigt werden.
+  </video>
+  <div class="play-button-container">
+    <button
+      class="play-button paused"
+      id="play-button-<%=locals.video.id%>"
+    ></button>
+  </div>
+</div>

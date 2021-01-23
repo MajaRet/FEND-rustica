@@ -1,6 +1,14 @@
 .video-container {
   position: relative;
 
+  width: 100%;
+
+  .video {
+    display: block;
+
+    width: 100%;
+  }
+
   .play-button-container {
     position: absolute;
     top: 0;

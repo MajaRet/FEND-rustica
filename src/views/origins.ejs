@@ -6,18 +6,20 @@
     <header class="header header--origins">
       <%- include("./partials/navigation", {activePage: "origins"}) %>
     </header>
-    <section class="text"><p>Text</p></section>
-    <div class="video-container">
-      <video class="video origins__video" id="video-origins">
-        <source src="../img/close-up-of-dark-roasted.webm" type="video/webm" />
-        <source src="../img/close-up-of-dark-roasted.mp4" type="video/mp4" />
-        Das Video kann nicht angezeigt werden.
-      </video>
-      <div class="play-button-container">
-        <button class="play-button paused" id="play-button-origins"></button>
-      </div>
-    </div>
+    <main class="origins">
+      <section class="text"><p>Text</p></section>
 
+      <!-- prettier-ignore -->
+      <%- include ("./partials/simple-video.ejs", { 
+        video: {
+          id: "origins",
+          sources: [ 
+            {path: "../img/close-up-of-dark-roasted.webm", type: "video/webm"}, 
+            {path: "../img/close-up-of-dark-roasted.mp4", type:"video/mp4"}
+          ]
+        }
+      }) %>
+    </main>
     <%- include("./partials/footer") %>
     <script src="../js/index.js"></script>
     <script src="../js/simple-video.js"></script>

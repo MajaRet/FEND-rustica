@@ -1,4 +1,6 @@
-.origins__video {
-  @include sectionPadding;
-  width: 100%;
+.origins {
+  .video-container {
+    @include sectionPadding;
+    width: 100%;
+  }
 }
