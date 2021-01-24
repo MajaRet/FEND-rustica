@@ -10,6 +10,11 @@
   font-size: 1.4rem;
   font-weight: 400;
 
+  strong,
+  b {
+    font-weight: 900;
+  }
+
   @include respond(media-md) {
     font-size: 1.6rem;
   }
