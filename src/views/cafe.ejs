@@ -59,21 +59,37 @@
 
       <section class="gallery">
         <!-- prettier-ignore -->
-        <%- include("./partials/image-grid.ejs", 
-        {gridImages: [
-          {src: "FEND-danish 1", alt: "Dänisches Gebäck", id: "danish"},
-          {src: "FEND-Coffee-latte-art-2", alt: "Vier Tassen Kaffee mit Kaffeekunst", id: "latte-art-2"},
-          {src: "FEND-coffee-machine", alt: "Kaffeemaschine", id: "coffee-machine"},
-          {src: "FEND-coffee-list", alt: "Menü", id: "coffee-list"},
-          {src: "FEND-Coffee-sign", alt: "Dekoratives Schild", id: "sign"},
-          {
-            src: "FEND-Coffee-latte-art-3", 
-            alt: "Zwei Kaffeetassen und ein Colaglas, mit denen angestoßen wird", 
-            id: "latte-art-3"
-          },
-          {src: "FEND-Coffee-latte-art", alt: "Kaffeekunst", id: "latte-art"},
-          {src: "FEND-coffee-breakfast 1", alt: "Frühstück mit Kaffee", id: "breakfast"}
-          ] }) %>
+        <div class="gallery__block">
+          <div class="gallery__column">
+            <img src="../img/FEND-danish 1.jpg" alt="Dänisches Gebäck">
+            <img src="../img/FEND-Coffee-sign.jpg" alt="">
+          </div>
+          <div class="gallery__column">
+            <img src="../img/FEND-Coffee-latte-art-2.jpg" alt="Dänisches Gebäck">
+            <img src="../img/FEND-Coffee-latte-art-3.jpg" alt="">
+          </div>
+        </div>
+        <div class="gallery__block">
+          <div class="gallery__column">
+            <img src="../img/FEND-coffee-machine.jpg" alt="Dänisches Gebäck" />
+            <img src="../img/FEND-Coffee-latte-art.jpg" alt="" />
+          </div>
+          <div class="gallery__column">
+            <img src="../img/FEND-coffee-list.jpg" alt="Dänisches Gebäck" />
+            <img src="../img/FEND-coffee-breakfast 1.jpg" alt="" />
+          </div>
+        </div>
+        <%#- include("./partials/image-grid.ejs", {gridImages: [ {src:
+        "FEND-danish 1", alt: "Dänisches Gebäck", id: "danish"}, {src:
+        "FEND-Coffee-latte-art-2", alt: "Vier Tassen Kaffee mit Kaffeekunst",
+        id: "latte-art-2"}, {src: "FEND-coffee-machine", alt: "Kaffeemaschine",
+        id: "coffee-machine"}, {src: "FEND-coffee-list", alt: "Menü", id:
+        "coffee-list"}, {src: "FEND-Coffee-sign", alt: "Dekoratives Schild", id:
+        "sign"}, { src: "FEND-Coffee-latte-art-3", alt: "Zwei Kaffeetassen und
+        ein Colaglas, mit denen angestoßen wird", id: "latte-art-3" }, {src:
+        "FEND-Coffee-latte-art", alt: "Kaffeekunst", id: "latte-art"}, {src:
+        "FEND-coffee-breakfast 1", alt: "Frühstück mit Kaffee", id: "breakfast"}
+        ] }) #%>
       </section>
     </main>
     <footer class="footer">
