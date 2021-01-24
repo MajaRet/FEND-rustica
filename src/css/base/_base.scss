@@ -13,6 +13,6 @@ body {
   box-sizing: border-box;
 }
 
-section {
-  @include sectionPadding;
+.learn-more-link {
+  @include hoverUnderline;
 }

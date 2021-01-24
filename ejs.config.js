@@ -4,5 +4,6 @@ module.export = {
     activePage: "index",
     gridImages: [],
     products: [],
+    video: null,
   },
 };

@@ -10,6 +10,11 @@
   font-size: 1.4rem;
   font-weight: 400;
 
+  strong,
+  b {
+    font-weight: 900;
+  }
+
   @include respond(media-md) {
     font-size: 1.6rem;
   }
@@ -91,19 +96,115 @@
 
 // PADDING
 
-@mixin sectionPadding {
-  padding: $padding-media-sm-vertical $padding-media-sm-horizontal;
+@mixin sectionPaddingSides {
+  padding-left: $padding-media-sm-horizontal;
+  padding-right: $padding-media-sm-horizontal;
 
   @include respond(media-md) {
-    padding: $padding-media-md-vertical $padding-media-md-horizontal;
+    padding-left: $padding-media-md-horizontal;
+    padding-right: $padding-media-md-horizontal;
   }
 
   @include respond(media-lg) {
-    padding: $padding-media-lg-vertical $padding-media-lg-horizontal;
+    padding-left: $padding-media-lg-horizontal;
+    padding-right: $padding-media-lg-horizontal;
   }
 
   @include respond(media-xl) {
-    padding: $padding-media-xl-vertical $padding-media-xl-horizontal;
+    padding-left: $padding-media-xl-horizontal;
+    padding-right: $padding-media-xl-horizontal;
+  }
+}
+
+@mixin sectionPaddingTop {
+  padding-top: $padding-media-sm-vertical;
+
+  @include respond(media-md) {
+    padding-top: $padding-media-md-vertical;
+  }
+
+  @include respond(media-lg) {
+    padding-top: $padding-media-lg-vertical;
+  }
+
+  @include respond(media-xl) {
+    padding-top: $padding-media-xl-vertical;
+  }
+}
+
+@mixin sectionPaddingBottom {
+  padding-bottom: $padding-media-sm-vertical;
+
+  @include respond(media-md) {
+    padding-bottom: $padding-media-md-vertical;
+  }
+
+  @include respond(media-lg) {
+    padding-bottom: $padding-media-lg-vertical;
+  }
+
+  @include respond(media-xl) {
+    padding-bottom: $padding-media-xl-vertical;
+  }
+}
+
+@mixin sectionPaddingSidesAndBottom {
+  @include sectionPaddingSides;
+  @include sectionPaddingBottom;
+}
+
+@mixin sectionPadding {
+  @include sectionPaddingSidesAndBottom;
+  @include sectionPaddingTop;
+}
+
+@mixin standardPagePadding {
+  > * {
+    @include sectionPaddingSidesAndBottom;
+  }
+
+  > *:first-child {
+    @include sectionPaddingTop;
+  }
+}
+
+// LINKS
+
+// Underline on hover (black by default)
+@mixin hoverUnderline {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    height: 1px;
+    width: 0;
+
+    background-color: $color-black;
+
+    transition: width 0.3s ease-out;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &:active {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+@mixin underlineStyle {
+  &::after {
+    @content;
   }
 }
 

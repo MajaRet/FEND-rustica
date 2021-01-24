@@ -1,12 +1,4 @@
 .footer {
-  @include sectionPadding;
-
-  * {
-    color: $color-white;
-  }
-
-  background-color: $color-black;
-
   .logo-svg {
     height: 3.5rem;
     width: 3.5rem;
@@ -20,10 +12,18 @@
   }
 
   &__container {
+    @include sectionPadding;
+
     display: grid;
 
     grid-template-rows: repeat(5, auto);
     grid-template-columns: repeat(2, 1fr);
+
+    * {
+      color: $color-white;
+    }
+
+    background-color: $color-black;
 
     @include respond(media-lg) {
       grid-auto-flow: column;
@@ -74,6 +74,15 @@
     .item--business-hours {
       @include respond(media-lg) {
         margin-top: 5px;
+      }
+    }
+
+    // Links in the footer are underlined on hover.
+    .item--navlist a,
+    .item--legal a {
+      @include hoverUnderline;
+      @include underlineStyle {
+        background-color: $color-white;
       }
     }
 

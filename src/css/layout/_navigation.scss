@@ -31,39 +31,18 @@
   .menu-link {
     font-size: 1.8rem;
     font-weight: 500;
-    position: relative;
 
     @include respond(media-xxl) {
       font-size: 2.4rem;
     }
 
-    &::after {
-      content: "";
-      position: absolute;
-      height: 1px;
-      width: 0;
-      left: 0;
-      bottom: 0;
-      transition: width 0.3s ease-out;
-    }
-
-    &:hover {
-      &::after {
-        width: 100%;
-      }
-    }
-
-    &:active {
-      &::after {
-        width: 100%;
-      }
-    }
+    @include hoverUnderline;
   }
 
   .active {
     .menu-link {
       // The active page is underlined.
-      &::after {
+      @include underlineStyle {
         width: 100%;
       }
     }
@@ -97,7 +76,7 @@
       color: $color-white;
 
       // Set the color of the marker underline to white.
-      &::after {
+      @include underlineStyle {
         background-color: $color-white;
       }
     }
@@ -112,11 +91,6 @@
     background-position: top;
     .menu-link {
       color: $color-black;
-
-      // Set the color of the marker underline to black
-      &::after {
-        background-color: $color-black;
-      }
     }
 
     .nav__logo {
@@ -199,7 +173,7 @@
         color: $color-white;
 
         // Set the color of the marker underline to white
-        &::after {
+        @include underlineStyle {
           background-color: $color-white;
           height: 3px;
         }

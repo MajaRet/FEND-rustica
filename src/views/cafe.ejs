@@ -7,44 +7,42 @@
       <h1 class="u-sr-only">Das Café</h1>
       <%- include ("./partials/navigation.ejs", {activePage: "cafe"}) %>
     </header>
-    <main class="main">
-      <section class="about u-padding--section" id="about">
-        <div class="about__row about__row-pic-right">
-          <div class="about__cell about__cell--text">
-            <h2 class="about__heading--secondary">Rösterei & Café</h2>
-            <p class="about__text">
+    <main class="main cafe">
+      <section class="text-and-images">
+        <div class="text-and-images__row text-and-images__row-pic-right">
+          <div class="text-and-images__cell text-and-images__cell--text">
+            <h2 class="text-heading--secondary">Rösterei & Café</h2>
+            <p class="text-and-images__text">
               Kaffee aus Kiel, direkt gehandelt und geröstet in der eigenen
               Rösterei, serviert im gemütlichen Café in der Innenstadt.
             </p>
-            <div class="about__subrow">
-              <div class="about__subcell">
-                <p class="about__text">
+            <div class="text-and-images__subrow">
+              <div class="text-and-images__subcell">
+                <p class="text-and-images__text">
                   Komm vorbei! <br />
                   Fraunhoferstr. 13, Kiel
                 </p>
               </div>
-              <div class="about__subcell">
-                <p class="about__text">
+              <div class="text-and-images__subcell">
+                <p class="text-and-images__text">
                   Mo – Fr 8–18 Uhr <br />
                   Sa 11–18 Uhr
                 </p>
               </div>
             </div>
           </div>
-          <div class="about__cell about__cell--image">
+          <div class="text-and-images__cell text-and-images__cell--image">
             <img
               src="../img/FEND-Coffee-machine-2.jpg"
               alt="Cafè-Inneres"
-              class="about__img"
+              class="text-and-images__img"
             />
           </div>
         </div>
-        <div class="about__row about__row--single-cell">
-          <div class="about__cell about__cell--text">
-            <h3 class="about__heading--tertiary">
-              Frisches Gebäck von nebenan
-            </h3>
-            <p class="about__text">
+        <div class="text-and-images__row text-and-images__row--single-cell">
+          <div class="text-and-images__cell text-and-images__cell--text">
+            <h3 class="text-heading--tertiary">Frisches Gebäck von nebenan</h3>
+            <p class="text-and-images__text">
               Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf
               es einen letzten Blick zurück auf die Skyline seiner Heimatstadt
               Buchstabhausen, die Headline von Alphabetdorf. Wehmütig lief ihm
@@ -78,8 +76,10 @@
           ] }) %>
       </section>
     </main>
-    <%- include ("./partials/map.ejs") %> <%- include ("./partials/footer.ejs")
-    %>
+    <footer class="footer">
+      <%- include ("./partials/map.ejs") %> <%- include
+      ("./partials/footer.ejs") %>
+    </footer>
     <script src="../js/index.js"></script>
   </body>
 </html>

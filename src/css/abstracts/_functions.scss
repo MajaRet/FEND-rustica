@@ -1,5 +1,6 @@
 @function computeGalleryHeight($rows, $cols, $gap) {
   @return calc(
-    (100vw - (#{$cols} - 1) * #{$gap}) / #{$cols} * #{$rows} * 25 / 12
+    (100vw - (#{$cols} - 1) * #{$gap}) / #{$cols} * #{$rows} * 25 / 12 +
+      (#{$rows} - 1) * #{$gap}
   );
 }
