@@ -1,6 +1,27 @@
+.text-heading--secondary {
+  margin-bottom: 2rem;
+  @include respond(media-lg) {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.text-heading--tertiary {
+  margin-bottom: 1.2rem;
+  @include respond(media-md) {
+    margin-bottom: 1.8rem;
+  }
+  @include respond(media-lg) {
+    margin-bottom: 2.4rem;
+  }
+}
+
 .text-and-images {
   * {
     color: $color-black;
+  }
+
+  .text-heading--tertiary {
+    width: 75%;
   }
   &__row {
     display: flex;
@@ -73,24 +94,6 @@
 
     &:not(:last-child) {
       margin-right: 0.8rem;
-    }
-  }
-
-  &__heading--secondary {
-    margin-bottom: 2rem;
-    @include respond(media-lg) {
-      margin-bottom: 3.5rem;
-    }
-  }
-
-  &__heading--tertiary {
-    margin-bottom: 1.2rem;
-    width: 75%;
-    @include respond(media-md) {
-      margin-bottom: 1.8rem;
-    }
-    @include respond(media-lg) {
-      margin-bottom: 2.4rem;
     }
   }
 
