@@ -1,28 +1,26 @@
-let playing = false;
 const playButtons = document.querySelectorAll(".play-button");
 
 function playVideo(video, playButton) {
-  playing = true;
   video.play();
   playButton.classList.add("playing");
   playButton.classList.remove("paused");
 }
 
 function pauseVideo(video, playButton) {
-  playing = false;
   video.pause();
   playButton.classList.add("paused");
   playButton.classList.remove("playing");
 }
 
 function playOrPauseVideo(video, playButton) {
-  if (playing) {
+  if (playButton.classList.contains("playing")) {
     pauseVideo(video, playButton);
   } else {
     playVideo(video, playButton);
   }
 }
 
+// Add listeners for playback controls for each video
 playButtons.forEach(function assignPlayListener(btn) {
   const video = document.getElementById(
     `video-${btn.id.slice("play-button-".length)}`
