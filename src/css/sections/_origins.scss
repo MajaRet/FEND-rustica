@@ -27,7 +27,9 @@
     margin-top: 3.5rem;
   }
 
-  a {
-    text-decoration: none;
+  .learn-more-link {
+    @include underlineStyle {
+      background-color: $color-white;
+    }
   }
 }
