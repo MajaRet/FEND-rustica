@@ -1,6 +1,27 @@
-.about {
+.text-heading--secondary {
+  margin-bottom: 2rem;
+  @include respond(media-lg) {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.text-heading--tertiary {
+  margin-bottom: 1.2rem;
+  @include respond(media-md) {
+    margin-bottom: 1.8rem;
+  }
+  @include respond(media-lg) {
+    margin-bottom: 2.4rem;
+  }
+}
+
+.text-and-images {
   * {
     color: $color-black;
+  }
+
+  .text-heading--tertiary {
+    width: 75%;
   }
   &__row {
     display: flex;
@@ -21,11 +42,11 @@
     &--pic-left {
       @include respond(media-lg) {
         flex-direction: row-reverse;
-        .about__cell--text {
+        .text-and-images__cell--text {
           padding-left: 5rem;
         }
       }
-      .about__cell--text {
+      .text-and-images__cell--text {
         @include respond(media-xl) {
           padding-top: 5rem;
           padding-left: 10rem;
@@ -76,24 +97,6 @@
     }
   }
 
-  &__heading--secondary {
-    margin-bottom: 2rem;
-    @include respond(media-lg) {
-      margin-bottom: 3.5rem;
-    }
-  }
-
-  &__heading--tertiary {
-    margin-bottom: 1.2rem;
-    width: 75%;
-    @include respond(media-md) {
-      margin-bottom: 1.8rem;
-    }
-    @include respond(media-lg) {
-      margin-bottom: 2.4rem;
-    }
-  }
-
   &__text {
     @include respond(media-lg) {
       width: 75%;
@@ -102,9 +105,5 @@
     &:not(:last-child) {
       margin-bottom: 2rem;
     }
-  }
-
-  .learn-more-link {
-    text-decoration: none;
   }
 }

@@ -77,6 +77,15 @@
       }
     }
 
+    // Links in the footer are underlined on hover.
+    .item--navlist a,
+    .item--legal a {
+      @include hoverUnderline;
+      @include underlineStyle {
+        background-color: $color-white;
+      }
+    }
+
     // Allow navigation list to go into an extra row in case there
     // are many elements in the navigation.
     .item--navlist {

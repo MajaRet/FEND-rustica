@@ -5,12 +5,10 @@
   @include sectionPadding;
 
   h2 {
-    margin-bottom: 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 
     @include respond(media-lg) {
-      margin-bottom: 4rem;
-      margin-top: 3.5rem;
+      margin-top: 4rem;
     }
   }
 

@@ -10,6 +10,11 @@
   font-size: 1.4rem;
   font-weight: 400;
 
+  strong,
+  b {
+    font-weight: 900;
+  }
+
   @include respond(media-md) {
     font-size: 1.6rem;
   }
@@ -84,7 +89,7 @@
     font-size: 4.2rem;
   }
 
-  @include respond(media-xxl) {
+  @include respond(media-xl) {
     font-size: 5rem;
   }
 }
@@ -160,6 +165,46 @@
 
   > *:first-child {
     @include sectionPaddingTop;
+  }
+}
+
+// LINKS
+
+// Underline on hover (black by default)
+@mixin hoverUnderline {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    height: 1px;
+    width: 0;
+
+    background-color: $color-black;
+
+    transition: width 0.3s ease-out;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &:active {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+@mixin underlineStyle {
+  &::after {
+    @content;
   }
 }
 
