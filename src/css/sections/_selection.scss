@@ -1,7 +1,7 @@
-// The space between the selection elements.
-$vertical-space: 4rem;
+.section--selection {
+  // The space between the selection elements.
+  $vertical-space: 4rem;
 
-.selection {
   * {
     color: $color-white;
   }
