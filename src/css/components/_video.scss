@@ -9,7 +9,7 @@
     width: 100%;
   }
 
-  .play-button-container {
+  .video__overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -94,12 +94,14 @@
   }
 
   // Show the pause button a little when the video is moused over.
-  &:hover .playing {
-    opacity: 20%;
+  &:hover {
+    .playing {
+      opacity: 20%;
 
-    // Make the pause button even more visible when it is moused over.
-    &:hover {
-      opacity: 40%;
+      // Make the pause button even more visible when it is moused over.
+      &:hover {
+        opacity: 40%;
+      }
     }
   }
 }

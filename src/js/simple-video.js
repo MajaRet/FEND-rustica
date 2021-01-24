@@ -13,10 +13,10 @@ function pauseVideo(video, playButton) {
 }
 
 function playOrPauseVideo(video, playButton) {
-  if (playButton.classList.contains("playing")) {
-    pauseVideo(video, playButton);
-  } else {
+  if (video.paused) {
     playVideo(video, playButton);
+  } else {
+    pauseVideo(video, playButton);
   }
 }
 
