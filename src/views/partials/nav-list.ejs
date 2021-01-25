@@ -5,7 +5,8 @@ argument. %>
   <!-- prettier-ignore -->
   <% [ {name: "das Café", target: "cafe"}, 
        {name: "Herkunft", target: "origins"},
-       {name: "Shop", target: "shop"}].forEach(function(item){ %>
+       {name: "Shop", target: "shop"},
+       {name: "Kontakt", target: "contact"}].forEach(function(item){ %>
   <li
     <%if (locals.activePage == item.target ) { %> aria-current="page" <% } %>
     class="menu-item <%if (locals.activePage == item.target ) { 

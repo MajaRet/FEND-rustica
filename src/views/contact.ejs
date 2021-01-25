@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+  <%- include("./partials/head", {title: "Kontakt | Rustica Kaffeerösterei"}) %>
+  <body>
+    <header>
+      <h1 class="u-sr-only">Kontakt</h1>
+      <%- include("./partials/navigation", {activePage: "contact"}) %>
+    </header>
+    <main class="contact">
+      <h2 class="text-heading--secondary">
+        Du hast Fragen?<br />
+        Schreib uns gern!
+      </h2>
+      <form class="contact-form">
+        <label for="name">Name*</label>
+        <input type="text" id="name" name="name" placeholder="Name" required />
+        <hr />
+        <label for="email">E-Mail*</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="E-Mail"
+          required
+        />
+        <hr />
+        <label for="tel">Telefonnummer</label>
+        <input type="text" id="tel" name="tel" placeholder="Telefonnummer" />
+        <hr />
+        <label for="reason">Dein Betreff</label>
+        <select id="reason" name="reason">
+          <option value="shipment-question">Fragen zur Lieferung</option>
+          <option value="product-question">Fragen zum Produkt</option>
+          <option value="sales-question">Vertriebsfragen</option>
+          <option value="none">Einfach nur so!</option>
+        </select>
+        <label for="message">Deine Nachricht</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Was hast du auf dem Herzen?"
+        ></textarea>
+        <hr />
+        <div class="privacy-checkbox">
+          <input
+            type="checkbox"
+            id="privacy-checkbox"
+            name="privacy-checkbox"
+          />
+          <label for="privacy-checkbox"
+            >Ich akzeptiere die Datenschutzerklärung</label
+          >
+        </div>
+        <input type="submit" value="abschicken" class="button button--dark" />
+      </form>
+    </main>
+    <footer class="footer"><%- include("./partials/footer") %></footer>
+    <script src="../js/index.js"></script>
+  </body>
+</html>
