@@ -1,0 +1,62 @@
+.slider {
+  position: relative;
+
+  &__elem {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: none;
+
+    width: 100%;
+  }
+
+  &__button {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    font-size: 10rem;
+    opacity: 50%;
+    transition: opacity 300ms ease-out;
+
+    &:hover {
+      opacity: 100%;
+    }
+
+    @include respond(media-xl) {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+
+      &--left {
+        left: -7rem;
+      }
+
+      &--right {
+        right: -7rem;
+      }
+    }
+  }
+
+  .active {
+    position: initial;
+    transform: translateX(0);
+    display: inline-block;
+    transition: all 600ms ease-out;
+  }
+
+  .left {
+    transform: translateX(-100vw);
+    display: inline-block;
+    transition: all 600ms ease-out;
+  }
+
+  .right {
+    position: absolute;
+    transform: translateX(100vw);
+    top: 0;
+    z-index: 50;
+    display: unset;
+    transition: all 600ms ease-out;
+  }
+}
