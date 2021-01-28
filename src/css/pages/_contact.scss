@@ -1,0 +1,142 @@
+.contact {
+  @include sectionPadding;
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 7.5rem;
+
+  @include respond(media-lg) {
+    margin-top: 10rem;
+  }
+
+  @include respond(media-md) {
+    flex-direction: row;
+    justify-content: center;
+
+    h2,
+    form {
+      width: 50%;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .required:invalid {
+      background-color: rgba(red, 0.3);
+
+      &::placeholder {
+        opacity: 1;
+        color: red;
+      }
+    }
+
+    input[type="submit"],
+    label,
+    .privacy-checkbox,
+    .select-container {
+      margin-top: 4rem;
+    }
+
+    .privacy-checkbox {
+      display: flex;
+      align-items: center;
+      column-gap: 1rem;
+
+      * {
+        margin-top: 0;
+      }
+    }
+
+    .select-container {
+      .select-arrow {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        height: 100%;
+        width: 100%;
+
+        // Allow a click on this container to open the select element
+        pointer-events: none;
+
+        &::after {
+          content: "›";
+
+          transform: rotate(90deg);
+
+          margin-right: 2rem;
+
+          font-size: 4rem;
+          color: $color-white;
+        }
+      }
+
+      position: relative;
+      select {
+        appearance: none;
+
+        border: none;
+        border-radius: 5px;
+
+        color: $color-white;
+
+        background-color: $color-black;
+
+        option {
+          color: $color-black;
+
+          background-color: $color-white;
+        }
+      }
+
+      // Changes the arrow direction when the select element receives focus.
+      // Not ideal because it applies whenever it has focus, not just when
+      // the options are open.
+      select:focus + .select-arrow::after {
+        transform: rotate(-90deg);
+
+        // Needs to be changed because the rotated >
+        // is asymmetrical.
+        margin-right: 3rem;
+      }
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      margin-left: auto;
+      margin-right: auto;
+      border: none;
+      border-bottom: 1px solid $color-black;
+      width: 100%;
+      padding: 1.5rem 2rem;
+
+      @include respond(media-lg) {
+        padding: 1.5rem 2.5rem;
+      }
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      margin-top: 1.5rem;
+    }
+
+    textarea {
+      margin-top: 4.5rem;
+    }
+
+    .button {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

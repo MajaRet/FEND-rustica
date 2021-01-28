@@ -15,7 +15,7 @@ const lastNavOverlayItem =
   focusableNavOverlayItems[focusableNavOverlayItems.length - 1];
 
 // Pages that do not have a transparent navigation bar.
-const whiteNavPages = ["/impressum.html"];
+const whiteNavPages = ["/impressum.html", "/contact.html"];
 
 let navBarTransparent = true;
 let transparentNavBarEnabled;
