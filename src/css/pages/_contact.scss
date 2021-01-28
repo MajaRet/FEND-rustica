@@ -3,6 +3,12 @@
   display: flex;
   flex-direction: column;
 
+  margin-top: 7.5rem;
+
+  @include respond(media-lg) {
+    margin-top: 10rem;
+  }
+
   @include respond(media-md) {
     flex-direction: row;
     justify-content: center;
