@@ -32,9 +32,10 @@
       }
     }
 
-    label,
     input[type="submit"],
-    .privacy-checkbox {
+    label,
+    .privacy-checkbox,
+    .select-container {
       margin-top: 4rem;
     }
 
@@ -48,46 +49,84 @@
       }
     }
 
-    hr {
-      margin-top: 1rem;
-      border-top: solid 3px $color-anthracite;
-    }
+    .select-container {
+      .select-arrow {
+        position: absolute;
+        right: 0;
+        top: 0;
 
-    select {
-      appearance: none;
-      border: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
 
-      &:focus {
-        background-color: green;
-      }
+        height: 100%;
+        width: 100%;
 
-      option {
-        color: beige;
-        outline: none;
-        &:hover {
-          background: none;
-          outline: none;
+        // Allow a click on this container to open the select element
+        pointer-events: none;
+
+        &::after {
+          content: "›";
+
+          transform: rotate(90deg);
+
+          margin-right: 2rem;
+
+          font-size: 4rem;
+          color: $color-white;
         }
       }
+
+      position: relative;
+      select {
+        appearance: none;
+
+        border: none;
+        border-radius: 5px;
+
+        color: $color-white;
+
+        background-color: $color-black;
+
+        option {
+          color: $color-black;
+
+          background-color: $color-white;
+        }
+      }
+
+      // Changes the arrow direction when the select element receives focus.
+      // Not ideal because it applies whenever it has focus, not just when
+      // the options are open.
+      select:focus + .select-arrow::after {
+        transform: rotate(-90deg);
+
+        // Needs to be changed because the rotated >
+        // is asymmetrical.
+        margin-right: 3rem;
+      }
     }
 
-    textarea,
-    input[type="text"] {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
       margin-left: auto;
       margin-right: auto;
       border: none;
+      border-bottom: 1px solid $color-black;
       width: 100%;
+      padding: 1.5rem 2rem;
 
-      &::placeholder {
-        padding-left: 2rem;
-
-        @include respond(media-lg) {
-          padding-left: 3rem;
-        }
+      @include respond(media-lg) {
+        padding: 1.5rem 2.5rem;
       }
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
       margin-top: 1.5rem;
     }
 

@@ -14,38 +14,44 @@
       <form class="contact-form">
         <label for="name">Name*</label>
         <input type="text" id="name" name="name" placeholder="Name" required />
-        <hr />
+
         <label for="email">E-Mail*</label>
         <input
-          type="text"
+          type="email"
           id="email"
           name="email"
           placeholder="E-Mail"
           required
         />
-        <hr />
+
         <label for="tel">Telefonnummer</label>
-        <input type="text" id="tel" name="tel" placeholder="Telefonnummer" />
-        <hr />
-        <label for="reason">Dein Betreff</label>
-        <select id="reason" name="reason">
-          <option value="shipment-question">Fragen zur Lieferung</option>
-          <option value="product-question">Fragen zum Produkt</option>
-          <option value="sales-question">Vertriebsfragen</option>
-          <option value="none">Einfach nur so!</option>
-        </select>
+        <input type="tel" id="tel" name="tel" placeholder="Telefonnummer" />
+
+        <!-- <label for="reason">Dein Betreff</label> -->
+        <div class="select-container">
+          <select id="reason" name="reason" class="reason-select" required>
+            <option value="" disabled selected hidden>Dein Betreff</option>
+            <option value="shipment-question">Fragen zur Lieferung</option>
+            <option value="product-question">Fragen zum Produkt</option>
+            <option value="sales-question">Vertriebsfragen</option>
+            <option value="none">Einfach nur so!</option>
+          </select>
+          <div class="select-arrow"></div>
+        </div>
         <label for="message">Deine Nachricht</label>
         <textarea
           id="message"
           name="message"
+          rows="6"
           placeholder="Was hast du auf dem Herzen?"
         ></textarea>
-        <hr />
+
         <div class="privacy-checkbox">
           <input
             type="checkbox"
             id="privacy-checkbox"
             name="privacy-checkbox"
+            required
           />
           <label for="privacy-checkbox"
             >Ich akzeptiere die Datenschutzerklärung</label
