@@ -17,6 +17,15 @@
     display: flex;
     flex-direction: column;
 
+    .required:invalid {
+      background-color: rgba(red, 0.3);
+
+      &::placeholder {
+        opacity: 1;
+        color: red;
+      }
+    }
+
     label,
     input[type="submit"],
     .privacy-checkbox {
@@ -38,12 +47,38 @@
       border-top: solid 3px $color-anthracite;
     }
 
+    select {
+      appearance: none;
+      border: none;
+
+      &:focus {
+        background-color: green;
+      }
+
+      option {
+        color: beige;
+        outline: none;
+        &:hover {
+          background: none;
+          outline: none;
+        }
+      }
+    }
+
     textarea,
     input[type="text"] {
-      border: none;
-      width: 90%;
       margin-left: auto;
       margin-right: auto;
+      border: none;
+      width: 100%;
+
+      &::placeholder {
+        padding-left: 2rem;
+
+        @include respond(media-lg) {
+          padding-left: 3rem;
+        }
+      }
     }
 
     input[type="text"] {
