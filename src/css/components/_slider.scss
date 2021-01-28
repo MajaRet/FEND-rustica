@@ -86,7 +86,7 @@
 
     text-decoration: none;
 
-    font-size: 6rem;
+    font-size: 8rem;
 
     @include respond(media-md) {
       font-size: 10rem;
@@ -94,7 +94,7 @@
 
     @include respond(media-xl) {
       position: absolute;
-      top: 40%;
+      top: 30%;
       transform: translateY(-50%);
 
       &--left {
