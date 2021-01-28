@@ -1,5 +1,6 @@
-@import "abstracts/variables";
+@import "abstracts/animations";
 @import "abstracts/mixins";
+@import "abstracts/variables";
 
 @import "base/base";
 @import "base/typography";
@@ -7,6 +8,7 @@
 
 @import "components/button";
 @import "components/map";
+@import "components/slider";
 @import "components/video";
 
 @import "layout/footer";

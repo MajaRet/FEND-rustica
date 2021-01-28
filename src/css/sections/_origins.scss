@@ -4,6 +4,8 @@
   flex-direction: column;
   justify-content: center;
 
+  overflow: hidden;
+
   height: 50vh;
   min-height: 250px;
 
@@ -21,7 +23,9 @@
 
   background-position: center;
   background-size: cover;
-  * {
+  p,
+  h3,
+  a {
     text-align: center;
     color: $color-white;
     margin-top: 3.5rem;
