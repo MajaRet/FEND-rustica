@@ -1,7 +1,4 @@
 .section--selection {
-  // The space between the selection elements.
-  $vertical-space: 4rem;
-
   * {
     color: $color-white;
   }
@@ -12,23 +9,19 @@
   background-color: $color-anthracite;
 
   &__group-of-four {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    // Offset the top margin of the individual elements.
-    margin-top: -$vertical-space;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4rem;
     width: 100%;
+
+    @include respond(media-xl) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(1, auto);
+    }
   }
 
   &__elem {
-    margin-top: $vertical-space;
-    width: 40vw;
-
-    @include respond(media-xl) {
-      width: 20vw;
-    }
-
     .coffee-text {
       div:not(:last-child) {
         margin-bottom: 0.8rem;
