@@ -1,13 +1,10 @@
-function dothing() {
-  this.querySelectorAll("input[required]").forEach(function (field) {
-    field.classList.add("required");
-  });
-}
-
-document.querySelectorAll("form").forEach(function (form) {
+document.querySelectorAll("form").forEach((form) => {
   const submitButton = form.querySelector("input[type=submit]");
   if (submitButton) {
-    // const requiredFields = form.querySelector("input[required]");
-    submitButton.addEventListener("click", dothing.bind(form));
+    submitButton.addEventListener("click", () =>
+      form.querySelectorAll("input[required]").forEach((field) => {
+        field.classList.add("required");
+      })
+    );
   }
 });
