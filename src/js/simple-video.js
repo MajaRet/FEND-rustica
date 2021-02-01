@@ -1,32 +1,40 @@
-const playButtons = document.querySelectorAll(".play-button");
-
-function playVideo(video, playButton) {
+function playVideo() {
+  const { video, playButton } = this;
   video.play();
   playButton.classList.add("playing");
   playButton.classList.remove("paused");
 }
 
-function pauseVideo(video, playButton) {
+function pauseVideo() {
+  const { video, playButton } = this;
   video.pause();
   playButton.classList.add("paused");
   playButton.classList.remove("playing");
 }
 
-function playOrPauseVideo(video, playButton) {
+function togglePlay() {
+  const { video } = this;
   if (video.paused) {
-    playVideo(video, playButton);
+    this.playVideo();
   } else {
-    pauseVideo(video, playButton);
+    this.pauseVideo();
   }
 }
 
-// Add listeners for playback controls for each video
-playButtons.forEach(function assignPlayListener(btn) {
-  const video = document.getElementById(
-    `video-${btn.id.slice("play-button-".length)}`
-  );
-  // When the play button is clicked, toggle play/pause.
-  btn.addEventListener("click", playOrPauseVideo.bind(null, video, btn));
-  // Also perform the pausing actions when the video ends.
-  video.addEventListener("ended", pauseVideo.bind(null, video, btn));
+const simpleVideoContainers = document.querySelectorAll(".simple-video");
+
+simpleVideoContainers.forEach(function assignVideoListeners(svc) {
+  const video = svc.querySelector("video");
+  const playButton = svc.querySelector(".play-button");
+  const videoObj = { video, playButton, playVideo, pauseVideo, togglePlay };
+
+  // Add listeners to the play button so playback can be toggled
+  // with a click or the Space bar.
+  playButton.addEventListener("click", togglePlay.bind(videoObj));
+  playButton.addEventListener("keydown", (e) => {
+    if (e.key === "space") togglePlay.bind(videoObj);
+  });
+
+  // Add event listener to pause the video when it ends.
+  video.addEventListener("ended", pauseVideo.bind(videoObj));
 });
