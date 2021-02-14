@@ -45,7 +45,7 @@ function openMenu() {
   closeButton.classList.remove("u-hidden");
   menuButton.classList.add("u-hidden");
   // Disable vertical scrolling
-  document.body.classList.add("u-disable-scroll");
+  document.querySelector("html").classList.add("u-disable-scroll");
 
   menuOverlay.ariaHidden = false;
   // Scroll to the top of the menu overlay in case it was scrolled down before.
@@ -60,7 +60,7 @@ function closeMenu() {
   closeButton.classList.add("u-hidden");
   menuButton.classList.remove("u-hidden");
   // Enable vertical scrolling
-  document.body.classList.remove("u-disable-scroll");
+  document.querySelector("html").classList.remove("u-disable-scroll");
 
   menuOverlay.ariaHidden = true;
 
