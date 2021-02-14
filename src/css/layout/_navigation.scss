@@ -166,21 +166,6 @@
 
   // Styles for the navigation overlay
   &--overlay {
-    position: absolute;
-    left: 100vw;
-    top: 0;
-    z-index: 50;
-
-    width: 100vw;
-    max-width: 100%;
-    height: 100vh;
-
-    background-color: $color-black;
-
-    overflow: scroll;
-
-    transition: left 0.3s ease-out;
-
     .nav__list {
       position: absolute;
       left: 15%;
@@ -206,13 +191,6 @@
         }
       }
     }
-  }
-}
-
-// Styles for the mobile menu overlay
-.mobile-menu-open {
-  .nav--overlay {
-    left: 0;
   }
 }
 

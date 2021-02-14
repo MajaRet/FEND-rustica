@@ -6,7 +6,7 @@
  *  lastItem: the last focusable item in the modal or overlay
  *  e: a keydown event
  */
-function trapFocus(firstItem, lastItem, e) {
+export function trapFocus(firstItem, lastItem, e) {
   if (e.key === "Tab") {
     if (e.shiftKey && document.activeElement === firstItem) {
       // wrap around backwards
@@ -22,4 +22,25 @@ function trapFocus(firstItem, lastItem, e) {
   }
 }
 
-export default trapFocus;
+// Returns all focusable items in a given container as a list.
+export function getFocusableChildren(container) {
+  const focusableChildren = Array.prototype.slice.call(
+    container.querySelectorAll(
+      'a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+    ),
+    0
+  );
+  return focusableChildren.filter((el) => !el.hasAttribute("disabled"));
+}
+
+export function disableAllFocusable(container) {
+  getFocusableChildren(container).forEach(function makeUnfocusable(e) {
+    e.tabIndex = -1;
+  });
+}
+
+export function enableAllFocusable(container) {
+  getFocusableChildren(container).forEach(function makeFocusable(e) {
+    e.tabIndex = 0;
+  });
+}
