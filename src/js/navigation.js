@@ -14,9 +14,6 @@ const [firstNavOverlayItem] = focusableNavOverlayItems;
 const lastNavOverlayItem =
   focusableNavOverlayItems[focusableNavOverlayItems.length - 1];
 
-// Pages that do not have a transparent navigation bar.
-const whiteNavPages = ["/impressum.html", "/contact.html"];
-
 let navBarTransparent = true;
 let transparentNavBarEnabled;
 
@@ -84,7 +81,9 @@ export function handleNavigationScrolling() {
 }
 
 function initNavBarAppearance() {
-  transparentNavBarEnabled = !whiteNavPages.includes(window.location.pathname);
+  // If the header contains a header image, the navigation
+  // bar should be transparent if the page is not scrolled down.
+  transparentNavBarEnabled = document.querySelector(".header--image") !== null;
   if (transparentNavBarEnabled && !window.pageYOffset) {
     navigation.classList.add("nav--transparent");
   } else {
