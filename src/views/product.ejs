@@ -3,9 +3,10 @@
   <!-- prettier-ignore -->
   <%- include("./partials/head", {title: "Produktdetails | Rustica Kaffeerösterei"}) %>
   <body>
+    <header class="header">
+      <%- include ("./partials/navigation.ejs", {activePage: 'shop'}) %>
+    </header>
     <main class="main shop">
-      <!-- TODO this will be in the nav bar -->
-      <p class="cart__product-count">0</p>
       <img src="../img/FEND_Coffee_Costa-Rica 2.png" />
       <h2 id="product-name"></h2>
       <p id="price-range"></p>
@@ -20,6 +21,8 @@
         Zum Warenkorb hinzufügen
       </button>
     </main>
+    <footer class="footer"><%- include ("./partials/footer.ejs") %></footer>
     <script src="../js/product-details.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>

@@ -2,8 +2,10 @@
 <html lang="de">
   <%- include("./partials/head", {title: "Shop | Rustica Kaffeerösterei"}) %>
   <body>
+    <header class="header">
+      <%- include ("./partials/navigation.ejs", {activePage: 'shop'}) %>
+    </header>
     <main class="main shop">
-      <p class="cart__product-count">0</p>
       <div class="product-container">
         <div class="coffee-image">
           <img
@@ -34,6 +36,11 @@
       way, I'll use that. -->
       <a href="./product.ejs" style="display: none"></a>
     </main>
+    <footer class="footer">
+      <%- include ("./partials/map.ejs") %> <%- include
+      ("./partials/footer.ejs") %>
+    </footer>
     <script src="../js/shop.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>

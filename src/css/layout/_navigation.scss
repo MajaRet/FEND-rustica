@@ -26,6 +26,12 @@
     padding-bottom: 2rem;
   }
 
+  &__logo {
+    img {
+      display: block;
+    }
+  }
+
   // nav typography styles
 
   .menu-link {
@@ -72,7 +78,8 @@
   // When the page is not scrolled, the nav bar is transparent with
   // white text.
   &--transparent {
-    .menu-link {
+    .menu-link,
+    p {
       color: $color-white;
 
       // Set the color of the marker underline to white.
@@ -81,7 +88,7 @@
       }
     }
 
-    .logo-svg {
+    .icon {
       filter: brightness(1000);
     }
   }
@@ -93,11 +100,7 @@
       color: $color-black;
     }
 
-    .nav__logo {
-      filter: brightness(0);
-    }
-
-    .burger-menu-svg {
+    .icon {
       filter: brightness(0);
     }
   }
@@ -106,7 +109,7 @@
   &--regular {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     width: 100%;
 
@@ -130,8 +133,32 @@
         flex-wrap: wrap;
         row-gap: 1rem;
 
+        margin-left: auto;
+
         .menu-item {
           margin-left: 6.6rem;
+        }
+      }
+    }
+
+    .cart-icon {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+
+      margin-left: auto;
+      margin-right: 2rem;
+      img {
+        padding-bottom: 5px;
+      }
+
+      @include respond($nav-bar-breakpoint) {
+        column-gap: 8px;
+
+        margin-left: 6.6rem;
+        margin-right: 0;
+        img {
+          padding-bottom: 0;
         }
       }
     }
