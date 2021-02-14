@@ -10,6 +10,44 @@
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
+
     @include standardPagePadding;
+    min-height: 100%;
+  }
+
+  &__product-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    flex-grow: 1;
+  }
+
+  &__billing {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    @include sectionPadding;
+
+    background-color: $color-anthracite;
+
+    * {
+      color: $color-white;
+    }
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+
+      width: 100%;
+    }
+
+    hr {
+      margin: 1rem 0;
+      border: none;
+      border-top: solid 1px $color-white;
+    }
   }
 }

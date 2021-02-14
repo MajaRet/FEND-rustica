@@ -1,12 +1,14 @@
 .nav {
   position: fixed;
   z-index: 10;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   top: 0;
   left: 0;
 
   display: flex;
 
-  width: 100%;
+  width: 100vw;
   padding: 1rem 6.5%;
 
   // Gradient to slide up and down to toggle white and transparent backgrounds.

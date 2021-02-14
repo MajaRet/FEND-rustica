@@ -1,4 +1,4 @@
-import * as Cart from "./cart";
+import { addToCart } from "./cart";
 import * as Products from "./product-util";
 
 function displayProducts() {
@@ -26,7 +26,7 @@ function displayProducts() {
       productElement.classList = ["section--selection__elem"];
 
       const product = Products.getByIndex(j);
-
+      const priceRange = Products.getPriceRange(product);
       const productHtml = `<div class="section--selection__elem">
         <div class="coffee-img">
           <img
@@ -39,27 +39,31 @@ function displayProducts() {
             ${product.productName}
           </div>
           <div class="coffee-text__price-range">
-            ${Products.formatPrice(product.price)} - ${Products.formatPrice(
-        product.price
+            ${Products.formatPrice(priceRange.min)} - ${Products.formatPrice(
+        priceRange.max
       )}
           </div>
               <div class="coffee-text__icons">
                 ${iconPaths.join("\n")}
               </div>
         </div>
-        <button class="product-button--add">Hinzufügen</button> 
-        <button class="product-button--remove">Entfernen</button> 
+        <div class="add-buttons"></div>
         <a href="product.html?id=${product.id}">Details</a>
       </div>`;
       productElement.innerHTML = productHtml;
       productGroupElement.appendChild(productElement);
-      // Add add and remove functionality to the buttons
-      productElement
-        .querySelector(".product-button--add")
-        .addEventListener("click", () => Cart.addToCart(product.id));
-      productElement
-        .querySelector(".product-button--remove")
-        .addEventListener("click", () => Cart.removeFromCart(product.id));
+
+      const addButtonContainer = productElement.querySelector(".add-buttons");
+      product.variants.forEach((variant) => {
+        // Create an add button for each variant
+        const variantAddButton = document.createElement("button");
+        variantAddButton.classList = ["product-button--add"];
+        variantAddButton.innerHTML = variant.name;
+        variantAddButton.addEventListener("click", () =>
+          addToCart(product.id, variant.name)
+        );
+        addButtonContainer.appendChild(variantAddButton);
+      });
     }
     productsElement.appendChild(productGroupElement);
   }
@@ -67,4 +71,3 @@ function displayProducts() {
 }
 
 displayProducts();
-Cart.initCartCounter();
