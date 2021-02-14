@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+  <%- include("./partials/head", {title: "Shop | Rustica Kaffeerösterei"}) %>
+  <body>
+    <main class="main shop">
+      <p class="cart__product-count">0</p>
+      <div class="product-container">
+        <div class="coffee-image">
+          <img
+            src="../img/FEND_Coffee_Costa-Rica 2.png"
+            alt="${product.productName} Kaffee"
+          />
+        </div>
+        <div class="icons">
+          <img
+            src="../img/icons/Icon Kaffee Bohnen.svg"
+            alt="Icon Kaffee Bohnen"
+            class="coffee-text__icon"
+          />
+          <img
+            src="../img/icons/Icon French Press.svg"
+            alt="Icon French Press"
+            class="coffee-text__icon"
+          />
+          <img
+            src="../img/icons/Icon Kaffee Schaufel.svg"
+            alt="Icon Kaffee Schaufel"
+            class="coffee-text__icon"
+          />
+        </div>
+      </div>
+      <!-- Parcel doesn't seem to want to include the product page 
+      if I don't link to it statically somewhere, so... if there's another
+      way, I'll use that. -->
+      <a href="./product.ejs" style="display: none"></a>
+    </main>
+    <script src="../js/shop.js"></script>
+  </body>
+</html>
