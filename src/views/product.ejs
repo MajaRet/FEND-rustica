@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+  <!-- prettier-ignore -->
+  <%- include("./partials/head", {title: "Produktdetails | Rustica Kaffeerösterei"}) %>
+  <body>
+    <main class="main shop">
+      <!-- TODO this will be in the nav bar -->
+      <p class="cart__product-count">0</p>
+      <img src="../img/FEND_Coffee_Costa-Rica 2.png" />
+      <h2 id="product-name"></h2>
+      <p id="price-range"></p>
+      <p id="blurb">
+        Filterkaffee ist äußerst ergiebig und hat praktisch keine Säure. Den
+        Gaumen umschmeichelt ein vollmundiges Haselnussaroma. Gleich probieren!
+      </p>
+      <!-- TODO Add icons here -->
+      <h3>Beschreibung</h3>
+      <p id="description"></p>
+      <button class="button button--dark product-button--add">
+        Zum Warenkorb hinzufügen
+      </button>
+    </main>
+    <script src="../js/product-details.js"></script>
+  </body>
+</html>
