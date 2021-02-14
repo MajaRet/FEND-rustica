@@ -1,0 +1,15 @@
+.cart {
+  background-color: $color-white;
+
+  * {
+    color: $color-black;
+  }
+
+  .close-cart-button {
+    filter: brightness(0);
+  }
+
+  &__content {
+    @include standardPagePadding;
+  }
+}

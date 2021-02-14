@@ -1,5 +1,5 @@
 <div
-  class="cart-overlay"
+  class="overlay overlay--sliding cart cart-overlay"
   role="dialog"
   aria-label="Warenkorb"
   aria-modal="true"
@@ -7,8 +7,7 @@
 >
   <button
     aria-label="Warenkorb schließen"
-    class="cart-button close-cart-button u-hidden"
-    id="mobile-menu-close-button"
+    class="cart-button icon-button overlay-close-button close-cart-button u-hidden"
   >
     <img
       src="../img/icons/Burger Menu close.svg"
@@ -16,4 +15,9 @@
       class="burger-menu-svg--close"
     />
   </button>
+  <div class="cart__content">
+    <h3>Warenkorb</h3>
+    <p><span class="cart__product-count">0</span> Produkte</p>
+    <p class="add-message"></p>
+  </div>
 </div>

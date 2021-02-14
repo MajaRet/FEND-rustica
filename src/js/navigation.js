@@ -1,4 +1,5 @@
 import Overlay from "./overlay";
+import { initCart } from "./cart";
 
 const navigation = document.getElementById("navigation");
 const menuButton = document.getElementById("mobile-menu-button");
@@ -50,7 +51,8 @@ function initNavigation() {
   menuButton.onclick = openMenu;
   closeButton.onclick = closeMenu;
   initNavBarAppearance();
-  overlay = new Overlay(menuOverlay, navigation);
+  overlay = new Overlay(menuOverlay);
+  initCart();
 }
 
 export default initNavigation;

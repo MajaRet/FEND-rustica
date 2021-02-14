@@ -17,6 +17,13 @@
   }
 }
 
+.icon-button {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .button--dark {
   //border: 2px solid $color-anthracite;
   box-shadow: $inner-border 2px $color-anthracite;

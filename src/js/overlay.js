@@ -1,8 +1,7 @@
 import { getFocusableChildren, trapFocus } from "./focus";
 
 export default class Overlay {
-  constructor(overlayElem, openClassElem = overlayElem) {
-    this.openClassElem = openClassElem;
+  constructor(overlayElem) {
     this.overlayElem = overlayElem;
     this.focusableNavOverlayItems = getFocusableChildren(overlayElem);
     [this.firstNavOverlayItem] = this.focusableNavOverlayItems;
@@ -39,7 +38,7 @@ export default class Overlay {
   }
 
   openOverlay() {
-    this.openClassElem.classList.add("overlay-open");
+    this.overlayElem.classList.add("overlay-open");
     this.overlayElem.ariaHidden = false;
     this.overlayElem.scrollTop = 0;
 
@@ -51,7 +50,7 @@ export default class Overlay {
   }
 
   closeOverlay() {
-    this.openClassElem.classList.remove("overlay-open");
+    this.overlayElem.classList.remove("overlay-open");
     this.overlayElem.ariaHidden = false;
     document.querySelector("html").classList.remove("u-disable-scroll");
     this.disableOverlayFocus();

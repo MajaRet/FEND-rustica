@@ -68,13 +68,6 @@
     }
   }
 
-  .close-menu-button {
-    position: fixed;
-    z-index: 100;
-    top: 2rem;
-    right: 6.5%;
-  }
-
   // When the page is not scrolled, the nav bar is transparent with
   // white text.
   &--transparent {
@@ -166,6 +159,8 @@
 
   // Styles for the navigation overlay
   &--overlay {
+    background-color: $color-black;
+
     .nav__list {
       position: absolute;
       left: 15%;

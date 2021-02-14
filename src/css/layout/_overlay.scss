@@ -8,8 +8,6 @@
   max-width: 100%;
   height: 100vh;
 
-  background-color: $color-black;
-
   overflow: scroll;
 
   &--sliding {
@@ -18,7 +16,15 @@
 }
 
 .overlay-open {
+  left: 0;
   .overlay {
     left: 0;
   }
+}
+
+.overlay-close-button {
+  position: fixed;
+  z-index: 100;
+  top: 2rem;
+  right: 6.5%;
 }

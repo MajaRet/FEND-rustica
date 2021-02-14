@@ -9,14 +9,18 @@
       /></a>
     </div>
     <%- include("./nav-list.ejs") %>
-    <div class="cart-icon">
+    <button
+      aria-label="Warenkorb-Knopf"
+      aria-describedby="cart-button-description"
+      class="icon-button cart-icon cart-button open-cart-button"
+    >
       <img
         src="../img/icons/Warenkorb.svg"
         alt="Warenkorb Icon"
         class="icon cart-svg"
       />
       <p class="cart__product-count">0</p>
-    </div>
+    </button>
     <button
       aria-label="Menüknopf"
       aria-describedby="menu-button-description"
@@ -45,7 +49,7 @@
   >
     <button
       aria-label="Menü schließen"
-      class="menu-button close-menu-button u-hidden"
+      class="menu-button overlay-close-button close-menu-button u-hidden"
       id="mobile-menu-close-button"
     >
       <img
@@ -56,4 +60,5 @@
     </button>
     <%- include("./nav-list.ejs") %>
   </div>
+  <%- include("./cart.ejs") %>
 </nav>

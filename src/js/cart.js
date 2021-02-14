@@ -1,8 +1,17 @@
+import Overlay from "./overlay";
+
+const openCartButton = document.querySelector(".open-cart-button");
+const closeCartButton = document.querySelector(".close-cart-button");
+let cartOverlay;
+
 // Adds n to the cart counter.
 export function modifyCartItemCount(n) {
-  const productCountElem = document.querySelector(".cart__product-count");
-  const productCount = parseInt(productCountElem.innerHTML, 10);
-  productCountElem.innerHTML = productCount + n;
+  const productCountElems = document.querySelectorAll(".cart__product-count");
+  const productCount = parseInt(productCountElems[0].innerHTML, 10);
+  productCountElems.forEach((el) => {
+    const elem = el;
+    elem.innerHTML = productCount + n;
+  });
 }
 
 export function incrementCartItemCount() {
@@ -17,7 +26,10 @@ export function decrementCartItemCount() {
 
 // Sets the cart count to n.
 export function setCartItemCount(n) {
-  document.querySelector(".cart__product-count").innerHTML = n;
+  document.querySelectorAll(".cart__product-count").forEach((el) => {
+    const elem = el;
+    elem.innerHTML = n;
+  });
 }
 
 // Creates an empty cart.
@@ -70,4 +82,24 @@ export function removeFromCart(productId) {
 export function initCartCounter() {
   const cart = getCartProducts();
   setCartItemCount(cart.length);
+}
+
+function openCart() {
+  cartOverlay.openOverlay();
+  closeCartButton.classList.remove("u-hidden");
+}
+
+function closeCart() {
+  cartOverlay.closeOverlay();
+  closeCartButton.classList.add("u-hidden");
+}
+
+export function initCart() {
+  console.log("Initializing cart");
+  cartOverlay = new Overlay(document.querySelector(".cart-overlay"));
+
+  initCartCounter();
+
+  openCartButton.addEventListener("click", openCart);
+  closeCartButton.addEventListener("click", closeCart);
 }
