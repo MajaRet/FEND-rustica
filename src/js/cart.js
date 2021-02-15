@@ -6,21 +6,37 @@ const closeCartButton = document.querySelector(".close-cart-button");
 const billingArea = document.querySelector(".cart__billing");
 let cartOverlay;
 
+// Sets a class signaling that the cart is empty.
+function emptyCart(cart) {
+  cart.classList.add("cart__product-count--empty");
+  cart.classList.remove("cart__product-count--nonempty");
+}
+
+// Sets a class signaling that the cart is not empty.
+function fillCart(cart) {
+  cart.classList.add("cart__product-count--nonempty");
+  cart.classList.remove("cart__product-count--empty");
+}
+
 // Adds n to the cart counter.
 export function modifyCartItemCount(n) {
   const productCountElems = document.querySelectorAll(".cart__product-count");
   const productCount = parseInt(productCountElems[0].innerHTML, 10);
+
   productCountElems.forEach((el) => {
     const elem = el;
     elem.innerHTML = productCount + n;
+    if (productCount + n <= 0) {
+      emptyCart(elem);
+    } else if (productCount === 0 && n > 0) {
+      fillCart(elem);
+    }
   });
 }
 
 export function incrementCartItemCount() {
   modifyCartItemCount(1);
 }
-
-// Not currently in use. Will be used later.
 
 export function decrementCartItemCount() {
   modifyCartItemCount(-1);
@@ -31,6 +47,11 @@ export function setCartItemCount(n) {
   document.querySelectorAll(".cart__product-count").forEach((el) => {
     const elem = el;
     elem.innerHTML = n;
+    if (n === 0) {
+      emptyCart(elem);
+    } else {
+      fillCart(elem);
+    }
   });
 }
 
@@ -99,24 +120,51 @@ function getVariantData(product) {
 }
 
 function displayProduct(container, product) {
+  const currProduct = product;
   // A product including all variants.
   const p = getVariantData(product);
   const node = document.createElement("p");
   node.innerHTML = `${p.productName}, ${p.name}, ${p.amount}, ${formatPrice(
     p.price * p.amount
   )}`;
+
+  // Make buttons to delete a product from the cart and to
+  // increase or decrease the amount to buy.
   const deleteButton = document.createElement("button");
+  const decreaseAmountButton = document.createElement("button");
+  const increaseAmountButton = document.createElement("button");
   deleteButton.classList.add("product-button--delete");
   deleteButton.classList.add("icon-button");
+  increaseAmountButton.classList.add("product-button--increase-amount");
+  increaseAmountButton.classList.add("icon-button");
+  decreaseAmountButton.classList.add("product-button--decrease-amount");
+  decreaseAmountButton.classList.add("icon-button");
 
   // TODO: need the icon here. Paths, yuck.
   deleteButton.innerHTML = `x`;
+  increaseAmountButton.innerHTML = ">";
+  decreaseAmountButton.innerHTML = "<";
+
   deleteButton.addEventListener("click", () => {
     // eslint-disable-next-line no-use-before-define
     removeFromCart(product);
   });
+
+  // TODO: That doesn't work. I need to put it into localStorage.
+  decreaseAmountButton.addEventListener("click", () => {
+    currProduct.amount = Math.max(0, product.amount - 1);
+    // TODO: display new amount by getting the amount element from the DOM
+  });
+
+  increaseAmountButton.addEventListener("click", () => {
+    currProduct.amount = product.amount + 1;
+    // TODO: display new amount by getting the amount element from the DOM
+  });
+
   container.appendChild(node);
   container.appendChild(deleteButton);
+  container.appendChild(decreaseAmountButton);
+  container.appendChild(increaseAmountButton);
 }
 
 function displayProducts() {
