@@ -1,5 +1,6 @@
 import Overlay from "./overlay";
-import { getByIndex, formatPrice } from "./product-util";
+import { formatPrice } from "./product-util";
+import * as Database from "./query";
 
 const openCartButton = document.querySelector(".open-cart-button");
 const closeCartButton = document.querySelector(".close-cart-button");
@@ -23,7 +24,7 @@ function fillCart(cart) {
 }
 
 // Adds n to the cart counter.
-export function modifyCartItemCount(n) {
+function modifyCartItemCount(n) {
   const productCountElems = document.querySelectorAll(".cart__product-count");
   const productCount = parseInt(productCountElems[0].innerHTML, 10);
 
@@ -38,17 +39,17 @@ export function modifyCartItemCount(n) {
   });
 }
 
-export function incrementCartItemCount() {
+function incrementCartItemCount() {
   modifyCartItemCount(1);
   recentlyAddedCounter += 1;
 }
 
-export function decrementCartItemCount() {
+function decrementCartItemCount() {
   modifyCartItemCount(-1);
 }
 
 // Sets the cart count to n.
-export function setCartItemCount(n) {
+function setCartItemCount(n) {
   document.querySelectorAll(".cart__product-count").forEach((el) => {
     const elem = el;
     elem.innerHTML = n;
@@ -64,38 +65,10 @@ function getCartOverlay() {
   return cartOverlay;
 }
 
-// Creates an empty cart.
-export function createEmptyCart() {
-  return {
-    productList: [],
-  };
-}
-
-// Reads the cart from local storage and parses it, or creates
-// an empty cart if no cart currently exists.
-export function getCart() {
-  const cart = localStorage.getItem("cart");
-  return cart ? JSON.parse(cart) : createEmptyCart();
-}
-
-export function getCartProducts() {
-  return getCart().productList;
-}
-
-// Returns a reference to the object, or null if it is not
-// in the product list.
-function getProductVariant(productList, id, name) {
-  const queryResult = productList.filter(
-    (product) => product.id === id && product.name === name
-  );
-  return queryResult.length ? queryResult[0] : null;
-}
-
 // Set the cart counter to the number of products currently in the
 // cart.
-export function initCartCounter() {
-  const cart = getCartProducts();
-  setCartItemCount(cart.length);
+function initCartCounter() {
+  setCartItemCount(Database.cartSize());
 }
 
 function closeCart() {
@@ -103,34 +76,23 @@ function closeCart() {
   closeCartButton.classList.add("u-hidden");
 }
 
-// Returns the price of a given variant.
-function getVariantData(product) {
-  const baseProduct = getByIndex(product.id);
-  const variantList = baseProduct.variants.filter(
-    (v) => v.name === product.name
+// Modifies the amount by the specified amount. Returns whether an entry was updated.
+function modifyAmount(id, variantName, amount) {
+  return Database.update(
+    (e) => {
+      const entry = e;
+      entry.amount += amount;
+    },
+    (e) => e.id === id && e.variantName === variantName
   );
-  if (variantList.length > 0) {
-    const variant = variantList[0];
-    return {
-      productName: baseProduct.productName,
-      description: baseProduct.description,
-      name: variant.name,
-      price: variant.price,
-      weight: variant.weight,
-      amount: product.amount,
-    };
-  }
-  return null;
 }
 
 function updateCartProduct(container, product) {
   const currProduct = product;
-  // A product including all variants.
-  const p = getVariantData(product);
   const node = document.createElement("p");
-  node.innerHTML = `${p.productName}, ${p.name}, ${p.amount}, ${formatPrice(
-    p.price * p.amount
-  )}`;
+  node.innerHTML = `${product.productName}, ${product.variantName}, ${
+    product.amount
+  }, ${formatPrice(product.price)}`;
 
   // Make buttons to delete a product from the cart and to
   // increase or decrease the amount to buy.
@@ -150,16 +112,43 @@ function updateCartProduct(container, product) {
   decreaseAmountButton.innerHTML = "<";
 
   // eslint-disable-next-line no-use-before-define
-  deleteButton.onclick = removeFromCart.bind(null, product);
+  deleteButton.onclick = removeFromCart.bind(
+    null,
+    product.id,
+    product.variantName
+  );
 
   // TODO: That doesn't work. I need to put it into localStorage.
   decreaseAmountButton.addEventListener("click", () => {
     currProduct.amount = Math.max(0, product.amount - 1);
-    // TODO: display new amount by getting the amount element from the DOM
+
+    if (currProduct.amount <= 0) {
+      // eslint-disable-next-line no-use-before-define
+      removeFromCart(currProduct.id, currProduct.variantName);
+    } else {
+      modifyAmount(currProduct.id, currProduct.variantName, -1);
+      // TODO: Get a proper handle on the element that has the amount
+      node.innerHTML = `${product.productName}, ${product.variantName}, ${
+        product.amount
+      }, ${formatPrice(product.price)}`;
+
+      // eslint-disable-next-line no-use-before-define
+      updateBilling();
+    }
   });
 
   increaseAmountButton.addEventListener("click", () => {
-    currProduct.amount = product.amount + 1;
+    currProduct.amount += 1;
+    // eslint-disable-next-line no-use-before-define
+    modifyAmount(currProduct.id, currProduct.variantName, 1);
+
+    // TODO: Get a proper handle on the element that has the amount
+    node.innerHTML = `${product.productName}, ${product.variantName}, ${
+      product.amount
+    }, ${formatPrice(product.price)}`;
+
+    // eslint-disable-next-line no-use-before-define
+    updateBilling();
     // TODO: display new amount by getting the amount element from the DOM
   });
 
@@ -173,7 +162,7 @@ function updateCartProducts() {
   const container = document.querySelector(".cart__product-list");
   // Empty the container
   container.innerHTML = "";
-  getCartProducts().forEach((product) => updateCartProduct(container, product));
+  Database.read().forEach((product) => updateCartProduct(container, product));
   // Since the overlay has changed, it must be refreshed
   cartOverlay.refresh();
 }
@@ -181,10 +170,11 @@ function updateCartProducts() {
 // Computes and displays the price information at the bottom of the cart.
 function updateBilling() {
   // Compute price data (in cents)
-  const priceSum = getCartProducts().reduce((sum, product) => {
-    const { price, amount } = getVariantData(product);
-    return price * amount + sum;
-  }, 0);
+  const data = Database.read(["price", "amount"]);
+  const priceSum = data.reduce(
+    (sum, product) => product.price * product.amount + sum,
+    0
+  );
   const shippingCost = priceSum > 0 ? 360 : 0;
   const totalCost = priceSum + shippingCost;
 
@@ -214,18 +204,12 @@ function displayCart() {
   updateCart();
 }
 
-export function addToCart(productId, variantName, amount = 1) {
-  console.log(`Add ${variantName} of ${productId} ${amount} times to cart.`);
-  const jsonObj = getCart();
-  const jsonCart = jsonObj.productList;
-  const product = getProductVariant(jsonCart, productId, variantName);
-  if (product) {
-    product.amount += amount;
-  } else {
-    jsonCart.push({ id: productId, name: variantName, amount });
+export function addToCart(id, variantName, amount = 1) {
+  if (!modifyAmount(id, variantName, 1)) {
+    Database.insertEntry({ id, variantName, amount });
     incrementCartItemCount();
   }
-  localStorage.setItem("cart", JSON.stringify(jsonObj));
+
   if (cartOverlay.isOpen()) {
     displayCart();
   } else {
@@ -233,19 +217,12 @@ export function addToCart(productId, variantName, amount = 1) {
   }
 }
 
-export function removeFromCart(product) {
-  const jsonObj = getCart();
-  const jsonCart = jsonObj.productList;
-  const newProductList = jsonCart.filter(
-    (p) => !(p.id === product.id && p.name === product.name)
-  );
-  if (newProductList.length === jsonCart.length) {
-    console.log("Das Produkt ist nicht im Warenkorb.");
-  } else {
-    // Remove the given id from the list of products in the cart
-    jsonObj.productList = newProductList;
+export function removeFromCart(id, variantName) {
+  if (
+    Database.deleteEntry((e) => e.id === id && e.variantName === variantName)
+  ) {
     decrementCartItemCount();
-    localStorage.setItem("cart", JSON.stringify(jsonObj));
+
     if (cartOverlay.isOpen()) {
       displayCart();
     } else {

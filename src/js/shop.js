@@ -5,6 +5,7 @@ import coffeeImagePath from "../img/FEND_Coffee_Costa-Rica 2.png";
 
 import { addToCart } from "./cart";
 import * as Products from "./product-util";
+import * as Database from "./query";
 
 function getIconName(path) {
   return path.substring(path.lastIndexOf("/") + 1, path.indexOf("."));
@@ -32,7 +33,7 @@ function displayProducts() {
   // Remove image source path information.
   productContainer.innerHTML = "";
 
-  const numOfProducts = Products.numOfProducts();
+  const numOfProducts = Database.numOfProducts();
 
   const productsElement = document.createElement("div");
   productsElement.classList = ["products"];
@@ -45,7 +46,7 @@ function displayProducts() {
       const productElement = document.createElement("DIV");
       productElement.classList = ["section--selection__elem"];
 
-      const product = Products.getByIndex(j);
+      const product = Database.getProduct(j);
       const priceRange = Products.getPriceRange(product);
       const productHtml = `<div class="section--selection__elem">
         <div class="coffee-img">
@@ -78,9 +79,9 @@ function displayProducts() {
         // Create an add button for each variant
         const variantAddButton = document.createElement("button");
         variantAddButton.classList = ["product-button--add"];
-        variantAddButton.innerHTML = variant.name;
+        variantAddButton.innerHTML = variant.variantName;
         variantAddButton.addEventListener("click", () =>
-          addToCart(product.id, variant.name)
+          addToCart(product.id, variant.variantName)
         );
         addButtonContainer.appendChild(variantAddButton);
       });

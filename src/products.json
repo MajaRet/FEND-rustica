@@ -4,17 +4,17 @@
     "productName": "Äthiopien",
     "variants": [
       {
-        "name": "500g",
+        "variantName": "500g",
         "weight": 500,
         "price": 690
       },
       {
-        "name": "1kg",
+        "variantName": "1kg",
         "weight": 1000,
         "price": 1000
       },
       {
-        "name": "5kg",
+        "variantName": "5kg",
         "weight": 5000,
         "price": 5000
       }
@@ -26,17 +26,17 @@
     "productName": "Brasilien",
     "variants": [
       {
-        "name": "500g",
+        "variantName": "500g",
         "weight": 500,
         "price": 880
       },
       {
-        "name": "1kg",
+        "variantName": "1kg",
         "weight": 1000,
         "price": 1200
       },
       {
-        "name": "5kg",
+        "variantName": "5kg",
         "weight": 5000,
         "price": 6500
       }
@@ -48,17 +48,17 @@
     "productName": "Äthiopien",
     "variants": [
       {
-        "name": "500g",
+        "variantName": "500g",
         "weight": 500,
         "price": 690
       },
       {
-        "name": "1kg",
+        "variantName": "1kg",
         "weight": 1000,
         "price": 1000
       },
       {
-        "name": "5kg",
+        "variantName": "5kg",
         "weight": 5000,
         "price": 5000
       }
@@ -70,17 +70,17 @@
     "productName": "Brasilien",
     "variants": [
       {
-        "name": "500g",
+        "variantName": "500g",
         "weight": 500,
         "price": 880
       },
       {
-        "name": "1kg",
+        "variantName": "1kg",
         "weight": 1000,
         "price": 1200
       },
       {
-        "name": "5kg",
+        "variantName": "5kg",
         "weight": 5000,
         "price": 6500
       }
@@ -92,17 +92,17 @@
     "productName": "Äthiopien",
     "variants": [
       {
-        "name": "500g",
+        "variantName": "500g",
         "weight": 500,
         "price": 690
       },
       {
-        "name": "1kg",
+        "variantName": "1kg",
         "weight": 1000,
         "price": 1000
       },
       {
-        "name": "5kg",
+        "variantName": "5kg",
         "weight": 5000,
         "price": 5000
       }
@@ -114,17 +114,17 @@
     "productName": "Brasilien",
     "variants": [
       {
-        "name": "500g",
+        "variantName": "500g",
         "weight": 500,
         "price": 880
       },
       {
-        "name": "1kg",
+        "variantName": "1kg",
         "weight": 1000,
         "price": 1200
       },
       {
-        "name": "5kg",
+        "variantName": "5kg",
         "weight": 5000,
         "price": 6500
       }

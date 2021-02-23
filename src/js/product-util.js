@@ -1,4 +1,4 @@
-import productData from "../products.json";
+// import { numOfProducts as nOP, cartSize as cS } from "./query";
 
 // Returns the price, given in cents, formatted in euros.
 export function formatPrice(priceInCents) {
@@ -8,23 +8,21 @@ export function formatPrice(priceInCents) {
   return `${euros},${formattedCents}€`;
 }
 
-export function numOfProducts() {
-  return productData.length;
-}
+/*
+// Expose selected database functions to other modules importing this module.
+export const numOfProducts = nOP;
+export const cartSize = cS;
+*/
 
+/*
 export function getByIndex(i) {
   return productData[i];
 }
+*/
 
 // Normally, this should be exactly the id'th item, but it's better
 // not to rely on that.
-export function getById(id) {
-  const numId = parseInt(id, 10);
-  for (let i = 0; i < productData.length; i += 1) {
-    if (productData[i].id === numId) return productData[i];
-  }
-  return null;
-}
+// export function getById(id) {}
 
 // Returns the minimum and maximum price of a product.
 export function getPriceRange(product) {
