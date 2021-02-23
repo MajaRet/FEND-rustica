@@ -3,41 +3,50 @@ import { getFocusableChildren, trapFocus } from "./focus";
 export default class Overlay {
   constructor(overlayElem) {
     this.overlayElem = overlayElem;
-    this.focusableNavOverlayItems = getFocusableChildren(overlayElem);
-    [this.firstNavOverlayItem] = this.focusableNavOverlayItems;
-    this.lastNavOverlayItem = this.focusableNavOverlayItems[
-      this.focusableNavOverlayItems.length - 1
-    ];
-
-    // The overlay listens for Tab or Shift + Tab to trap focus.
-    overlayElem.addEventListener(
-      "keydown",
-      trapFocus.bind(null, this.firstNavOverlayItem, this.lastNavOverlayItem)
-    );
+    this.initFocusableChildren(overlayElem);
 
     // The overlay is initially hidden from view.
     this.overlayElem.ariaHidden = true;
 
-    // Initially, the overlay links are not focusable.
-    this.disableOverlayFocus();
+    this.refresh();
+  }
+
+  // TODO: Get rid of the class, try an object creation
+  // function instead? Does that matter?
+
+  initFocusableChildren(overlayElem) {
+    this.focusableOverlayItems = getFocusableChildren(overlayElem);
+    [this.firstOverlayItem] = this.focusableOverlayItems;
+    this.lastOverlayItem = this.focusableOverlayItems[
+      this.focusableOverlayItems.length - 1
+    ];
   }
 
   // Activates the mobile menu keyboard trap.
   enableOverlayFocus() {
-    this.focusableNavOverlayItems.forEach(function makeFocusable(e) {
+    this.focusableOverlayItems.forEach((e) => {
       e.tabIndex = 0;
     });
-    this.firstNavOverlayItem.focus();
+
+    // this.firstOverlayItem.focus();
+    // TODO For some reason, this works, but the line above doesn't.
+    setTimeout(() => this.firstOverlayItem.focus(), 0);
   }
 
   // Disables the mobile menu keyboard trap.
   disableOverlayFocus() {
-    this.focusableNavOverlayItems.forEach(function makeUnfocusable(e) {
+    this.focusableOverlayItems.forEach(function makeUnfocusable(e) {
       e.tabIndex = -1;
     });
   }
 
+  isOpen() {
+    return this.overlayElem.classList.contains("overlay-open");
+  }
+
   openOverlay() {
+    // this.refresh();
+
     this.overlayElem.classList.add("overlay-open");
     this.overlayElem.ariaHidden = false;
     this.overlayElem.scrollTop = 0;
@@ -54,5 +63,26 @@ export default class Overlay {
     this.overlayElem.ariaHidden = false;
     document.querySelector("html").classList.remove("u-disable-scroll");
     this.disableOverlayFocus();
+  }
+
+  // Call this when focusable elements are added to or removed from the
+  // overlay. Also called on construction.
+  refresh() {
+    this.initFocusableChildren(this.overlayElem);
+
+    // The overlay listens for Tab or Shift + Tab to trap focus.
+    this.overlayElem.onkeydown = trapFocus.bind(
+      null,
+      this.firstOverlayItem,
+      this.lastOverlayItem
+    );
+
+    const open = this.isOpen();
+    if (open) {
+      this.firstOverlayItem.focus();
+    } else {
+      // Initially, the overlay links are not focusable.
+      this.disableOverlayFocus();
+    }
   }
 }

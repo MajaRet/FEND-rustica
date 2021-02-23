@@ -4,7 +4,9 @@ import { getByIndex, formatPrice } from "./product-util";
 const openCartButton = document.querySelector(".open-cart-button");
 const closeCartButton = document.querySelector(".close-cart-button");
 const billingArea = document.querySelector(".cart__billing");
-let cartOverlay;
+const cartOverlay = new Overlay(document.querySelector(".cart-overlay"));
+// Counts how many items have been added since the last viewing of the cart.
+let recentlyAddedCounter = 0;
 
 // Sets a class signaling that the cart is empty.
 function emptyCart(cart) {
@@ -36,6 +38,7 @@ export function modifyCartItemCount(n) {
 
 export function incrementCartItemCount() {
   modifyCartItemCount(1);
+  recentlyAddedCounter += 1;
 }
 
 export function decrementCartItemCount() {
@@ -53,6 +56,10 @@ export function setCartItemCount(n) {
       fillCart(elem);
     }
   });
+}
+
+function getCartOverlay() {
+  return cartOverlay;
 }
 
 // Creates an empty cart.
@@ -90,8 +97,12 @@ export function initCartCounter() {
 }
 
 function openCart() {
-  cartOverlay.openOverlay();
+  // Updates the cart
+  // eslint-disable-next-line no-use-before-define
+  updateCart();
+  getCartOverlay().openOverlay();
   closeCartButton.classList.remove("u-hidden");
+  recentlyAddedCounter = 0;
 }
 
 function closeCart() {
@@ -119,7 +130,7 @@ function getVariantData(product) {
   return null;
 }
 
-function displayProduct(container, product) {
+function updateCartProduct(container, product) {
   const currProduct = product;
   // A product including all variants.
   const p = getVariantData(product);
@@ -145,10 +156,8 @@ function displayProduct(container, product) {
   increaseAmountButton.innerHTML = ">";
   decreaseAmountButton.innerHTML = "<";
 
-  deleteButton.addEventListener("click", () => {
-    // eslint-disable-next-line no-use-before-define
-    removeFromCart(product);
-  });
+  // eslint-disable-next-line no-use-before-define
+  deleteButton.onclick = removeFromCart.bind(null, product);
 
   // TODO: That doesn't work. I need to put it into localStorage.
   decreaseAmountButton.addEventListener("click", () => {
@@ -167,15 +176,17 @@ function displayProduct(container, product) {
   container.appendChild(increaseAmountButton);
 }
 
-function displayProducts() {
+function updateCartProducts() {
   const container = document.querySelector(".cart__product-list");
   // Empty the container
   container.innerHTML = "";
-  getCartProducts().forEach((product) => displayProduct(container, product));
+  getCartProducts().forEach((product) => updateCartProduct(container, product));
+  // Since the overlay has changed, it must be refreshed
+  cartOverlay.refresh();
 }
 
 // Computes and displays the price information at the bottom of the cart.
-function displayBilling() {
+function updateBilling() {
   // Compute price data (in cents)
   const priceSum = getCartProducts().reduce((sum, product) => {
     const { price, amount } = getVariantData(product);
@@ -190,6 +201,15 @@ function displayBilling() {
   billingArea.querySelector(".total").innerHTML = formatPrice(totalCost);
 }
 
+function updateCart() {
+  document.querySelector(".cart .add-message").innerHTML = recentlyAddedCounter;
+  updateCartProducts();
+  updateBilling();
+
+  // Put the button listener into the correct context
+  openCartButton.onclick = openCart;
+}
+
 export function addToCart(productId, variantName, amount = 1) {
   console.log(`Add ${variantName} of ${productId} ${amount} times to cart.`);
   const jsonObj = getCart();
@@ -200,19 +220,14 @@ export function addToCart(productId, variantName, amount = 1) {
   } else {
     jsonCart.push({ id: productId, name: variantName, amount });
     incrementCartItemCount();
-    console.log(`Added item ${productId} to cart.`);
   }
   localStorage.setItem("cart", JSON.stringify(jsonObj));
-  displayProducts();
-  displayBilling();
+  updateCart();
 }
 
 export function removeFromCart(product) {
   const jsonObj = getCart();
   const jsonCart = jsonObj.productList;
-  console.log(jsonCart);
-  console.log(product);
-  console.log(jsonCart.includes(product));
   const newProductList = jsonCart.filter(
     (p) => !(p.id === product.id && p.name === product.name)
   );
@@ -222,20 +237,14 @@ export function removeFromCart(product) {
     // Remove the given id from the list of products in the cart
     jsonObj.productList = newProductList;
     decrementCartItemCount();
-    console.log(`Removed item ${product} from the cart.`);
     localStorage.setItem("cart", JSON.stringify(jsonObj));
-    displayProducts();
-    displayBilling();
+    updateCart();
   }
 }
 
 export function initCart() {
-  cartOverlay = new Overlay(document.querySelector(".cart-overlay"));
+  closeCartButton.onclick = closeCart;
 
   initCartCounter();
-  displayProducts();
-  displayBilling();
-
-  openCartButton.addEventListener("click", openCart);
-  closeCartButton.addEventListener("click", closeCart);
+  updateCart();
 }
