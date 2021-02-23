@@ -3,16 +3,12 @@ import { getFocusableChildren, trapFocus } from "./focus";
 export default class Overlay {
   constructor(overlayElem) {
     this.overlayElem = overlayElem;
-    this.initFocusableChildren(overlayElem);
 
     // The overlay is initially hidden from view.
     this.overlayElem.ariaHidden = true;
 
     this.refresh();
   }
-
-  // TODO: Get rid of the class, try an object creation
-  // function instead? Does that matter?
 
   initFocusableChildren(overlayElem) {
     this.focusableOverlayItems = getFocusableChildren(overlayElem);
