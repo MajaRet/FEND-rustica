@@ -1,51 +1,8 @@
 .section--selection {
-  * {
-    color: $color-white;
-  }
-
-  > *:not(:last-child) {
-    margin-bottom: 8rem;
-  }
-  background-color: $color-anthracite;
-
   &__group-of-four {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 4rem;
-    width: 100%;
-
-    @include respond(media-xl) {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(1, auto);
-    }
   }
 
   &__elem {
-    .coffee-text {
-      div:not(:last-child) {
-        margin-bottom: 0.8rem;
-      }
-
-      &__price-range {
-        color: $color-medium-grey;
-      }
-
-      &__icon {
-        margin-right: 1rem;
-      }
-    }
-
-    .coffee-img {
-      margin-bottom: 2rem;
-      padding: 5%;
-
-      background-color: $color-light-grey;
-
-      img {
-        width: 100%;
-      }
-    }
   }
 
   &__button {

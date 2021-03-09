@@ -14,14 +14,28 @@
         Filterkaffee ist äußerst ergiebig und hat praktisch keine Säure. Den
         Gaumen umschmeichelt ein vollmundiges Haselnussaroma. Gleich probieren!
       </p>
+      <div class="select-container">
+        <select
+          id="coffee-selection"
+          name="coffee-selection"
+          class="coffee-selection-select select"
+          required
+        >
+          <option value="" disabled selected hidden>
+            Wie viel Kaffee brauchst du?
+          </option>
+        </select>
+        <div class="select-arrow"></div>
+      </div>
+      <button class="button button--dark" id="add-to-cart-button">
+        Warenkorb
+      </button>
       <!-- TODO Add icons here -->
       <h3>Beschreibung</h3>
       <p id="description"></p>
-      <button class="button button--dark product-button--add">
-        Zum Warenkorb hinzufügen
-      </button>
     </main>
     <footer class="footer"><%- include ("./partials/footer.ejs") %></footer>
     <script src="../js/index.js"></script>
+    <script src="../js/product-details.js"></script>
   </body>
 </html>

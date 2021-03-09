@@ -26,7 +26,7 @@ export function getProductData() {
 }
 
 // Creates an empty cart.
-export function createEmptyCart() {
+function createEmptyCart() {
   return {
     productList: [],
   };
@@ -116,6 +116,7 @@ function joinCartAndProductData() {
           id: cartProduct.id,
           productName: fullProductData.productName,
           description: fullProductData.description,
+          properties: fullProductData.properties,
           variantName: variant.variantName,
           price: variant.price,
           weight: variant.weight,

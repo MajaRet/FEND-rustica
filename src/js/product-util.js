@@ -34,3 +34,8 @@ export function getPriceRange(product) {
     { min: 0, max: 0 }
   );
 }
+
+// A pretty string for a price range.
+export function showPriceRange(priceRange) {
+  return `${formatPrice(priceRange.min)} - ${formatPrice(priceRange.max)}`;
+}

@@ -1,54 +1,58 @@
-import scoopIcon from "../img/icons/Icon Kaffee Schaufel.svg";
-import frenchPressIcon from "../img/icons/Icon French Press.svg";
-import beanIcon from "../img/icons/Icon Kaffee Bohnen.svg";
 import coffeeImagePath from "../img/FEND_Coffee_Costa-Rica 2.png";
 
 import { addToCart } from "./cart";
 import * as Products from "./product-util";
 import * as Database from "./query";
 
-function getIconName(path) {
-  return path.substring(path.lastIndexOf("/") + 1, path.indexOf("."));
-}
+// Include fs module
+const fs = require("fs");
 
-function createIconImages(iconPaths) {
-  return iconPaths
-    .map(
-      (path) =>
-        `<img src="${path}" alt="${getIconName(
-          path
-        )}", class="coffee-text__icon">`
-    )
+function createIcons(properties) {
+  return properties
+    .map((prop) => {
+      // Switch statement because filenames must be static
+      switch (prop) {
+        case "mild":
+          return fs.readFileSync("./src/img/icons/Icon Kaffee Schaufel.svg", {
+            encoding: "utf8",
+            flag: "r",
+          });
+        case "filtered":
+          return fs.readFileSync("./src/img/icons/Icon French Press.svg", {
+            encoding: "utf8",
+            flag: "r",
+          });
+        case "ground":
+          return fs.readFileSync("./src/img/icons/Icon Kaffee Bohnen.svg", {
+            encoding: "utf8",
+            flag: "r",
+          });
+        default:
+          return "";
+      }
+    })
     .join(" ");
 }
 
 function displayProducts() {
-  const productContainer = document.querySelector(".product-container");
+  const productContainer = document.querySelector(".product-display");
   //  const coffeeImage = productContainer.querySelector(".coffee-image img");
   //  const icons = productContainer.querySelectorAll(".icons img");
 
-  // TODO: This is terrible. Change it.
-  const iconPaths = [beanIcon, frenchPressIcon, scoopIcon];
-  const iconImages = createIconImages(iconPaths);
-  // Remove image source path information.
-  productContainer.innerHTML = "";
-
   const numOfProducts = Database.numOfProducts();
-
-  const productsElement = document.createElement("div");
-  productsElement.classList = ["products"];
 
   for (let i = 0; i < numOfProducts; i += 4) {
     const productGroupElement = document.createElement("DIV");
-    productGroupElement.classList = ["section--selection__group-of-four"];
+    productGroupElement.classList = ["four-product-group"];
 
     for (let j = i; j < Math.min(i + 4, numOfProducts); j += 1) {
       const productElement = document.createElement("DIV");
-      productElement.classList = ["section--selection__elem"];
+      productElement.classList = ["product"];
 
       const product = Database.getProduct(j);
       const priceRange = Products.getPriceRange(product);
-      const productHtml = `<div class="section--selection__elem">
+      const icons = createIcons(product.properties);
+      const productHtml = `
         <div class="coffee-img">
           <img
             src="${coffeeImagePath}"
@@ -65,12 +69,11 @@ function displayProducts() {
       )}
           </div>
               <div class="coffee-text__icons">
-                ${iconImages}
+                ${icons}
               </div>
         </div>
         <div class="add-buttons"></div>
-        <a href="product.html?id=${product.id}">Details</a>
-      </div>`;
+        <a href="product.html?id=${product.id}">Details</a>`;
       productElement.innerHTML = productHtml;
       productGroupElement.appendChild(productElement);
 
@@ -86,9 +89,8 @@ function displayProducts() {
         addButtonContainer.appendChild(variantAddButton);
       });
     }
-    productsElement.appendChild(productGroupElement);
+    productContainer.appendChild(productGroupElement);
   }
-  document.querySelector("main").appendChild(productsElement);
 }
 
 displayProducts();

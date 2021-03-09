@@ -1,0 +1,72 @@
+// section--selection
+.product-display {
+  // Product display color schemes
+
+  > *:not(:last-child) {
+    margin-bottom: 8rem;
+  }
+
+  &--light {
+    background-color: $color-white;
+
+    * {
+      color: $color-black;
+    }
+
+    svg {
+      path {
+        stroke: $color-anthracite;
+      }
+    }
+  }
+
+  &--dark {
+    background-color: $color-anthracite;
+
+    * {
+      color: $color-white;
+    }
+  }
+
+  // section--selection__group-of-four
+  .four-product-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4rem;
+    width: 100%;
+
+    @include respond(media-xl) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(1, auto);
+    }
+  }
+
+  // section--selection__elem
+  .product {
+    .coffee-text {
+      div:not(:last-child) {
+        margin-bottom: 8px;
+      }
+
+      &__price-range {
+        color: $color-medium-grey;
+      }
+
+      &__icon {
+        margin-right: 1rem;
+      }
+    }
+
+    .coffee-img {
+      margin-bottom: 2rem;
+      padding: 5%;
+
+      background-color: $color-light-grey;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

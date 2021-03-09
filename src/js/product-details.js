@@ -1,18 +1,30 @@
 import * as Cart from "./cart";
-import * as Products from "./product-util";
+import { getPriceRange, showPriceRange } from "./product-util";
+import * as Database from "./query";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
-const product = Products.getById(id);
+const product = Database.getProduct(id);
 
 document.getElementById("product-name").innerHTML = product.productName;
-document.getElementById("price-range").innerHTML = `${Products.formatPrice(
-  product.price
-)} - ${Products.formatPrice(product.price)}`;
+document.getElementById("price-range").innerHTML = showPriceRange(
+  getPriceRange(product)
+);
 const blurb = document.getElementById("blurb");
 blurb.innerHTML = `${product.productName} ${blurb.innerHTML}`;
 document.getElementById("description").innerHTML = product.description;
 
-document.querySelector(".product-button--add").addEventListener("click", () => {
-  Cart.addToCart(product.id, "novariant");
+const coffeeSelect = document.getElementById("coffee-selection");
+
+product.variants.forEach((variant) => {
+  const variantOption = document.createElement("option");
+  variantOption.value = variant.variantName;
+  coffeeSelect.appendChild(variantOption);
+});
+
+// Add the selected variant to the cart when the "Warenkorb" button is pressed.
+document.getElementById("add-to-cart-button").addEventListener("click", () => {
+  if (coffeeSelect.value !== coffeeSelect.options[0].value) {
+    Cart.addToCart(product.id, coffeeSelect.value);
+  }
 });
