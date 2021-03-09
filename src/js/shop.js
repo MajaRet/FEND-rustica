@@ -61,6 +61,7 @@ function displayProducts() {
             src="${coffeeImagePath}"
             alt="${product.productName} Kaffee"
           />
+          <div class="add-buttons"></div>
         </div>
         <div class="coffee-text">
           <div class="coffee-text__origins subhead-m">
@@ -74,8 +75,7 @@ function displayProducts() {
               <div class="coffee-text__icons">
                 ${icons}
               </div>
-        </div>
-        <div class="add-buttons"></div>`;
+        </div>`;
       productElement.innerHTML = productHtml;
       productGroupElement.appendChild(productElement);
 
@@ -84,10 +84,13 @@ function displayProducts() {
         // Create an add button for each variant
         const variantAddButton = document.createElement("button");
         variantAddButton.classList = ["product-button--add"];
-        variantAddButton.innerHTML = variant.variantName;
-        variantAddButton.addEventListener("click", () =>
-          addToCart(product.id, variant.variantName)
-        );
+        const variantButtonText = document.createElement("P");
+        variantButtonText.innerHTML = variant.variantName;
+        variantAddButton.appendChild(variantButtonText);
+        variantAddButton.addEventListener("click", (e) => {
+          addToCart(product.id, variant.variantName);
+          e.preventDefault();
+        });
         addButtonContainer.appendChild(variantAddButton);
       });
     }

@@ -202,6 +202,42 @@
   }
 }
 
+// Like hoverUnderline, but the underline is applied to the hovered element's
+// direct children.
+@mixin hoverUnderlineChildren {
+  text-decoration: none;
+
+  > * {
+    position: relative;
+  }
+
+  > *::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    height: 1px;
+    width: 0;
+
+    background-color: $color-black;
+
+    transition: width 0.3s ease-out;
+  }
+
+  &:hover {
+    > *::after {
+      width: 100%;
+    }
+  }
+
+  &:active {
+    > *::after {
+      width: 100%;
+    }
+  }
+}
+
 @mixin underlineStyle {
   &::after {
     @content;
