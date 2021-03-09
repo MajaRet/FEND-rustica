@@ -39,17 +39,20 @@ function displayProducts() {
   //  const coffeeImage = productContainer.querySelector(".coffee-image img");
   //  const icons = productContainer.querySelectorAll(".icons img");
 
-  const numOfProducts = Database.numOfProducts();
+  const products = Database.getProductData();
+  const numOfProducts = products.length;
 
   for (let i = 0; i < numOfProducts; i += 4) {
     const productGroupElement = document.createElement("DIV");
     productGroupElement.classList = ["four-product-group"];
 
     for (let j = i; j < Math.min(i + 4, numOfProducts); j += 1) {
-      const productElement = document.createElement("DIV");
+      const product = products[j];
+
+      const productElement = document.createElement("A");
+      productElement.href = `product.html?id=${product.id}`;
       productElement.classList = ["product"];
 
-      const product = Database.getProduct(j);
       const priceRange = Products.getPriceRange(product);
       const icons = createIcons(product.properties);
       const productHtml = `
@@ -72,8 +75,7 @@ function displayProducts() {
                 ${icons}
               </div>
         </div>
-        <div class="add-buttons"></div>
-        <a href="product.html?id=${product.id}">Details</a>`;
+        <div class="add-buttons"></div>`;
       productElement.innerHTML = productHtml;
       productGroupElement.appendChild(productElement);
 
