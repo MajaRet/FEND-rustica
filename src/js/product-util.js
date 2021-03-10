@@ -109,6 +109,21 @@ export function generateProductHTML(groupSize = 4) {
   return productGroups;
 }
 
+// Combines the groups by adding all of them as children to an HTML element.
+// Returns a list of those new HTML elements.
+export function combineInnerHTML(htmlList) {
+  const groupList = [];
+  htmlList.forEach((group) => {
+    const productGroupElement = document.createElement("DIV");
+    productGroupElement.classList = ["product-group"];
+    group.forEach((elem) => {
+      productGroupElement.appendChild(elem.html);
+    });
+    groupList.push(productGroupElement);
+  });
+  return groupList;
+}
+
 // Inserts the product HTML into the DOM as children of a given node.
 // Assumed structure of the htmlList: list of lists of objects containing HTML
 // elements under the property 'html'.
@@ -116,12 +131,8 @@ export function insertProductHTML(
   htmlList,
   productContainer = document.querySelector(".product-display")
 ) {
-  htmlList.forEach((group) => {
-    const productGroupElement = document.createElement("DIV");
-    productGroupElement.classList = ["product-group"];
-    group.forEach((elem) => {
-      productGroupElement.appendChild(elem.html);
-    });
-    productContainer.appendChild(productGroupElement);
+  const groupList = combineInnerHTML(htmlList);
+  groupList.forEach((group) => {
+    productContainer.appendChild(group);
   });
 }
