@@ -1,11 +1,9 @@
-// section--selection
 .product-display {
-  // Product display color schemes
-
   > *:not(:last-child) {
     margin-bottom: 8rem;
   }
 
+  // Product display color schemes
   &--light {
     background-color: $color-white;
 
@@ -28,7 +26,6 @@
     }
   }
 
-  // section--selection__group-of-four
   .four-product-group {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -42,17 +39,19 @@
     }
   }
 
-  // section--selection__elem
   .product {
     text-decoration: none;
 
-    &:hover {
+    &:hover,
+    &:focus-within {
       img {
+        // TODO: This seems buggy in Chrome. When clicking on the add button with
+        // the keyboard, the image shifts upwards.
         transform: scale(1.3);
       }
 
       .coffee-img .add-buttons > .visible {
-        transform: scale(1);
+        transform: scaleX(1);
       }
     }
 

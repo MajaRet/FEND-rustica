@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import coffeeImagePath from "../img/FEND_Coffee_Costa-Rica 2.png";
 
 import { addToCart } from "./cart";
@@ -36,16 +37,24 @@ function createIcons(properties) {
 
 function activateVariantButtons(quickAdd, variants) {
   quickAdd.classList.remove("visible");
-  quickAdd.classList.add("hidden");
-  variants.classList.remove("hidden");
   variants.classList.add("visible");
+  quickAdd.disabled = true;
+  Array.from(variants.children).forEach((varButton) => {
+    varButton.disabled = false;
+  });
+  // Focus on the first variant button while preventing automatic scrolling
+  const y = window.scrollY;
+  variants.children[0].focus();
+  window.scrollTo(window.scrollX, y);
 }
 
 function deactivateVariantButtons(quickAdd, variants) {
   quickAdd.classList.add("visible");
-  quickAdd.classList.remove("hidden");
-  variants.classList.add("hidden");
   variants.classList.remove("visible");
+  quickAdd.disabled = false;
+  Array.from(variants.children).forEach((varButton) => {
+    varButton.disabled = true;
+  });
 }
 
 function displayProducts() {
@@ -97,22 +106,33 @@ function displayProducts() {
 
       const variantButtonContainer = document.createElement("div");
       variantButtonContainer.classList = ["variant-buttons"];
-      variantButtonContainer.classList.add("hidden");
 
       const quickAddButton = document.createElement("button");
       quickAddButton.innerHTML = "<p>quick add <span class='plus'>+</span></p>";
       quickAddButton.classList = ["quick-add-button"];
-      quickAddButton.classList.add("visible");
       quickAddButton.onclick = (e) => {
-        activateVariantButtons(quickAddButton, variantButtonContainer);
         e.preventDefault();
+        activateVariantButtons(quickAddButton, variantButtonContainer);
       };
-
       // When leaving the product, the quick add button is restored
       productElement.onmouseleave = () => {
         deactivateVariantButtons(quickAddButton, variantButtonContainer);
       };
+      // When the variant buttons lose focus, they are also deactivated.
+      // The buttons will also be deactivated if the product is still hovered,
+      // which could be improved.
+      variantButtonContainer.addEventListener("focusout", () => {
+        setTimeout(() => {
+          if (!variantButtonContainer.contains(document.activeElement)) {
+            deactivateVariantButtons(quickAddButton, variantButtonContainer);
+          }
+        }, 0);
+      });
 
+      /*
+
+      });
+      */
       addButtonContainer.appendChild(variantButtonContainer);
       addButtonContainer.appendChild(quickAddButton);
 
@@ -129,7 +149,11 @@ function displayProducts() {
         });
         variantButtonContainer.appendChild(variantAddButton);
       });
+
+      // Initially, the variant buttons are disabled and the quick add button is enabled.
+      deactivateVariantButtons(quickAddButton, variantButtonContainer);
     }
+
     productContainer.appendChild(productGroupElement);
   }
 }
