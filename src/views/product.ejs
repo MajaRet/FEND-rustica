@@ -6,33 +6,46 @@
     <header class="header">
       <%- include ("./partials/navigation.ejs", {activePage: 'shop'}) %>
     </header>
-    <main class="main shop">
-      <img src="../img/FEND_Coffee_Costa-Rica 2.png" />
-      <h2 id="product-name"></h2>
-      <p id="price-range"></p>
-      <p id="blurb">
-        Filterkaffee ist äußerst ergiebig und hat praktisch keine Säure. Den
-        Gaumen umschmeichelt ein vollmundiges Haselnussaroma. Gleich probieren!
-      </p>
-      <div class="select-container">
-        <select
-          id="coffee-selection"
-          name="coffee-selection"
-          class="coffee-selection-select select"
-          required
+    <main class="main product-details">
+      <section class="product-info">
+        <img src="../img/FEND_Coffee_Costa-Rica 2.png" />
+        <h2 id="product-name"></h2>
+        <p id="price-range"></p>
+        <p id="blurb">
+          Filterkaffee ist äußerst ergiebig und hat praktisch keine Säure. Den
+          Gaumen umschmeichelt ein vollmundiges Haselnussaroma. Gleich
+          probieren!
+        </p>
+        <div class="select-container">
+          <select
+            id="coffee-selection"
+            name="coffee-selection"
+            class="coffee-selection-select select"
+            required
+          >
+            <option value="" disabled selected hidden>
+              Wie viel Kaffee brauchst du?
+            </option>
+          </select>
+          <div class="select-arrow"></div>
+        </div>
+        <button class="button button--dark" id="add-to-cart-button">
+          Warenkorb
+        </button>
+        <!-- TODO Add icons here -->
+        <h3>Beschreibung</h3>
+        <p id="description"></p>
+      </section>
+      <section class="product-display product-display--dark">
+        <h2>Entdecke weitere<br />Kaffeesorten</h2>
+        <div class="product-slider"></div>
+        <a
+          href="./shop.ejs"
+          class="button button--light-border product-display__button"
         >
-          <option value="" disabled selected hidden>
-            Wie viel Kaffee brauchst du?
-          </option>
-        </select>
-        <div class="select-arrow"></div>
-      </div>
-      <button class="button button--dark" id="add-to-cart-button">
-        Warenkorb
-      </button>
-      <!-- TODO Add icons here -->
-      <h3>Beschreibung</h3>
-      <p id="description"></p>
+          Alle Produkte
+        </a>
+      </section>
     </main>
     <footer class="footer"><%- include ("./partials/footer.ejs") %></footer>
     <script src="../js/index.js"></script>

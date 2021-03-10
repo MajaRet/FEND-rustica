@@ -33,9 +33,6 @@ function displayProducts() {
   // const numOfProducts = products.length;
 
   products.forEach((group) => {
-    const productGroupElement = document.createElement("DIV");
-    productGroupElement.classList = ["four-product-group"];
-
     group.forEach((productObj) => {
       const imgContainer = productObj.html.querySelector(".coffee-img");
       const addButtonContainer = document.createElement("div");
@@ -87,10 +84,9 @@ function displayProducts() {
       // Initially, the variant buttons are disabled and the quick add button is enabled.
       deactivateVariantButtons(quickAddButton, variantButtonContainer);
     });
-
-    // Finally, insert the constructed HTML into the DOM.
-    insertProductHTML(products);
   });
+  // Finally, insert the constructed HTML into the DOM.
+  insertProductHTML(products);
 }
 
 displayProducts();

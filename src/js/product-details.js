@@ -1,6 +1,12 @@
 import * as Cart from "./cart";
-import { getPriceRange, showPriceRange } from "./product-util";
+import {
+  getPriceRange,
+  showPriceRange,
+  generateProductHTML,
+  combineInnerHTML,
+} from "./product-util";
 import * as Database from "./query";
+import createSlider from "./slider";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
@@ -28,3 +34,7 @@ document.getElementById("add-to-cart-button").addEventListener("click", () => {
     Cart.addToCart(product.id, coffeeSelect.value);
   }
 });
+
+const sliderContainer = document.querySelector(".product-slider");
+const products = combineInnerHTML(generateProductHTML(4, `${id}`));
+createSlider(sliderContainer, products);

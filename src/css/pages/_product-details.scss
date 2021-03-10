@@ -1,0 +1,6 @@
+.product-details {
+  .product-display,
+  .product-info {
+    @include sectionPadding;
+  }
+}

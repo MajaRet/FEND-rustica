@@ -29,6 +29,11 @@
     }
   }
 
+  &__button {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
   .product-group {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

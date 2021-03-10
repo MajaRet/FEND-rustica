@@ -1,6 +1,5 @@
 import * as Database from "./query";
 import coffeeImagePath from "../img/FEND_Coffee_Costa-Rica 2.png";
-import "../css/components/product.scss";
 
 // Include fs module
 const fs = require("fs");
@@ -56,12 +55,14 @@ export function showPriceRange(priceRange) {
   return `${formatPrice(priceRange.min)} - ${formatPrice(priceRange.max)}`;
 }
 
-export function generateProductHTML(groupSize = 4) {
+export function generateProductHTML(groupSize = 4, excludedIds = []) {
   // const productContainer = document.querySelector(".product-display");
   //  const coffeeImage = productContainer.querySelector(".coffee-image img");
   //  const icons = productContainer.querySelectorAll(".icons img");
 
-  const products = Database.getProductData();
+  const products = Database.getProductData().filter(
+    (product) => !excludedIds.includes(product.id)
+  );
   const numOfProducts = products.length;
   const productGroups = [];
 
