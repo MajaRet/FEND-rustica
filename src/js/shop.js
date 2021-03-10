@@ -34,6 +34,20 @@ function createIcons(properties) {
     .join(" ");
 }
 
+function activateVariantButtons(quickAdd, variants) {
+  quickAdd.classList.remove("visible");
+  quickAdd.classList.add("hidden");
+  variants.classList.remove("hidden");
+  variants.classList.add("visible");
+}
+
+function deactivateVariantButtons(quickAdd, variants) {
+  quickAdd.classList.add("visible");
+  quickAdd.classList.remove("hidden");
+  variants.classList.add("hidden");
+  variants.classList.remove("visible");
+}
+
 function displayProducts() {
   const productContainer = document.querySelector(".product-display");
   //  const coffeeImage = productContainer.querySelector(".coffee-image img");
@@ -80,6 +94,28 @@ function displayProducts() {
       productGroupElement.appendChild(productElement);
 
       const addButtonContainer = productElement.querySelector(".add-buttons");
+
+      const variantButtonContainer = document.createElement("div");
+      variantButtonContainer.classList = ["variant-buttons"];
+      variantButtonContainer.classList.add("hidden");
+
+      const quickAddButton = document.createElement("button");
+      quickAddButton.innerHTML = "<p>quick add <span class='plus'>+</span></p>";
+      quickAddButton.classList = ["quick-add-button"];
+      quickAddButton.classList.add("visible");
+      quickAddButton.onclick = (e) => {
+        activateVariantButtons(quickAddButton, variantButtonContainer);
+        e.preventDefault();
+      };
+
+      // When leaving the product, the quick add button is restored
+      productElement.onmouseleave = () => {
+        deactivateVariantButtons(quickAddButton, variantButtonContainer);
+      };
+
+      addButtonContainer.appendChild(variantButtonContainer);
+      addButtonContainer.appendChild(quickAddButton);
+
       product.variants.forEach((variant) => {
         // Create an add button for each variant
         const variantAddButton = document.createElement("button");
@@ -91,7 +127,7 @@ function displayProducts() {
           addToCart(product.id, variant.variantName);
           e.preventDefault();
         });
-        addButtonContainer.appendChild(variantAddButton);
+        variantButtonContainer.appendChild(variantAddButton);
       });
     }
     productContainer.appendChild(productGroupElement);

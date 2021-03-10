@@ -46,6 +46,16 @@
   .product {
     text-decoration: none;
 
+    &:hover {
+      img {
+        transform: scale(1.3);
+      }
+
+      .coffee-img .add-buttons > .visible {
+        transform: scale(1);
+      }
+    }
+
     .coffee-text {
       div:not(:last-child) {
         margin-bottom: 8px;
@@ -63,6 +73,8 @@
     .coffee-img {
       position: relative;
 
+      overflow: hidden;
+
       margin-bottom: 2rem;
       padding: 5%;
 
@@ -70,31 +82,51 @@
 
       img {
         width: 100%;
+
+        transition: all 300ms ease-out;
       }
 
       .add-buttons {
-        position: absolute;
-        right: 1rem;
-        bottom: 1rem;
-
         border-radius: 5px;
 
-        background-color: $color-white;
+        // transition: all 300ms ease-out;
+
+        .variant-buttons {
+          p {
+            font-weight: 700;
+          }
+        }
+
+        > * {
+          transform: scaleX(0);
+          transform-origin: 100% 50%;
+          transition: all 300ms ease-out;
+          position: absolute;
+          right: 1rem;
+          bottom: 1rem;
+          border-radius: 5px;
+          overflow: hidden;
+
+          .plus {
+            font-weight: 700;
+          }
+        }
+
+        .visible {
+          transform: scaleX(0);
+          transform-origin: 100% 50%;
+        }
 
         button {
           border: none;
           padding: 10px 5px;
 
-          background-color: transparent;
+          background-color: $color-white;
 
           @include hoverUnderlineChildren;
 
           &:hover {
             cursor: pointer;
-          }
-
-          p {
-            font-weight: 700;
           }
         }
       }
