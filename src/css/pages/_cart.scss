@@ -70,6 +70,7 @@
 
         @include respond(media-lg) {
           padding-top: 2rem;
+          padding-bottom: 3rem;
         }
 
         .name-and-price-row {
@@ -79,9 +80,6 @@
 
           .coffee-name {
             font-weight: 700;
-          }
-
-          .coffee-price {
           }
         }
 
@@ -104,6 +102,10 @@
 
             .amount-input {
               height: 50%;
+
+              @include respond(media-lg) {
+                height: 70%;
+              }
             }
           }
 
@@ -111,6 +113,10 @@
             img {
               filter: brightness(0);
               width: 70%;
+
+              @include respond(media-lg) {
+                width: 100%;
+              }
             }
           }
         }
