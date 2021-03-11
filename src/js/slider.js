@@ -41,7 +41,6 @@ class Slider {
       "slider__button slider__button--inactive slider__button--left";
     buttonLeft.tabIndex = -1;
     buttonLeft.innerHTML = "&lsaquo;";
-    sliderNode.appendChild(buttonLeft);
     this.buttonLeft = buttonLeft;
 
     const buttonRight = document.createElement("button");
@@ -49,6 +48,10 @@ class Slider {
       "slider__button slider__button--active slider__button--right";
     buttonRight.innerHTML = "&rsaquo;";
     this.buttonRight = buttonRight;
+
+    // Since the right button should appear after the elements in the DOM
+    // order, only the left button is inserted here.
+    sliderNode.appendChild(buttonLeft);
 
     const tabDots = document.createElement("div");
     tabDots.className = "tab-dots";
@@ -161,7 +164,7 @@ class Slider {
   }
 }
 
-// TODO: The slider has no public methods or properties. I don't need a class
+// TODO: The slider needs no public methods or properties. I don't need a class
 // for it.
 export default function createSlider(container, elems) {
   return new Slider(container, elems);

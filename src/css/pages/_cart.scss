@@ -17,6 +17,20 @@
     min-height: 100%;
   }
 
+  &__title-and-count {
+    display: flex;
+    align-items: flex-end;
+    column-gap: 5rem;
+
+    margin-bottom: 2rem;
+  }
+
+  .add-message {
+    width: 100%;
+
+    background-color: $color-kraft-paper;
+  }
+
   &__product-list {
     display: flex;
     flex-direction: column;

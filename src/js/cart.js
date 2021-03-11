@@ -11,6 +11,40 @@ let recentlyAddedCounter = 0;
 
 let openCart;
 
+function updateRecentlyAddedMessage() {
+  const recentlyAddedMessage = document.querySelector(".cart .add-message");
+  if (recentlyAddedCounter) {
+    let was;
+    let product;
+    let fromOrTo;
+    let action;
+
+    if (Math.abs(recentlyAddedCounter) === 1) {
+      was = "wurde";
+      product = "Produkt";
+    } else {
+      was = "wurden";
+      product = "Produkte";
+    }
+
+    if (recentlyAddedCounter < 0) {
+      fromOrTo = "aus dem";
+      action = "entfernt";
+    } else {
+      fromOrTo = "zum";
+      action = "hinzugefügt";
+    }
+
+    recentlyAddedMessage.innerHTML = `${Math.abs(
+      recentlyAddedCounter
+    )} ${product} ${was} erfolgreich ${fromOrTo} Warenkorb ${action}.`;
+    recentlyAddedMessage.classList.remove("u-hidden");
+  } else {
+    recentlyAddedMessage.classList.add("u-hidden");
+  }
+  recentlyAddedCounter = 0;
+}
+
 // Sets a class on the count's parent signaling that the cart is empty.
 function emptyCart(cart) {
   cart.parentNode.classList.add("cart__product-count--empty");
@@ -36,6 +70,10 @@ function modifyCartItemCount(n) {
       fillCart(elem);
     }
   });
+  recentlyAddedCounter += n;
+  if (cartOverlay.isOpen()) {
+    updateRecentlyAddedMessage();
+  }
 }
 
 /*
@@ -135,7 +173,6 @@ function updateCartProduct(container, product) {
       removeFromCart(currProduct.id, currProduct.variantName);
     } else {
       modifyAmount(currProduct.id, currProduct.variantName, -1);
-      // TODO: Get a proper handle on the element that has the amount
       node.innerHTML = `${product.productName}, ${product.variantName}, ${
         product.amount
       }, ${formatPrice(product.price)}`;
@@ -195,16 +232,15 @@ function updateCart() {
   openCart = function openShoppingCart() {
     // eslint-disable-next-line no-use-before-define
     displayCart();
+    updateRecentlyAddedMessage();
     getCartOverlay().openOverlay();
     closeCartButton.classList.remove("u-hidden");
-    recentlyAddedCounter = 0;
   };
 
   openCartButton.onclick = openCart;
 }
 
 function displayCart() {
-  document.querySelector(".cart .add-message").innerHTML = recentlyAddedCounter;
   updateCartProducts();
   updateBilling();
   updateCart();
