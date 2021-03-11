@@ -11,16 +11,16 @@ let recentlyAddedCounter = 0;
 
 let openCart;
 
-// Sets a class signaling that the cart is empty.
+// Sets a class on the count's parent signaling that the cart is empty.
 function emptyCart(cart) {
-  cart.classList.add("cart__product-count--empty");
-  cart.classList.remove("cart__product-count--nonempty");
+  cart.parentNode.classList.add("cart__product-count--empty");
+  cart.parentNode.classList.remove("cart__product-count--nonempty");
 }
 
-// Sets a class signaling that the cart is not empty.
+// Sets a class on the count's parent signaling that the cart is not empty.
 function fillCart(cart) {
-  cart.classList.add("cart__product-count--nonempty");
-  cart.classList.remove("cart__product-count--empty");
+  cart.parentNode.classList.add("cart__product-count--nonempty");
+  cart.parentNode.classList.remove("cart__product-count--empty");
 }
 
 // Adds n to the cart counter.

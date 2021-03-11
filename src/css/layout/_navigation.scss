@@ -88,7 +88,9 @@
     }
 
     .cart__product-count--nonempty {
-      color: $color-black;
+      .cart__product-count {
+        color: $color-black;
+      }
       background-color: $color-white;
     }
   }
@@ -105,7 +107,7 @@
     }
 
     .cart__product-count--nonempty {
-      background-color: $color-kraft-paper;
+      background-color: $color-petrol;
     }
   }
 
@@ -170,7 +172,12 @@
           padding-bottom: 0;
         }
       }
-      .cart__product-count {
+      .cart__product-count-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+
         margin-left: -1.2rem;
         margin-top: -1rem;
         z-index: 2;
