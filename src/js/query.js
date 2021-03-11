@@ -20,11 +20,6 @@ export function getProduct(id) {
   return null;
 }
 
-// Getter for the full product data table to expose to the outside world.
-export function getProductData() {
-  return productDataJSON;
-}
-
 // Creates an empty cart.
 function createEmptyCart() {
   return {
@@ -52,6 +47,16 @@ export function numOfProducts() {
 // Returns the number of different products in the shopping cart.
 export function cartSize() {
   return getCartTable().productList.length;
+}
+
+// Getter for the full product data table to expose to the outside world.
+export function getProductData() {
+  return productDataJSON;
+}
+
+// Getter for the pure cart data (without product data).
+export function getCartData() {
+  return getCartTable().productList;
 }
 
 // QUERIES

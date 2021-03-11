@@ -27,7 +27,6 @@ function fillCart(cart) {
 function modifyCartItemCount(n) {
   const productCountElems = document.querySelectorAll(".cart__product-count");
   const productCount = parseInt(productCountElems[0].innerHTML, 10);
-
   productCountElems.forEach((el) => {
     const elem = el;
     elem.innerHTML = productCount + n;
@@ -68,7 +67,9 @@ function getCartOverlay() {
 // Set the cart counter to the number of products currently in the
 // cart.
 function initCartCounter() {
-  setCartItemCount(Database.cartSize());
+  setCartItemCount(
+    Database.getCartData().reduce((total, item) => item.amount + total, 0)
+  );
 }
 
 function closeCart() {
@@ -78,13 +79,19 @@ function closeCart() {
 
 // Modifies the amount by the specified amount. Returns whether an entry was updated.
 function modifyAmount(id, variantName, amount) {
-  return Database.update(
-    (e) => {
-      const entry = e;
-      entry.amount += amount;
-    },
-    (e) => e.id === id && e.variantName === variantName
-  );
+  if (
+    Database.update(
+      (e) => {
+        const entry = e;
+        entry.amount += amount;
+      },
+      (e) => e.id === id && e.variantName === variantName
+    )
+  ) {
+    modifyCartItemCount(amount);
+    return true;
+  }
+  return false;
 }
 
 function updateCartProduct(container, product) {
@@ -207,7 +214,7 @@ function displayCart() {
 export function addToCart(id, variantName, amount = 1) {
   if (!modifyAmount(id, variantName, 1)) {
     Database.insertEntry({ id, variantName, amount });
-    incrementCartItemCount();
+    modifyCartItemCount(amount);
   }
 
   if (cartOverlay.isOpen()) {
@@ -218,16 +225,17 @@ export function addToCart(id, variantName, amount = 1) {
 }
 
 export function removeFromCart(id, variantName) {
-  if (
-    Database.deleteEntry((e) => e.id === id && e.variantName === variantName)
-  ) {
-    decrementCartItemCount();
-
-    if (cartOverlay.isOpen()) {
-      displayCart();
-    } else {
-      updateCart();
-    }
+  const entry = Database.readCart(
+    ["amount"],
+    (e) => e.id === id && e.variantName === variantName
+  );
+  if (!entry) return;
+  Database.deleteEntry((e) => e.id === id && e.variantName === variantName);
+  modifyCartItemCount(-entry[0].amount);
+  if (cartOverlay.isOpen()) {
+    displayCart();
+  } else {
+    updateCart();
   }
 }
 
