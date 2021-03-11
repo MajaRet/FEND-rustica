@@ -64,4 +64,21 @@
       border-top: solid 1px $color-white;
     }
   }
+
+  .checkout-button {
+    margin-top: 2.5rem;
+
+    color: $color-black;
+
+    background-color: $color-kraft-paper;
+
+    &:hover,
+    &:focus {
+      background-color: $color-light-grey;
+    }
+
+    &:active {
+      background-color: $color-white;
+    }
+  }
 }
