@@ -2,6 +2,8 @@
 import Overlay from "./overlay";
 import { formatPrice } from "./product-util";
 import * as Database from "./query";
+import coffeeImagePath from "../img/FEND_Coffee_Costa-Rica 2.png";
+import closeButtonIcon from "../img/icons/Burger Menu close.svg";
 
 const openCartButton = document.querySelector(".open-cart-button");
 const closeCartButton = document.querySelector(".close-cart-button");
@@ -142,10 +144,43 @@ function modifyAmount(id, variantName, amount) {
 
 function updateCartProduct(container, product) {
   const currProduct = product;
-  const node = document.createElement("p");
-  node.innerHTML = `${product.productName}, ${product.variantName}, ${
-    product.amount
-  }, ${formatPrice(product.price)}`;
+  const node = document.createElement("div");
+  node.className = "cart__item";
+
+  const itemContent = document.createElement("div");
+  itemContent.className = "cart__item__content";
+
+  const coffeeImg = document.createElement("img");
+  coffeeImg.className = "coffee-img";
+  coffeeImg.src = coffeeImagePath;
+  coffeeImg.alt = "Platzhalter"; // TODO Change
+
+  const coffeeData = document.createElement("div");
+  coffeeData.className = "coffee-data";
+
+  const nameAndPriceRow = document.createElement("div");
+  nameAndPriceRow.className = "name-and-price-row";
+
+  const coffeeName = document.createElement("p");
+  coffeeName.className = "coffee-name";
+  coffeeName.textContent = product.productName;
+
+  const coffeePrice = document.createElement("p");
+  coffeePrice.className = "coffee-price";
+  coffeePrice.textContent = formatPrice(product.price);
+
+  nameAndPriceRow.appendChild(coffeeName);
+  nameAndPriceRow.appendChild(coffeePrice);
+
+  const variantName = document.createElement("p");
+  variantName.className = "variant-name";
+  variantName.textContent = product.variantName;
+
+  const divider = document.createElement("hr");
+  divider.className = "divider";
+
+  const amountContainer = document.createElement("div");
+  amountContainer.className = "amount-container";
 
   const amountField = document.createElement("input");
   amountField.type = "text";
@@ -153,9 +188,8 @@ function updateCartProduct(container, product) {
   amountField.ariaLabel = "Menge";
   amountField.value = product.amount;
   amountField.size = 1;
+  amountField.ariaLabel = `Menge von Produkt ${product.productName} ${product.variantName}`;
 
-  // Make buttons to delete a product from the cart and to
-  // increase or decrease the amount to buy.
   const deleteButton = document.createElement("button");
   const decreaseAmountButton = document.createElement("button");
   const increaseAmountButton = document.createElement("button");
@@ -166,10 +200,38 @@ function updateCartProduct(container, product) {
   decreaseAmountButton.classList.add("product-button--decrease-amount");
   decreaseAmountButton.classList.add("icon-button");
 
+  deleteButton.ariaDescription = `Entferne Produkt ${product.productName} ${product.variantName}`;
+  increaseAmountButton.ariaDescription = `Erhöhe Menge von Produkt ${product.productName} ${product.variantName} um eins`;
+  decreaseAmountButton.ariaDescription = `Verringere Menge von Produkt ${product.productName} ${product.variantName} um eins`;
+
+  const buttonContainer = document.createElement("div");
+  buttonContainer.className = "button-container";
+
   // TODO: need the icon here.
-  deleteButton.innerHTML = `x`;
-  increaseAmountButton.innerHTML = ">";
-  decreaseAmountButton.innerHTML = "<";
+  deleteButton.innerHTML = `<img src="${closeButtonIcon}" alt="Icon Produkt entfernen">`;
+  increaseAmountButton.innerHTML = "&rsaquo;";
+  decreaseAmountButton.innerHTML = "&lsaquo;";
+
+  amountContainer.appendChild(decreaseAmountButton);
+  amountContainer.appendChild(amountField);
+  amountContainer.appendChild(increaseAmountButton);
+
+  buttonContainer.appendChild(amountContainer);
+  buttonContainer.appendChild(deleteButton);
+
+  coffeeData.appendChild(nameAndPriceRow);
+  coffeeData.appendChild(variantName);
+  coffeeData.appendChild(buttonContainer);
+
+  itemContent.appendChild(coffeeImg);
+  itemContent.appendChild(coffeeData);
+
+  node.appendChild(itemContent);
+  node.appendChild(divider);
+
+  container.appendChild(node);
+
+  // Event listeners
 
   // eslint-disable-next-line no-use-before-define
   deleteButton.onclick = removeFromCart.bind(
@@ -186,9 +248,6 @@ function updateCartProduct(container, product) {
       removeFromCart(currProduct.id, currProduct.variantName);
     } else {
       modifyAmount(currProduct.id, currProduct.variantName, -1);
-      node.innerHTML = `${product.productName}, ${product.variantName}, ${
-        product.amount
-      }, ${formatPrice(product.price)}`;
 
       amountField.value = product.amount;
 
@@ -202,10 +261,6 @@ function updateCartProduct(container, product) {
     currProduct.amount += 1;
     // eslint-disable-next-line no-use-before-define
     modifyAmount(currProduct.id, currProduct.variantName, 1);
-
-    node.innerHTML = `${product.productName}, ${product.variantName}, ${
-      product.amount
-    }, ${formatPrice(product.price)}`;
 
     amountField.value = product.amount;
 
@@ -239,12 +294,6 @@ function updateCartProduct(container, product) {
       amountField.classList.add("amount-input--invalid");
     }
   });
-
-  container.appendChild(node);
-  container.appendChild(deleteButton);
-  container.appendChild(decreaseAmountButton);
-  container.appendChild(amountField);
-  container.appendChild(increaseAmountButton);
 }
 
 function updateCartProducts() {
