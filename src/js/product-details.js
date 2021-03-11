@@ -4,9 +4,11 @@ import {
   showPriceRange,
   generateProductHTML,
   combineInnerHTML,
+  getIconsAndProperties,
 } from "./product-util";
 import * as Database from "./query";
 import createSlider from "./slider";
+import { setSVGSize } from "./stringUtil";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
@@ -25,14 +27,26 @@ const coffeeSelect = document.getElementById("coffee-selection");
 product.variants.forEach((variant) => {
   const variantOption = document.createElement("option");
   variantOption.value = variant.variantName;
+  variantOption.textContent = variant.variantName;
   coffeeSelect.appendChild(variantOption);
 });
 
-// Add the selected variant to the cart when the "Warenkorb" button is pressed.
+// Add the selected variant to the cart when the "In den Warenkorb" button is pressed.
 document.getElementById("add-to-cart-button").addEventListener("click", () => {
   if (coffeeSelect.value !== coffeeSelect.options[0].value) {
     Cart.addToCart(product.id, coffeeSelect.value);
   }
+});
+
+const productIcons = document.getElementById("product-icons");
+const iconsAndProperties = getIconsAndProperties(product.properties);
+iconsAndProperties.forEach((prop) => {
+  const iconContainer = document.createElement("div");
+  /* eslint-disable no-param-reassign */
+  prop.icon = setSVGSize(prop.icon, 200, 200);
+  iconContainer.className = "icon-container";
+  iconContainer.innerHTML = `${prop.icon} <p>${prop.name}</p>`;
+  productIcons.appendChild(iconContainer);
 });
 
 const sliderContainer = document.querySelector(".product-slider");

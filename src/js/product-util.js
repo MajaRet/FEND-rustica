@@ -4,30 +4,43 @@ import coffeeImagePath from "../img/FEND_Coffee_Costa-Rica 2.png";
 // Include fs module
 const fs = require("fs");
 
-function createIcons(properties) {
-  return properties
-    .map((prop) => {
-      // Switch statement because filenames must be static
-      switch (prop) {
-        case "mild":
-          return fs.readFileSync("./src/img/icons/Icon Kaffee Schaufel.svg", {
+export function getIconsAndProperties(properties) {
+  return properties.map((prop) => {
+    // Switch statement because filenames must be static
+    switch (prop) {
+      case "mild":
+        return {
+          icon: fs.readFileSync("./src/img/icons/Icon Kaffee Schaufel.svg", {
             encoding: "utf8",
             flag: "r",
-          });
-        case "filtered":
-          return fs.readFileSync("./src/img/icons/Icon French Press.svg", {
+          }),
+          name: "Mild",
+        };
+      case "filtered":
+        return {
+          icon: fs.readFileSync("./src/img/icons/Icon French Press.svg", {
             encoding: "utf8",
             flag: "r",
-          });
-        case "ground":
-          return fs.readFileSync("./src/img/icons/Icon Kaffee Bohnen.svg", {
+          }),
+          name: "Für Filterkaffee",
+        };
+      case "ground":
+        return {
+          icon: fs.readFileSync("./src/img/icons/Icon Kaffee Bohnen.svg", {
             encoding: "utf8",
             flag: "r",
-          });
-        default:
-          return "";
-      }
-    })
+          }),
+          name: "Gemahlen",
+        };
+      default:
+        return {};
+    }
+  });
+}
+
+export function createIcons(properties) {
+  return getIconsAndProperties(properties)
+    .map((props) => props.icon)
     .join(" ");
 }
 

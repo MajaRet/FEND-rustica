@@ -2,5 +2,57 @@
   .product-display,
   .product-info {
     @include sectionPadding;
+
+    #product-name {
+      margin-bottom: 1rem;
+    }
+
+    #price-range {
+      margin-bottom: 1.5rem;
+    }
+
+    #blurb {
+      margin-bottom: 4.5rem;
+    }
+
+    .product-selection {
+      display: flex;
+      column-gap: 1rem;
+
+      margin-bottom: 2.5rem;
+      width: 100%;
+
+      .select-container {
+        flex-grow: 1;
+
+        select {
+          height: 100%;
+          padding-left: 2rem;
+        }
+      }
+
+      #add-to-cart-button {
+        color: $color-white;
+      }
+    }
+
+    #product-icons {
+      display: flex;
+
+      .icon-container {
+        background-color: hotpink;
+        svg {
+          path {
+            stroke: $color-black;
+          }
+        }
+      }
+    }
+
+    .description-container {
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
   }
 }
