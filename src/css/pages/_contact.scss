@@ -24,7 +24,7 @@
     flex-direction: column;
 
     .required:invalid {
-      background-color: rgba(red, 0.3);
+      background-color: $color-invalid;
 
       &::placeholder {
         opacity: 1;

@@ -141,6 +141,13 @@ function updateCartProduct(container, product) {
     product.amount
   }, ${formatPrice(product.price)}`;
 
+  const amountField = document.createElement("input");
+  amountField.type = "text";
+  amountField.className = "amount-input";
+  amountField.ariaLabel = "Menge";
+  amountField.value = product.amount;
+  amountField.size = 1;
+
   // Make buttons to delete a product from the cart and to
   // increase or decrease the amount to buy.
   const deleteButton = document.createElement("button");
@@ -166,6 +173,11 @@ function updateCartProduct(container, product) {
   );
 
   decreaseAmountButton.addEventListener("click", () => {
+    // If the content of the amount field was invalid before,
+    // it is reset to the last valid value before decrementing,
+    // so it is valid again.
+    amountField.classList.remove("amount-input--invalid");
+
     currProduct.amount = Math.max(0, product.amount - 1);
 
     if (currProduct.amount <= 0) {
@@ -177,12 +189,19 @@ function updateCartProduct(container, product) {
         product.amount
       }, ${formatPrice(product.price)}`;
 
+      amountField.value = product.amount;
+
       // eslint-disable-next-line no-use-before-define
       updateBilling();
     }
   });
 
   increaseAmountButton.addEventListener("click", () => {
+    // If the content of the amount field was invalid before,
+    // it is reset to the last valid value before incrementing,
+    // so it is valid again.
+    amountField.classList.remove("amount-input--invalid");
+
     currProduct.amount += 1;
     // eslint-disable-next-line no-use-before-define
     modifyAmount(currProduct.id, currProduct.variantName, 1);
@@ -191,13 +210,42 @@ function updateCartProduct(container, product) {
       product.amount
     }, ${formatPrice(product.price)}`;
 
+    amountField.value = product.amount;
+
     // eslint-disable-next-line no-use-before-define
     updateBilling();
+  });
+
+  amountField.addEventListener("change", () => {
+    const isNonNegativeInt = /^\d+$/.test(amountField.value);
+    if (isNonNegativeInt) {
+      const newAmount = parseInt(amountField.value, 10);
+      if (newAmount > 0) {
+        amountField.classList.remove("amount-input--invalid");
+        // eslint-disable-next-line no-use-before-define
+        modifyAmount(
+          currProduct.id,
+          currProduct.variantName,
+          newAmount - product.amount
+        );
+        currProduct.amount = newAmount;
+        // eslint-disable-next-line no-use-before-define
+        updateBilling();
+      } else if (newAmount === 0) {
+        // eslint-disable-next-line no-use-before-define
+        removeFromCart(currProduct.id, currProduct.variantName);
+        amountField.classList.remove("amount-input--invalid");
+      }
+      // New amount is not a valid amount.
+    } else {
+      amountField.classList.add("amount-input--invalid");
+    }
   });
 
   container.appendChild(node);
   container.appendChild(deleteButton);
   container.appendChild(decreaseAmountButton);
+  container.appendChild(amountField);
   container.appendChild(increaseAmountButton);
 }
 

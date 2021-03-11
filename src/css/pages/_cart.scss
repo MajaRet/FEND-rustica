@@ -65,6 +65,13 @@
     }
   }
 
+  .amount-input {
+    // width: fit-content;
+    &--invalid {
+      background-color: $color-invalid;
+    }
+  }
+
   .checkout-button {
     margin-top: 2.5rem;
 
