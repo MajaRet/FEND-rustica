@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import Overlay from "./overlay";
 import { formatPrice } from "./product-util";
 import * as Database from "./query";
@@ -10,6 +11,11 @@ const cartOverlay = new Overlay(document.querySelector(".cart-overlay"));
 let recentlyAddedCounter = 0;
 
 let openCart;
+
+function processValidAmountChange(inputNode) {
+  inputNode.classList.remove("amount-input--invalid");
+  inputNode.size = `${inputNode.value}`.length;
+}
 
 function updateRecentlyAddedMessage() {
   const recentlyAddedMessage = document.querySelector(".cart .add-message");
@@ -173,11 +179,6 @@ function updateCartProduct(container, product) {
   );
 
   decreaseAmountButton.addEventListener("click", () => {
-    // If the content of the amount field was invalid before,
-    // it is reset to the last valid value before decrementing,
-    // so it is valid again.
-    amountField.classList.remove("amount-input--invalid");
-
     currProduct.amount = Math.max(0, product.amount - 1);
 
     if (currProduct.amount <= 0) {
@@ -193,15 +194,11 @@ function updateCartProduct(container, product) {
 
       // eslint-disable-next-line no-use-before-define
       updateBilling();
+      processValidAmountChange(amountField);
     }
   });
 
   increaseAmountButton.addEventListener("click", () => {
-    // If the content of the amount field was invalid before,
-    // it is reset to the last valid value before incrementing,
-    // so it is valid again.
-    amountField.classList.remove("amount-input--invalid");
-
     currProduct.amount += 1;
     // eslint-disable-next-line no-use-before-define
     modifyAmount(currProduct.id, currProduct.variantName, 1);
@@ -214,6 +211,7 @@ function updateCartProduct(container, product) {
 
     // eslint-disable-next-line no-use-before-define
     updateBilling();
+    processValidAmountChange(amountField);
   });
 
   amountField.addEventListener("change", () => {
@@ -221,7 +219,6 @@ function updateCartProduct(container, product) {
     if (isNonNegativeInt) {
       const newAmount = parseInt(amountField.value, 10);
       if (newAmount > 0) {
-        amountField.classList.remove("amount-input--invalid");
         // eslint-disable-next-line no-use-before-define
         modifyAmount(
           currProduct.id,
@@ -231,10 +228,11 @@ function updateCartProduct(container, product) {
         currProduct.amount = newAmount;
         // eslint-disable-next-line no-use-before-define
         updateBilling();
+        processValidAmountChange(amountField);
       } else if (newAmount === 0) {
         // eslint-disable-next-line no-use-before-define
         removeFromCart(currProduct.id, currProduct.variantName);
-        amountField.classList.remove("amount-input--invalid");
+        processValidAmountChange(amountField);
       }
       // New amount is not a valid amount.
     } else {
