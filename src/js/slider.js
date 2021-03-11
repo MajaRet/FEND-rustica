@@ -1,3 +1,5 @@
+import { disableAllFocusable, enableAllFocusable } from "./focus";
+
 function deactivateSliderButton(btn) {
   const button = btn;
   button.classList.remove("slider__button--active");
@@ -33,6 +35,21 @@ class Slider {
     this.tabDots = [];
     this.elements = [];
 
+    // Create slider buttons
+    const buttonLeft = document.createElement("button");
+    buttonLeft.className =
+      "slider__button slider__button--inactive slider__button--left";
+    buttonLeft.tabIndex = -1;
+    buttonLeft.innerHTML = "&lsaquo;";
+    sliderNode.appendChild(buttonLeft);
+    this.buttonLeft = buttonLeft;
+
+    const buttonRight = document.createElement("button");
+    buttonRight.className =
+      "slider__button slider__button--active slider__button--right";
+    buttonRight.innerHTML = "&rsaquo;";
+    this.buttonRight = buttonRight;
+
     const tabDots = document.createElement("div");
     tabDots.className = "tab-dots";
     elems.forEach((elem) => {
@@ -41,9 +58,14 @@ class Slider {
       sliderElem.appendChild(elem);
       sliderNode.appendChild(sliderElem);
 
-      const tabDot = document.createElement("div");
+      const tabDot = document.createElement("button");
       tabDot.className = `tab-dot${first ? " tab-dot--active" : ""}`;
       tabDots.appendChild(tabDot);
+
+      // Focusable children of hidden slider elements are disabled.
+      if (!first) {
+        disableAllFocusable(sliderElem);
+      }
 
       first = false;
 
@@ -51,27 +73,8 @@ class Slider {
       this.tabDots.push(tabDot);
     });
 
+    sliderNode.appendChild(buttonRight);
     sliderNode.appendChild(tabDots);
-
-    // Create slider buttons
-
-    const sliderButtonContainer = document.createElement("div");
-    sliderButtonContainer.className = "slider__buttons";
-
-    const buttonLeft = document.createElement("button");
-    buttonLeft.className =
-      "slider__button slider__button--inactive slider__button--left";
-    buttonLeft.tabIndex = -1;
-    buttonLeft.innerHTML = "&lsaquo;";
-    sliderButtonContainer.appendChild(buttonLeft);
-    this.buttonLeft = buttonLeft;
-
-    const buttonRight = document.createElement("button");
-    buttonRight.className =
-      "slider__button slider__button--active slider__button--right";
-    buttonRight.innerHTML = "&rsaquo;";
-    sliderButtonContainer.appendChild(buttonRight);
-    this.buttonRight = buttonRight;
 
     // Add event listeners
 
@@ -94,8 +97,6 @@ class Slider {
         this.jumpToSliderElem.bind(this, i)
       );
     }
-
-    sliderNode.appendChild(sliderButtonContainer);
   }
 
   jumpToSliderElem(index) {
@@ -119,6 +120,11 @@ class Slider {
       // ... and tab indicator.
       this.tabDots[this.activeIndex].classList.remove("tab-dot--active");
       this.tabDots[index].classList.add("tab-dot--active");
+
+      // Enable focus on the new visible element and disable focus on the old
+      // one.
+      disableAllFocusable(this.elements[this.activeIndex]);
+      enableAllFocusable(this.elements[index]);
 
       // Add the direction-specific animation classes.
       if (slideLeft) {

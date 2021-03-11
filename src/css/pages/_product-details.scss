@@ -17,15 +17,30 @@
 
     .product-selection {
       display: flex;
-      column-gap: 1rem;
+      flex-direction: column;
+      row-gap: 1rem;
 
-      margin-bottom: 2.5rem;
+      margin-bottom: 10rem;
       width: 100%;
+
+      @include respond(media-xl) {
+        flex-direction: row;
+        column-gap: 1rem;
+        row-gap: 0;
+      }
 
       .select-container {
         flex-grow: 1;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include respond(media-lg) {
+          width: 100%;
+        }
 
         select {
+          min-height: 5rem;
           height: 100%;
           padding-left: 2rem;
         }
@@ -33,6 +48,8 @@
 
       #add-to-cart-button {
         color: $color-white;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
@@ -54,9 +71,12 @@
     }
 
     .description-container {
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%;
+      width: 100%;
+      @include respond(media-lg) {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
     }
   }
 }

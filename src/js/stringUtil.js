@@ -14,7 +14,6 @@ export function modifyAttribute(htmlStr, attr, modify) {
 }
 
 // Sets an attribute in an HTML (or SVG) element given as a string.
-// If the attribute is not set, it is set to the new value.
 export function setAttribute(htmlStr, attr, newVal) {
   const res = modifyAttribute(htmlStr, attr, () => newVal);
   if (res !== htmlStr) {
@@ -42,6 +41,6 @@ export function setSVGSize(svgStr, width, height) {
 export function scaleSVG(svgStr, lambda) {
   const scaleFun = (dimStr) => parseInt(dimStr, 10) * lambda;
   let modSVG = modifyAttribute(svgStr, "width", scaleFun);
-  modSVG = modifyAttribute(modSVG, "width", scaleFun);
+  modSVG = modifyAttribute(modSVG, "height", scaleFun);
   return modSVG;
 }

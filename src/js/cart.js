@@ -38,6 +38,7 @@ function modifyCartItemCount(n) {
   });
 }
 
+/*
 function incrementCartItemCount() {
   modifyCartItemCount(1);
   recentlyAddedCounter += 1;
@@ -46,6 +47,7 @@ function incrementCartItemCount() {
 function decrementCartItemCount() {
   modifyCartItemCount(-1);
 }
+*/
 
 // Sets the cart count to n.
 function setCartItemCount(n) {
@@ -125,7 +127,6 @@ function updateCartProduct(container, product) {
     product.variantName
   );
 
-  // TODO: That doesn't work. I need to put it into localStorage.
   decreaseAmountButton.addEventListener("click", () => {
     currProduct.amount = Math.max(0, product.amount - 1);
 
@@ -149,14 +150,12 @@ function updateCartProduct(container, product) {
     // eslint-disable-next-line no-use-before-define
     modifyAmount(currProduct.id, currProduct.variantName, 1);
 
-    // TODO: Get a proper handle on the element that has the amount
     node.innerHTML = `${product.productName}, ${product.variantName}, ${
       product.amount
     }, ${formatPrice(product.price)}`;
 
     // eslint-disable-next-line no-use-before-define
     updateBilling();
-    // TODO: display new amount by getting the amount element from the DOM
   });
 
   container.appendChild(node);
