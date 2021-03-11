@@ -43,7 +43,7 @@ const iconsAndProperties = getIconsAndProperties(product.properties);
 iconsAndProperties.forEach((prop) => {
   const iconContainer = document.createElement("div");
   /* eslint-disable no-param-reassign */
-  prop.icon = setSVGSize(prop.icon, 200, 200);
+  prop.icon = setSVGSize(prop.icon, 70, 70);
   iconContainer.className = "icon-container";
   iconContainer.innerHTML = `${prop.icon} <p>${prop.name}</p>`;
   productIcons.appendChild(iconContainer);

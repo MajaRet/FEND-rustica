@@ -38,12 +38,16 @@
 
     #product-icons {
       display: flex;
+      column-gap: 1rem;
 
       .icon-container {
-        background-color: hotpink;
+        width: 90px;
+
+        text-align: center;
+
         svg {
           path {
-            stroke: $color-black;
+            stroke: $color-icon-grey;
           }
         }
       }

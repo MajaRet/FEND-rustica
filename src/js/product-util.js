@@ -30,7 +30,7 @@ export function getIconsAndProperties(properties) {
             encoding: "utf8",
             flag: "r",
           }),
-          name: "Gemahlen",
+          name: "gemahlen",
         };
       default:
         return {};
