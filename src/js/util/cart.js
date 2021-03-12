@@ -2,8 +2,8 @@
 import Overlay from "./overlay";
 import { formatPrice } from "./product-util";
 import * as Database from "./query";
-import coffeeImagePath from "../img/FEND_Coffee_Costa-Rica 2.png";
-import closeButtonIcon from "../img/icons/Burger Menu close.svg";
+import coffeeImagePath from "../../img/FEND_Coffee_Costa-Rica 2.png";
+import closeButtonIcon from "../../img/icons/Burger Menu close.svg";
 
 const openCartButton = document.querySelector(".open-cart-button");
 const closeCartButton = document.querySelector(".close-cart-button");

@@ -1,5 +1,5 @@
 import * as Database from "./query";
-import coffeeImagePath from "../img/FEND_Coffee_Costa-Rica 2.png";
+import coffeeImagePath from "../../img/FEND_Coffee_Costa-Rica 2.png";
 
 // Include fs module
 const fs = require("fs");

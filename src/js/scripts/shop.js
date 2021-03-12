@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-import { generateProductHTML, insertProductHTML } from "./product-util";
-import { addToCart } from "./cart";
+import { generateProductHTML, insertProductHTML } from "../util/product-util";
+import { addToCart } from "../util/cart";
 
 function activateVariantButtons(quickAdd, variants) {
   quickAdd.classList.remove("visible");

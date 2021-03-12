@@ -1,4 +1,4 @@
-import initNavigation, { handleNavigationScrolling } from "./navigation";
+import initNavigation, { handleNavigationScrolling } from "../util/navigation";
 
 function handleScrolling() {
   handleNavigationScrolling();

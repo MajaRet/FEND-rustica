@@ -1,4 +1,4 @@
-import productDataJSON from "../products.json";
+import productDataJSON from "../../products.json";
 
 // Emulate database functionality with local storage and JSON.
 // Returns tables as objects consisting of a list of entries.
