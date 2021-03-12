@@ -4,11 +4,11 @@
   %>
 
   <body>
-    <header class="header header--home">
+    <header class="header header--image header--home">
       <%- include ("./partials/navigation.ejs", {activePage: 'index'}) %>
       <h1 class="site-heading--primary">Rustica</h1>
       <p class="subhead-m site-heading--secondary">Bio und Fair seit 1991</p>
-      <a href="#" class="button button--dark header__shop-button"
+      <a href="./shop.ejs" class="button button--dark header__shop-button"
         ><p>Zum Shop</p></a
       >
     </header>
@@ -55,7 +55,7 @@
                 Wortbergen, fern der Länder Vokalien und Konsonantien leben die
                 Blindtexte. Und das alles in bester Bio Qualität.
               </p>
-              <a href="#" class="learn-more-link">mehr</a>
+              <a href="./origins.ejs" class="learn-more-link">mehr</a>
             </div>
             <div class="text-and-images__cell text-and-images__cell--image">
               <img
@@ -67,169 +67,12 @@
           </div>
         </div>
       </section>
-      <section class="section--selection" id="shop">
+      <section class="product-display product-display--dark" id="shop">
         <h2>Entdecke unsere<br />Kaffeesorten</h2>
-        <!-- prettier-ignore -->
-        <%- include ("./partials/product-slider.ejs", 
-          {products: [
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "1 Costa Rica", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "1 Äthiopien", 
-              priceRangeStart: "8,90",
-              priceRangeEnd: "20,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "1 Costa Rica", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "1 Costa Rica", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "2 Äthiopien", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "2 Costa Rica", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen",
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "2 Äthiopien", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "2 Costa Rica", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "3 Äthiopien", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "3 Costa Rica", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "3 Costa Rica", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "3 Äthiopien", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "4 Costa Rica", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-            {
-              imgName: "FEND_Coffee_Costa-Rica 2", 
-              countryOfOrigin: "4 Costa Rica", 
-              priceRangeStart: "6,90",
-              priceRangeEnd: "26,90",
-              icons: [
-                "Icon Kaffee Bohnen", 
-                "Icon French Press", 
-                "Icon Kaffee Schaufel"
-              ]
-            },
-          ]}) %>
-
+        <div class="product-slider"></div>
         <a
-          href="#"
-          class="button button--light-border section--selection__button"
+          href="./shop.ejs"
+          class="button button--light-border product-display__button"
         >
           alle Produkte
         </a>
@@ -242,7 +85,7 @@
           Konsonantien leben die Blindtexte. <br />
           Und das alles in bester Bio Qualität.
         </p>
-        <a href="#" class="learn-more-link">mehr</a>
+        <a href="./origins.ejs" class="learn-more-link">mehr</a>
       </section>
       <section class="section--contents" id="contents">
         <h2 class="section--contents__heading">Das steckt drin</h2>
@@ -281,7 +124,7 @@
               <div class="item text-3">Bio<br />Qualität</div>
             </div>
             <div class="section--contents__button">
-              <a href="#" class="button button--dark">zum Shop</a>
+              <a href="./shop.ejs" class="button button--dark">zum Shop</a>
             </div>
           </div>
         </div>
@@ -291,7 +134,7 @@
       <%- include ("./partials/map.ejs") %> <%- include
       ("./partials/footer.ejs") %>
     </footer>
-    <script src="../js/index.js"></script>
-    <script src="../js/slider.js"></script>
+    <script src="../js/scripts/index.js"></script>
+    <script src="../js/scripts/product-slider.js"></script>
   </body>
 </html>

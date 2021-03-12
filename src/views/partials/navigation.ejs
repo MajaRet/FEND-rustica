@@ -2,9 +2,27 @@
   <div class="nav--regular">
     <div class="nav__logo">
       <a href="index.ejs" aria-describedby="logo-link-description"
-        ><img src="../img/icons/Logo.svg" alt="Rustica Logo" class="logo-svg"
+        ><img
+          src="../img/icons/Logo.svg"
+          alt="Rustica Logo"
+          class="icon logo-svg"
       /></a>
     </div>
+    <%- include("./nav-list.ejs") %>
+    <button
+      aria-label="Warenkorb-Knopf"
+      aria-describedby="cart-button-description"
+      class="icon-button cart-icon cart-button open-cart-button"
+    >
+      <img
+        src="../img/icons/Warenkorb.svg"
+        alt="Warenkorb Icon"
+        class="icon cart-svg"
+      />
+      <div class="cart__product-count-container">
+        <p class="cart__product-count">0</p>
+      </div>
+    </button>
     <button
       aria-label="Menüknopf"
       aria-describedby="menu-button-description"
@@ -14,7 +32,7 @@
       <img
         src="../img/icons/Burger Menu.svg"
         alt="Menü öffnen"
-        class="burger-menu-svg"
+        class="icon burger-menu-svg"
       />
     </button>
     <div id="menu-button-description" class="u-hidden">
@@ -23,10 +41,9 @@
     <div id="logo-link-description" class="u-hidden">
       <p>Dieser Link führt zur Startseite.</p>
     </div>
-    <%- include("./nav-list.ejs") %>
   </div>
   <div
-    class="nav--overlay"
+    class="overlay overlay--sliding nav--overlay"
     role="dialog"
     aria-label="Menü"
     aria-modal="true"
@@ -34,7 +51,7 @@
   >
     <button
       aria-label="Menü schließen"
-      class="menu-button close-menu-button u-hidden"
+      class="menu-button overlay-close-button close-menu-button u-hidden"
       id="mobile-menu-close-button"
     >
       <img
@@ -46,3 +63,4 @@
     <%- include("./nav-list.ejs") %>
   </div>
 </nav>
+<%- include("./cart.ejs") %>

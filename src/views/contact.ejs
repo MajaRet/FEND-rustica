@@ -2,7 +2,7 @@
 <html lang="de">
   <%- include("./partials/head", {title: "Kontakt | Rustica Kaffeerösterei"}) %>
   <body>
-    <header>
+    <header class="header">
       <h1 class="u-sr-only">Kontakt</h1>
       <%- include("./partials/navigation", {activePage: "contact"}) %>
     </header>
@@ -29,7 +29,12 @@
 
         <!-- <label for="reason">Dein Betreff</label> -->
         <div class="select-container">
-          <select id="reason" name="reason" class="reason-select" required>
+          <select
+            id="reason"
+            name="reason"
+            class="select reason-select"
+            required
+          >
             <option value="" disabled selected hidden>Dein Betreff</option>
             <option value="shipment-question">Fragen zur Lieferung</option>
             <option value="product-question">Fragen zum Produkt</option>
@@ -61,7 +66,7 @@
       </form>
     </main>
     <footer class="footer"><%- include("./partials/footer") %></footer>
-    <script src="../js/index.js"></script>
-    <script src="../js/form.js"></script>
+    <script src="../js/scripts/index.js"></script>
+    <script src="../js/scripts/form.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-.header {
+.header--image {
   position: relative;
 
   display: flex;
@@ -15,14 +15,6 @@
   @include respond(media-lg) {
     height: 65vh;
   }
-
-  &__shop-button {
-    position: absolute;
-    bottom: 10%; // TODO: Exact position?
-    left: 50%;
-
-    transform: translateX(-50%);
-  }
 }
 
 // TODO: Add more image sizes
@@ -37,6 +29,14 @@
       "../img/FEND-Coffee-latte-art-3-lg.jpg",
       $overlay-dark-weak
     );
+  }
+
+  .header__shop-button {
+    position: absolute;
+    bottom: 10%; // TODO: Exact position?
+    left: 50%;
+
+    transform: translateX(-50%);
   }
 }
 
