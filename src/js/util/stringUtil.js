@@ -1,10 +1,14 @@
-// This module contains functions to set and modify attributes of HTML or SVG
-// elements given as strings.
+/* 
+  This module provides functions to set and modify attributes of HTML or SVG
+  elements given as strings.
+*/
 
-// Modifies an attribute in an HTML (or SVG) element given as a string
-// by applying the given function to the current value of the attribute.
-// Returns the HTML as a string with the modified attribute or the unmodified
-// string if the attribute is not set.
+/*
+  Modifies an attribute in an HTML (or SVG) element given as a string
+  by applying the given function to the current value of the attribute.
+  Returns the HTML as a string with the modified attribute or the unmodified
+  string if the attribute is not set.
+*/
 export function modifyAttribute(htmlStr, attr, modify) {
   const regExp = new RegExp(`(${attr}=")([\\w ]*)(")`);
   const fun = (_match, _attr, val) => {
@@ -38,6 +42,7 @@ export function setSVGSize(svgStr, width, height) {
   return modSVG;
 }
 
+// Scales an SVG given as a string by a factor of lambda.
 export function scaleSVG(svgStr, lambda) {
   const scaleFun = (dimStr) => parseInt(dimStr, 10) * lambda;
   let modSVG = modifyAttribute(svgStr, "width", scaleFun);

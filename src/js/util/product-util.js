@@ -1,3 +1,8 @@
+/* 
+  This module includes functions to process product data from
+  the database and generate HTML from it.
+*/
+
 import * as Database from "./query";
 import coffeeImagePath from "../../img/FEND_Coffee_Costa-Rica 2.png";
 
@@ -69,10 +74,6 @@ export function showPriceRange(priceRange) {
 }
 
 export function generateProductHTML(groupSize = 4, excludedIds = []) {
-  // const productContainer = document.querySelector(".product-display");
-  //  const coffeeImage = productContainer.querySelector(".coffee-image img");
-  //  const icons = productContainer.querySelectorAll(".icons img");
-
   const products = Database.getProductData().filter(
     (product) => !excludedIds.includes(product.id)
   );
@@ -81,8 +82,6 @@ export function generateProductHTML(groupSize = 4, excludedIds = []) {
 
   for (let i = 0; i < numOfProducts; i += groupSize) {
     const productGroup = [];
-    // const productGroupElement = document.createElement("DIV");
-    // productGroupElement.classList = ["four-product-group"];
 
     for (let j = i; j < Math.min(i + groupSize, numOfProducts); j += 1) {
       const product = products[j];
@@ -113,10 +112,8 @@ export function generateProductHTML(groupSize = 4, excludedIds = []) {
         </div>`;
       productElement.innerHTML = productHtml;
       productGroup.push({ product, html: productElement });
-      // productGroupElement.appendChild(productElement);
     }
 
-    // productContainer.appendChild(productGroupElement);
     productGroups.push(productGroup);
   }
 

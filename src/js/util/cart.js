@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-param-reassign */
 import Overlay from "./overlay";
 import { formatPrice } from "./product-util";
@@ -14,11 +15,17 @@ let recentlyAddedCounter = 0;
 
 let openCart;
 
+function closeCart() {
+  cartOverlay.closeOverlay();
+  closeCartButton.classList.add("u-hidden");
+}
+
 function processValidAmountChange(inputNode) {
   inputNode.classList.remove("amount-input--invalid");
   inputNode.size = `${inputNode.value}`.length;
 }
 
+// Displays a message notifying the user of recent changes to the cart.
 function updateRecentlyAddedMessage() {
   const recentlyAddedMessage = document.querySelector(".cart .add-message");
   if (recentlyAddedCounter) {
@@ -53,8 +60,8 @@ function updateRecentlyAddedMessage() {
   recentlyAddedCounter = 0;
 }
 
+// Adjusts singular/plural of product labels
 function updateProductCountLabel(n) {
-  // Adjust singular/plural of product labels
   document.querySelectorAll(".cart__product-count-label").forEach((el) => {
     const elem = el;
     elem.innerHTML = n === 1 ? "Produkt" : "Produkte";
@@ -109,21 +116,12 @@ function setCartItemCount(n) {
   updateProductCountLabel(n);
 }
 
-function getCartOverlay() {
-  return cartOverlay;
-}
-
 // Set the cart counter to the number of products currently in the
 // cart.
 function initCartCounter() {
   setCartItemCount(
     Database.getCartData().reduce((total, item) => item.amount + total, 0)
   );
-}
-
-function closeCart() {
-  cartOverlay.closeOverlay();
-  closeCartButton.classList.add("u-hidden");
 }
 
 // Modifies the amount by the specified amount. Returns whether an entry was updated.
@@ -240,7 +238,6 @@ function updateCartProduct(container, product) {
 
   // Event listeners
 
-  // eslint-disable-next-line no-use-before-define
   deleteButton.onclick = removeFromCart.bind(
     null,
     product.id,
@@ -251,14 +248,12 @@ function updateCartProduct(container, product) {
     currProduct.amount = Math.max(0, product.amount - 1);
 
     if (currProduct.amount <= 0) {
-      // eslint-disable-next-line no-use-before-define
       removeFromCart(currProduct.id, currProduct.variantName);
     } else {
       modifyAmount(currProduct.id, currProduct.variantName, -1);
 
       amountField.value = product.amount;
 
-      // eslint-disable-next-line no-use-before-define
       updateBilling();
       processValidAmountChange(amountField);
     }
@@ -266,12 +261,10 @@ function updateCartProduct(container, product) {
 
   increaseAmountButton.addEventListener("click", () => {
     currProduct.amount += 1;
-    // eslint-disable-next-line no-use-before-define
     modifyAmount(currProduct.id, currProduct.variantName, 1);
 
     amountField.value = product.amount;
 
-    // eslint-disable-next-line no-use-before-define
     updateBilling();
     processValidAmountChange(amountField);
   });
@@ -281,21 +274,19 @@ function updateCartProduct(container, product) {
     if (isNonNegativeInt) {
       const newAmount = parseInt(amountField.value, 10);
       if (newAmount > 0) {
-        // eslint-disable-next-line no-use-before-define
         modifyAmount(
           currProduct.id,
           currProduct.variantName,
           newAmount - product.amount
         );
         currProduct.amount = newAmount;
-        // eslint-disable-next-line no-use-before-define
         updateBilling();
-        processValidAmountChange(amountField);
       } else if (newAmount === 0) {
-        // eslint-disable-next-line no-use-before-define
         removeFromCart(currProduct.id, currProduct.variantName);
-        processValidAmountChange(amountField);
       }
+
+      processValidAmountChange(amountField);
+
       // New amount is not a valid amount.
     } else {
       amountField.classList.add("amount-input--invalid");
@@ -332,10 +323,9 @@ function updateBilling() {
 function updateCart() {
   // Define the openCart function in the correct context
   openCart = function openShoppingCart() {
-    // eslint-disable-next-line no-use-before-define
     displayCart();
     updateRecentlyAddedMessage();
-    getCartOverlay().openOverlay();
+    cartOverlay.openOverlay();
     closeCartButton.classList.remove("u-hidden");
   };
 
