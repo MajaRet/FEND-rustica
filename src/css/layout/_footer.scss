@@ -60,9 +60,6 @@
       padding-bottom: 3rem;
 
       @include respond(media-lg) {
-        // TODO Check.
-        // It looks centered in the design, but nothing
-        // else does. Very weird.
         display: flex;
         align-items: center;
 

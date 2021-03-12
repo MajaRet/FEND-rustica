@@ -176,7 +176,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem;
+        padding: 2px 8px;
+
+        width: fit-content;
 
         margin-left: -1.2rem;
         margin-top: -1rem;
@@ -188,10 +190,6 @@
       }
 
       .cart__product-count--nonempty {
-        height: 2.2rem;
-        line-height: 2.2rem;
-        width: 2.2rem;
-
         border-radius: 50%;
 
         text-align: center;

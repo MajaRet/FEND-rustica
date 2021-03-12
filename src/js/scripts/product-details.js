@@ -1,14 +1,14 @@
-import * as Cart from "./cart";
+import * as Cart from "../util/cart";
 import {
   getPriceRange,
   showPriceRange,
   generateProductHTML,
   combineInnerHTML,
   getIconsAndProperties,
-} from "./product-util";
-import * as Database from "./query";
-import createSlider from "./slider";
-import { setSVGSize } from "./stringUtil";
+} from "../util/product-util";
+import * as Database from "../util/query";
+import createSlider from "../util/slider";
+import { setSVGSize } from "../util/stringUtil";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");

@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-import { generateProductHTML, insertProductHTML } from "./product-util";
-import { addToCart } from "./cart";
+import { generateProductHTML, insertProductHTML } from "../util/product-util";
+import { addToCart } from "../util/cart";
 
 function activateVariantButtons(quickAdd, variants) {
   quickAdd.classList.remove("visible");
@@ -25,12 +25,7 @@ function deactivateVariantButtons(quickAdd, variants) {
 }
 
 function displayProducts() {
-  // const productContainer = document.querySelector(".product-display");
-  //  const coffeeImage = productContainer.querySelector(".coffee-image img");
-  //  const icons = productContainer.querySelectorAll(".icons img");
-
   const products = generateProductHTML();
-  // const numOfProducts = products.length;
 
   products.forEach((group) => {
     group.forEach((productObj) => {

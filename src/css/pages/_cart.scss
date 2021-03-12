@@ -15,20 +15,51 @@
 
     @include standardPagePadding;
     min-height: 100%;
-  }
 
-  &__title-and-count {
-    display: flex;
-    align-items: flex-end;
-    column-gap: 5rem;
+    .cart__header {
+      padding-left: 0;
+      padding-right: 0;
 
-    margin-bottom: 2rem;
-  }
+      @include respond(media-lg) {
+        @include sectionPaddingSides;
+      }
 
-  .add-message {
-    width: 100%;
+      .cart__title-and-count {
+        display: flex;
+        align-items: flex-end;
+        column-gap: 2rem;
 
-    background-color: $color-kraft-paper;
+        margin-bottom: 2rem;
+        @include sectionPaddingSides;
+
+        @include respond(media-lg) {
+          column-gap: 5rem;
+
+          padding-left: 0;
+          padding-right: 0;
+        }
+        @include respond(media-xl) {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        @include respond(media-xxl) {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+
+      .add-message {
+        width: 100vw;
+
+        background-color: $color-kraft-paper;
+
+        padding: 2rem 3.6rem;
+
+        @include respond(media-lg) {
+          width: 100%;
+        }
+      }
+    }
   }
 
   &__product-list {
@@ -81,6 +112,13 @@
           .coffee-name {
             font-weight: 700;
           }
+        }
+
+        .product-link {
+          text-decoration: none;
+          color: $color-black;
+          @include hoverUnderline;
+          width: fit-content;
         }
 
         .button-container {

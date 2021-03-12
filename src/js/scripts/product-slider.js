@@ -1,5 +1,5 @@
-import { combineInnerHTML, generateProductHTML } from "./product-util";
-import createSlider from "./slider";
+import { combineInnerHTML, generateProductHTML } from "../util/product-util";
+import createSlider from "../util/slider";
 
 // Assumes that we have empty divs with class name product-slider.
 

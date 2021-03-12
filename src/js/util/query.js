@@ -1,11 +1,13 @@
-import productDataJSON from "../products.json";
+/* 
+  This module emulates database functionality with local storage and JSON.
+  Returns tables as objects consisting of a list of entries.
 
-// Emulate database functionality with local storage and JSON.
-// Returns tables as objects consisting of a list of entries.
+  There are two 'tables':
+  products is the product data, taken from a JSON file.
+  cart is the shopping cart data, taken from (and written to) local storage.
+*/
 
-// There are two 'tables':
-// products is the product data, taken from a JSON file.
-// cart is the shopping cart data, taken from (and written to) local storage.
+import productDataJSON from "../../products.json";
 
 // UTILITY FUNCTIONS
 
@@ -165,6 +167,7 @@ export function read(attrs = [], selectCondition = () => true) {
     .map((entry) => selectAttributes(entry, attrs));
 }
 
+// SELECT attrs FROM cart WHERE selectCondition
 export function readCart(attrs = [], selectCondition = () => true) {
   return getCartTable()
     .productList.filter(selectCondition)

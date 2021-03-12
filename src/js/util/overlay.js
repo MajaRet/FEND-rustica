@@ -41,8 +41,6 @@ export default class Overlay {
   }
 
   openOverlay() {
-    // this.refresh();
-
     this.overlayElem.classList.add("overlay-open");
     this.overlayElem.ariaHidden = false;
     this.overlayElem.scrollTop = 0;

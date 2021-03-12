@@ -1,9 +1,10 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-param-reassign */
 import Overlay from "./overlay";
 import { formatPrice } from "./product-util";
 import * as Database from "./query";
-import coffeeImagePath from "../img/FEND_Coffee_Costa-Rica 2.png";
-import closeButtonIcon from "../img/icons/Burger Menu close.svg";
+import coffeeImagePath from "../../img/FEND_Coffee_Costa-Rica 2.png";
+import closeButtonIcon from "../../img/icons/Burger Menu close.svg";
 
 const openCartButton = document.querySelector(".open-cart-button");
 const closeCartButton = document.querySelector(".close-cart-button");
@@ -14,11 +15,17 @@ let recentlyAddedCounter = 0;
 
 let openCart;
 
+function closeCart() {
+  cartOverlay.closeOverlay();
+  closeCartButton.classList.add("u-hidden");
+}
+
 function processValidAmountChange(inputNode) {
   inputNode.classList.remove("amount-input--invalid");
   inputNode.size = `${inputNode.value}`.length;
 }
 
+// Displays a message notifying the user of recent changes to the cart.
 function updateRecentlyAddedMessage() {
   const recentlyAddedMessage = document.querySelector(".cart .add-message");
   if (recentlyAddedCounter) {
@@ -53,6 +60,14 @@ function updateRecentlyAddedMessage() {
   recentlyAddedCounter = 0;
 }
 
+// Adjusts singular/plural of product labels
+function updateProductCountLabel(n) {
+  document.querySelectorAll(".cart__product-count-label").forEach((el) => {
+    const elem = el;
+    elem.innerHTML = n === 1 ? "Produkt" : "Produkte";
+  });
+}
+
 // Sets a class on the count's parent signaling that the cart is empty.
 function emptyCart(cart) {
   cart.parentNode.classList.add("cart__product-count--empty");
@@ -78,22 +93,13 @@ function modifyCartItemCount(n) {
       fillCart(elem);
     }
   });
+
   recentlyAddedCounter += n;
   if (cartOverlay.isOpen()) {
     updateRecentlyAddedMessage();
+    updateProductCountLabel(productCount + n);
   }
 }
-
-/*
-function incrementCartItemCount() {
-  modifyCartItemCount(1);
-  recentlyAddedCounter += 1;
-}
-
-function decrementCartItemCount() {
-  modifyCartItemCount(-1);
-}
-*/
 
 // Sets the cart count to n.
 function setCartItemCount(n) {
@@ -106,10 +112,8 @@ function setCartItemCount(n) {
       fillCart(elem);
     }
   });
-}
 
-function getCartOverlay() {
-  return cartOverlay;
+  updateProductCountLabel(n);
 }
 
 // Set the cart counter to the number of products currently in the
@@ -118,11 +122,6 @@ function initCartCounter() {
   setCartItemCount(
     Database.getCartData().reduce((total, item) => item.amount + total, 0)
   );
-}
-
-function closeCart() {
-  cartOverlay.closeOverlay();
-  closeCartButton.classList.add("u-hidden");
 }
 
 // Modifies the amount by the specified amount. Returns whether an entry was updated.
@@ -142,6 +141,7 @@ function modifyAmount(id, variantName, amount) {
   return false;
 }
 
+// Constructs the HTML including event listeners for one product.
 function updateCartProduct(container, product) {
   const currProduct = product;
   const node = document.createElement("div");
@@ -153,7 +153,7 @@ function updateCartProduct(container, product) {
   const coffeeImg = document.createElement("img");
   coffeeImg.className = "coffee-img";
   coffeeImg.src = coffeeImagePath;
-  coffeeImg.alt = "Platzhalter"; // TODO Change
+  coffeeImg.alt = `Kaffee ${product.productName}`;
 
   const coffeeData = document.createElement("div");
   coffeeData.className = "coffee-data";
@@ -171,6 +171,11 @@ function updateCartProduct(container, product) {
 
   nameAndPriceRow.appendChild(coffeeName);
   nameAndPriceRow.appendChild(coffeePrice);
+
+  const productLink = document.createElement("a");
+  productLink.className = "product-link";
+  productLink.href = `product.html?id=${product.id}`;
+  productLink.textContent = "zum Produkt";
 
   const variantName = document.createElement("p");
   variantName.className = "variant-name";
@@ -207,7 +212,6 @@ function updateCartProduct(container, product) {
   const buttonContainer = document.createElement("div");
   buttonContainer.className = "button-container";
 
-  // TODO: need the icon here.
   deleteButton.innerHTML = `<img src="${closeButtonIcon}" alt="Icon Produkt entfernen">`;
   increaseAmountButton.innerHTML = "&rsaquo;";
   decreaseAmountButton.innerHTML = "&lsaquo;";
@@ -220,6 +224,7 @@ function updateCartProduct(container, product) {
   buttonContainer.appendChild(deleteButton);
 
   coffeeData.appendChild(nameAndPriceRow);
+  coffeeData.appendChild(productLink);
   coffeeData.appendChild(variantName);
   coffeeData.appendChild(buttonContainer);
 
@@ -233,7 +238,6 @@ function updateCartProduct(container, product) {
 
   // Event listeners
 
-  // eslint-disable-next-line no-use-before-define
   deleteButton.onclick = removeFromCart.bind(
     null,
     product.id,
@@ -244,14 +248,12 @@ function updateCartProduct(container, product) {
     currProduct.amount = Math.max(0, product.amount - 1);
 
     if (currProduct.amount <= 0) {
-      // eslint-disable-next-line no-use-before-define
       removeFromCart(currProduct.id, currProduct.variantName);
     } else {
       modifyAmount(currProduct.id, currProduct.variantName, -1);
 
       amountField.value = product.amount;
 
-      // eslint-disable-next-line no-use-before-define
       updateBilling();
       processValidAmountChange(amountField);
     }
@@ -259,12 +261,10 @@ function updateCartProduct(container, product) {
 
   increaseAmountButton.addEventListener("click", () => {
     currProduct.amount += 1;
-    // eslint-disable-next-line no-use-before-define
     modifyAmount(currProduct.id, currProduct.variantName, 1);
 
     amountField.value = product.amount;
 
-    // eslint-disable-next-line no-use-before-define
     updateBilling();
     processValidAmountChange(amountField);
   });
@@ -274,21 +274,19 @@ function updateCartProduct(container, product) {
     if (isNonNegativeInt) {
       const newAmount = parseInt(amountField.value, 10);
       if (newAmount > 0) {
-        // eslint-disable-next-line no-use-before-define
         modifyAmount(
           currProduct.id,
           currProduct.variantName,
           newAmount - product.amount
         );
         currProduct.amount = newAmount;
-        // eslint-disable-next-line no-use-before-define
         updateBilling();
-        processValidAmountChange(amountField);
       } else if (newAmount === 0) {
-        // eslint-disable-next-line no-use-before-define
         removeFromCart(currProduct.id, currProduct.variantName);
-        processValidAmountChange(amountField);
       }
+
+      processValidAmountChange(amountField);
+
       // New amount is not a valid amount.
     } else {
       amountField.classList.add("amount-input--invalid");
@@ -325,10 +323,9 @@ function updateBilling() {
 function updateCart() {
   // Define the openCart function in the correct context
   openCart = function openShoppingCart() {
-    // eslint-disable-next-line no-use-before-define
     displayCart();
     updateRecentlyAddedMessage();
-    getCartOverlay().openOverlay();
+    cartOverlay.openOverlay();
     closeCartButton.classList.remove("u-hidden");
   };
 
