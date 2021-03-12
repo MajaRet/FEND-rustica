@@ -53,6 +53,14 @@ function updateRecentlyAddedMessage() {
   recentlyAddedCounter = 0;
 }
 
+function updateProductCountLabel(n) {
+  // Adjust singular/plural of product labels
+  document.querySelectorAll(".cart__product-count-label").forEach((el) => {
+    const elem = el;
+    elem.innerHTML = n === 1 ? "Produkt" : "Produkte";
+  });
+}
+
 // Sets a class on the count's parent signaling that the cart is empty.
 function emptyCart(cart) {
   cart.parentNode.classList.add("cart__product-count--empty");
@@ -78,22 +86,13 @@ function modifyCartItemCount(n) {
       fillCart(elem);
     }
   });
+
   recentlyAddedCounter += n;
   if (cartOverlay.isOpen()) {
     updateRecentlyAddedMessage();
+    updateProductCountLabel(productCount + n);
   }
 }
-
-/*
-function incrementCartItemCount() {
-  modifyCartItemCount(1);
-  recentlyAddedCounter += 1;
-}
-
-function decrementCartItemCount() {
-  modifyCartItemCount(-1);
-}
-*/
 
 // Sets the cart count to n.
 function setCartItemCount(n) {
@@ -106,6 +105,8 @@ function setCartItemCount(n) {
       fillCart(elem);
     }
   });
+
+  updateProductCountLabel(n);
 }
 
 function getCartOverlay() {
@@ -142,6 +143,7 @@ function modifyAmount(id, variantName, amount) {
   return false;
 }
 
+// Constructs the HTML including event listeners for one product.
 function updateCartProduct(container, product) {
   const currProduct = product;
   const node = document.createElement("div");
@@ -153,7 +155,7 @@ function updateCartProduct(container, product) {
   const coffeeImg = document.createElement("img");
   coffeeImg.className = "coffee-img";
   coffeeImg.src = coffeeImagePath;
-  coffeeImg.alt = "Platzhalter"; // TODO Change
+  coffeeImg.alt = `Kaffee ${product.productName}`;
 
   const coffeeData = document.createElement("div");
   coffeeData.className = "coffee-data";
@@ -171,6 +173,11 @@ function updateCartProduct(container, product) {
 
   nameAndPriceRow.appendChild(coffeeName);
   nameAndPriceRow.appendChild(coffeePrice);
+
+  const productLink = document.createElement("a");
+  productLink.className = "product-link";
+  productLink.href = `product.html?id=${product.id}`;
+  productLink.textContent = "zum Produkt";
 
   const variantName = document.createElement("p");
   variantName.className = "variant-name";
@@ -207,7 +214,6 @@ function updateCartProduct(container, product) {
   const buttonContainer = document.createElement("div");
   buttonContainer.className = "button-container";
 
-  // TODO: need the icon here.
   deleteButton.innerHTML = `<img src="${closeButtonIcon}" alt="Icon Produkt entfernen">`;
   increaseAmountButton.innerHTML = "&rsaquo;";
   decreaseAmountButton.innerHTML = "&lsaquo;";
@@ -220,6 +226,7 @@ function updateCartProduct(container, product) {
   buttonContainer.appendChild(deleteButton);
 
   coffeeData.appendChild(nameAndPriceRow);
+  coffeeData.appendChild(productLink);
   coffeeData.appendChild(variantName);
   coffeeData.appendChild(buttonContainer);
 

@@ -20,9 +20,13 @@
   &__title-and-count {
     display: flex;
     align-items: flex-end;
-    column-gap: 5rem;
+    column-gap: 2rem;
 
     margin-bottom: 2rem;
+
+    @include respond(media-lg) {
+      column-gap: 5rem;
+    }
   }
 
   .add-message {
@@ -81,6 +85,13 @@
           .coffee-name {
             font-weight: 700;
           }
+        }
+
+        .product-link {
+          text-decoration: none;
+          color: $color-black;
+          @include hoverUnderline;
+          width: fit-content;
         }
 
         .button-container {
