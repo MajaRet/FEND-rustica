@@ -30,6 +30,21 @@ class Slider {
     sliderParent.appendChild(sliderNode);
   }
 
+  startTouch(e) {
+    this.startX = (e.changedTouches ? e.changedTouches[0] : e).clientX;
+  }
+
+  endTouch(e) {
+    const currX = (e.changedTouches ? e.changedTouches[0] : e).clientX;
+    const dif = currX - this.startX;
+    const threshold = 200;
+    if (dif > threshold) {
+      this.goLeft();
+    } else if (dif < -threshold) {
+      this.goRight();
+    }
+  }
+
   buildSlider(sliderNode, elems) {
     let first = true;
     this.tabDots = [];
@@ -82,15 +97,9 @@ class Slider {
     // Add event listeners
 
     // Clicking on the 'right' button moves the slider right by one.
-    this.buttonRight.addEventListener(
-      "click",
-      this.jumpSliderElementBy.bind(this, 1)
-    );
+    this.buttonRight.addEventListener("click", () => this.goRight());
     // Clicking on the 'left' button moves the slider left by one.
-    this.buttonLeft.addEventListener(
-      "click",
-      this.jumpSliderElementBy.bind(this, -1)
-    );
+    this.buttonLeft.addEventListener("click", () => this.goLeft());
 
     // Make it possible to jump to a specific page by clicking on the
     // corresponding dot.
@@ -100,6 +109,12 @@ class Slider {
         this.jumpToSliderElem.bind(this, i)
       );
     }
+
+    // Swipe controls
+    sliderNode.addEventListener("mousedown", this.startTouch.bind(this));
+    sliderNode.addEventListener("mouseup", this.endTouch.bind(this));
+    sliderNode.addEventListener("touchstart", this.startTouch.bind(this));
+    sliderNode.addEventListener("touchend", this.endTouch.bind(this));
   }
 
   jumpToSliderElem(index) {
@@ -161,6 +176,14 @@ class Slider {
     if (nextIndex >= 0 && nextIndex < this.elements.length) {
       this.jumpToSliderElem(nextIndex);
     }
+  }
+
+  goRight() {
+    this.jumpSliderElementBy(1);
+  }
+
+  goLeft() {
+    this.jumpSliderElementBy(-1);
   }
 }
 

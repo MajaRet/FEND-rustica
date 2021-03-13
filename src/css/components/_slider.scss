@@ -79,28 +79,22 @@
   }
 
   // Forwards and backwards buttons
-  &__buttons {
-    display: flex;
-    column-gap: 2rem;
-  }
-
   &__button {
-    border: none;
-
-    background-color: transparent;
-
-    text-decoration: none;
-
-    font-size: 8rem;
-
-    @include respond(media-md) {
-      font-size: 10rem;
-    }
+    display: none;
 
     @include respond(media-xl) {
       position: absolute;
       top: 30%;
       transform: translateY(-50%);
+
+      display: inline-block;
+
+      border: none;
+
+      background-color: transparent;
+
+      text-decoration: none;
+      font-size: 10rem;
 
       &--left {
         left: -7rem;
